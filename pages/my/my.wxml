@@ -1,0 +1,36 @@
+<!--pages/my.wxml-->
+<view class="container">
+  <view class="mybg">
+    <text class="bg_title">我的</text>
+    <view class="user_info">
+      <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="userLogin"> 立即登录 </button>
+      <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即登录 </button>
+    </block>
+    <block wx:else>
+      <view class="user_display">
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <view class="user_text">
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+      </view>
+    </block>
+    </view>
+  </view>
+  <view class="menu">
+    <view class="menu-item">
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/menuitem_order.png?sign=3783e6523ed00308d5d966923367d987&t=1652754515" />
+      <text>订单管理</text>
+    </view>
+    <view class="divLine"></view>
+        <view class="menu-item">
+      <image src="" />
+      <text>监测历史数据</text>
+    </view>
+    <view class="divLine"></view>
+    <view class="menu-item">
+      <image src="" />
+      <text>我的推广码</text>
+    </view>
+  </view>
+</view>

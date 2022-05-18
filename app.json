@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "慢性心脏疾病风险评估",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "borderStyle": "black",
+    "selectedColor": "#0CD195",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "statistics/main_menu.png",
+        "selectedIconPath": "statistics/main_menu_active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "statistics/my.png",
+        "selectedIconPath": "statistics/my_active.png",
+        "text": "我的"
+      }
+    ],
+    "position": "bottom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

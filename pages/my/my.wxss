@@ -1,0 +1,74 @@
+/* pages/my.wxss */
+page {
+background-color: #F6F6F6;
+}
+
+.mybg {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  padding-left: 15pt;
+  height: 328rpx;
+  background-image: url('https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_bg.png?sign=2f70d1daf251e4d26e15091519cdf83d&t=1652750836');
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+}
+
+.bg_title{
+  color: #fff;
+  font-size: 32rpx;
+  width: auto;
+  text-align: center;
+  margin-top: 50rpx;
+}
+
+.user_info {
+  display:flex;
+  margin-top: 20rpx;
+}
+
+.user_info .userinfo-avatar{
+  height: 110rpx;
+  width: 110rpx;
+  border-radius: 60rpx;
+}
+
+.user_info .user_display{
+  margin-top:40rpx;
+  display:flex;
+}
+
+.user_display .user_text{
+  margin-left:20rpx;
+  color:#fff;
+  font-size:32rpx;
+  display: flex;
+}
+
+.userinfo-nickname{
+  margin: auto;
+}
+
+.menu {
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.menu .menu-item{
+  margin-top: 16rpx;
+  margin-bottom: 25rpx;
+  display: flex;
+  font-size: 28rpx;
+}
+
+.menu .menu-item image {
+  height: 36rpx;
+  width: 36rpx;
+  margin-right: 26rpx;
+}
+
+.divLine{
+ background: #E0E3DA;
+ width: 100%;
+ height: 3rpx;
+}

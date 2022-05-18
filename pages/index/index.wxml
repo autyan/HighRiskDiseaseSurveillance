@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="navBg">
+  <text class="title1">慢性心脏疾病风险评估</text>
+  <text class="title2">专业科学的医疗团队</text>
+  </view>
+  <view class="main_content">
+  <view class="item_card">
+    <view class="item_title">
+      <view class="title_mark"></view>
+      <text class="title_text">健康自测</text>
+    </view>
+    <text class="data_mark">您暂无自测数据</text>
+  </view>
+  </view>
+</view>
