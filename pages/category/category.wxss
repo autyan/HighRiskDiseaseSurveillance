@@ -1,0 +1,61 @@
+/* pages/category.wxss */
+page {
+  background-color: #F6F6F6;
+  }
+
+  .container{
+    padding: 22rpx 30rpx 0 30rpx;
+  }
+
+  .item-card {
+    height: 200rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+    display:flex;
+    margin-bottom: 20rpx;
+  }
+
+  .item-card .item-content{
+    margin: 25rpx;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+  }
+
+  .item-card image {
+    width: 150rpx;
+    height: 150rpx;
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  .item-desc {
+    margin-left: 28rpx;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 450rpx;
+  }
+
+  .item-main{
+    display:flex;
+    margin-top: auto;
+  }
+
+  .item-title {
+    color:#2c2c2c;
+    font-size: 32rpx;
+    font-weight: 700;
+  }
+
+  .item-lastDate{
+    margin-top: auto;
+    font-size: 25rpx;
+    color:#7e7e7e;
+  }
+  .item-button{
+    color:#0cca8a;
+    font-size: 28rpx;
+    margin-left: auto;
+    margin-right: 56rpx;
+  }

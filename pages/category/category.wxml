@@ -1,0 +1,81 @@
+<!--pages/category.wxml-->
+<view class="container">
+  <view class="item-card">
+        <view class="item-content">
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/Hyperlipidemia_surveillance.png?sign=67b9f3084eb20ca7a57684997712f033&t=1653186195"></image>
+      <view class="item-desc">
+        <view class="item-title">高血脂风险评估</view>
+        <view class="item-main">
+          <view class="item-lastDate">暂时无自测数据</view>
+        <view class="item-button">开始评测</view>
+        </view>
+      </view>
+    </view>
+  </view>
+        <view class="item-card">
+      <view class="item-content">
+        <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/hypertension_surveillance.png?sign=e456ea39ef6b4b1550e09dec2043f8e5&t=1653188294"></image>
+        <view class="item-desc">
+          <view class="item-title">高血压风险评估</view>
+          <view class="item-main">
+            <view class="item-lastDate">暂时无自测数据</view>
+            <view class="item-button">开始评测</view>
+          </view>
+        </view>
+      </view>
+    </view>
+        <view class="item-card">
+      <view class="item-content">
+        <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/anginapectoris_surveillance.png?sign=3045f2b07416033416cc54c3c4ff53c6&t=1653188351"></image>
+        <view class="item-desc">
+          <view class="item-title">心绞痛严重分级</view>
+          <view class="item-main">
+            <view class="item-lastDate">暂时无自测数据</view>
+            <view class="item-button">开始评测</view>
+          </view>
+        </view>
+      </view>
+    </view>
+        <view class="item-card">
+      <view class="item-content">
+        <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/Hyperlipidemia_surveillance.png?sign=67b9f3084eb20ca7a57684997712f033&t=1653186195"></image>
+        <view class="item-desc">
+          <view class="item-title">心功能严重分级</view>
+          <view class="item-main">
+            <view class="item-lastDate">暂时无自测数据</view>
+            <view class="item-button">开始评测</view>
+          </view>
+        </view>
+      </view>
+    </view>
+        <view class="item-card">
+      <view class="item-content">
+        <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/atrialfibrillation_surveillance.png?sign=aaea75434626b0130fb4d9bba94927e4&t=1653188473"></image>
+        <view class="item-desc">
+          <view class="item-title">房颤出血，缺血风险分级</view>
+          <view class="item-main">
+            <view class="item-lastDate">暂时无自测数据</view>
+            <view class="item-button">开始评测</view>
+          </view>
+        </view>
+      </view>
+    </view>
+        <view class="item-card">
+      <view class="item-content">
+        <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/Atherosclerosiswins_surveillance.png?sign=481eead9d5add48a3fcc044434155530&t=1653188518"></image>
+        <view class="item-desc">
+          <view class="item-title">10年内发生动脉粥样硬化性心血管病（ASCVD）危险评估</view>
+          <view class="item-main">
+            <view class="item-lastDate">暂时无自测数据</view>
+            <view class="item-button">开始评测</view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>
+
+
+
+
+
+

@@ -10,7 +10,6 @@ var env = require ( '../utils/env.js' );
 module.exports = {
     request: function (url, data = {}, method = 'GET') {
     // 此处baseUrl需要从定义的env.js文件中import
-    debugger;
     let fullUrl = `${env.baseUrl}${url}`;
         wx.showLoading({
              title: '加载中',

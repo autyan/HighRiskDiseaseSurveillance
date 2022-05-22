@@ -7,5 +7,10 @@ Page({
 
   },
   onLoad() {
+  },
+  toCategory(){
+    wx.navigateTo({
+      url: '/pages/category/category'
+    })
   }
 })
