@@ -1,0 +1,141 @@
+<!-- pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance.wxml -->
+<view class="container">
+  <view class="item-card">
+    <text>以下信息请根据本人实际情况填写或选择</text>
+  </view>
+  <view class="item-card">
+    <view class="card-title">
+      <text>基本信息</text>
+    </view>
+    <view class="card-body">
+      <view class="section">
+        <label>年龄</label>
+        <input placeholder="请输入您的年龄"></input>
+      </view>
+      <view class="section">
+        <label>身高(cm)</label>
+        <input placeholder="请输入您的身高"></input>
+      </view>
+      <view class="section">
+        <label>体重(kg)</label>
+        <input placeholder="请输入您的体重"></input>
+      </view>
+      <view class="section">
+        <label>性别</label>
+        <radio-group>
+          <label>男</label>
+          <radio value="0" />
+          <label>女</label>
+          <radio value="1" />
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="item-card">
+    <view class="card-title">
+      <text>生活习惯</text>
+    </view>
+    <view class="card-body">
+      <view class="section">
+        <label>是否吸烟</label>
+        <radio-group>
+          <label>吸烟</label>
+          <radio value="0" />
+          <label>不吸烟</label>
+          <radio value="1" />
+        </radio-group>
+      </view>
+    </view>
+  </view>
+  <view class="item-card">
+    <view class="card-title">
+      <text>身体指标</text>
+    </view>
+    <view class="card-body">
+      <view class="section">
+        <label>TC</label>
+        <input placeholder="请输入您的TC值"></input>
+      </view>
+      <view class="section">
+        <label>LDL-C</label>
+        <input placeholder="请输入您的LDL-C值"></input>
+      </view>
+      <view class="section">
+        <label>HDL-C</label>
+        <input placeholder="请输入您的HDL-C值"></input>
+      </view>
+      <view class="section">
+        <label>收缩压</label>
+        <input placeholder="请输入您的收缩压值"></input>
+      </view>
+      <view class="section">
+        <label>舒张压</label>
+        <input placeholder="请输入您的舒张压值"></input>
+      </view>
+      <view class="section">
+        <label>低密度脂蛋白</label>
+        <input placeholder="请输入您的低密度脂蛋白值"></input>
+      </view>
+      <view class="section">
+        <label>总胆固醇水平</label>
+        <input placeholder="请输入您的总胆固醇水平值"></input>
+      </view>
+    </view>
+  </view>
+  <view class="item-card">
+    <view class="card-title">
+      <text>基础疾病</text>
+    </view>
+    <view class="card-body">
+      <view class="section">
+        <label>高血压</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>糖尿病</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>急性冠状动脉综合征</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>稳定性冠心病</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>血运重建术后</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>缺血性心肌病</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>缺血性卒中</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>短暂性脑缺血发作</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>颈动脉狭窄</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>肾动脉狭窄</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>四肢动脉狭窄</label>
+        <checkbox />
+      </view>
+      <view class="section">
+        <label>腹主动脉瘤</label>
+        <checkbox />
+      </view>
+    </view>
+  </view>
+  <button type="primary" class="submit">提交报告</button>
+</view>

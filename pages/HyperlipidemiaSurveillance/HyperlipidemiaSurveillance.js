@@ -1,4 +1,4 @@
-// pages/category.js
+// pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance.js
 Page({
 
   /**
@@ -62,10 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  toHyperlipidemiaSurveillance(){
-    wx.navigateTo({
-      url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance'
-    })
   }
 })

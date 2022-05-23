@@ -25,13 +25,13 @@
     </view>
     <view class="divLine"></view>
         <view class="menu-item">
-      <image src="" />
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_surveillance.png?sign=33a9c8f46bfa6faeb06b9ef7c4fdc823&t=1653190369" />
       <text>监测历史数据</text>
       <image  class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303"/>
     </view>
     <view class="divLine"></view>
     <view class="menu-item">
-      <image src="" />
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_qrcode.png?sign=b0e2ef97cb9ab224d3f943f80dfb66f0&t=1653190336" />
       <text>我的推广码</text>
       <image class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303" />
     </view>

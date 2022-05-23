@@ -57,5 +57,13 @@ page {
     color:#0cca8a;
     font-size: 28rpx;
     margin-left: auto;
-    margin-right: 56rpx;
+  }
+
+  .item-button-text{
+    margin-right: 20rpx;
+  }
+
+  image.item-arrow {
+    width: 10rpx;
+    height: 20rpx;
   }
