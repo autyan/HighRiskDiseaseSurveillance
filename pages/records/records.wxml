@@ -1,0 +1,28 @@
+<!--pages/records/records.wxml-->
+<view class="swiper-tab">
+  <view class="swiper-tab-list {{currentTab == 0 ? 'on' : ''}}" data-current="0" bindtap="switchNav">
+    <text>未付款</text>
+    <view class="swiper-tab-list-indicator"></view>
+  </view>
+  <view class="swiper-tab-list {{currentTab == 1 ? 'on' : ''}}" data-current="1" bindtap="switchNav">
+    <text>已完成</text>
+    <view class="swiper-tab-list-indicator"></view>
+  </view>
+</view>
+<view wx:for="{{records}}" class="record-view">
+  <view class="record-item">
+    <view class="record-head">
+      <text class="record-title">{{item.surveillanceTypeDisplayName}}</text>
+      <text class="record-time">{{item.createTime}}</text>
+    </view>
+    <view class="record-button">
+      <view>
+        <text class="record-detail">详情查看</text>
+        <image class="record-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/green_arraw.png?sign=ac5cb065ff3e1f47f1e09e2f6ca75f09&t=1653190412"></image>
+      </view>
+      <view wx:if="{{item.status == 0}}" class="record-pay">
+      <text>去付款</text>
+      </view>
+    </view>
+  </view>
+</view>

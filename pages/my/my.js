@@ -24,6 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    wx.setStorage({key:'me', data:null});
     let me = this;
     if (wx.getUserProfile) {
       this.setData({
@@ -31,20 +32,21 @@ Page({
       });
     };
     wx.checkSession({
-      success: function(){
+      success: function () {
         wx.getStorage({
           key: "me", // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
           success(res) {
-            if (new Date(res.data.expiresAt) > new Date())
-            me.setData({
-              loginUser: res.data.userInfo,
-              hasUserInfo: true
-            });
+            if (res.data != null && new Date(res.data.expiresAt) > new Date()) {
+              me.setData({
+                loginUser: res.data.userInfo,
+                hasUserInfo: true
+              });
+            }
           }
         });
       },
-      fail: function(){
-        
+      fail: function () {
+
       },
     });
   },
@@ -111,11 +113,12 @@ Page({
             // 开启加密存储
             wx.setStorage({
               key: "me",
-              data: response,// 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
+              data: response, // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
               success() {
                 wx.getStorage({
                   key: "me", // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
                   success(res) {
+                    hdService.token = res.data.accessToken;
                     me.setData({
                       loginUser: res.data.userInfo,
                       hasUserInfo: true
@@ -141,5 +144,10 @@ Page({
         me.userLogin(res.userInfo);
       }
     });
+  },
+  toRecords() {
+    wx.navigateTo({
+      url: '/pages/records/records'
+    })
   }
 });
