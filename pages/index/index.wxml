@@ -5,7 +5,7 @@
   <text class="title2">专业科学的医疗团队</text>
   </view>
   <view class="main_content">
-  <view class="item_card">
+  <view class="item_card" bindtap="toCategory">
     <view class="item_title">
       <view class="title_mark"></view>
       <text class="title_text">健康自测</text>

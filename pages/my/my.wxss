@@ -67,6 +67,14 @@ background-color: #F6F6F6;
   margin-right: 26rpx;
 }
 
+.menu .menu-item .menu-arrow{
+  width: 10rpx;
+  height: 20rpx;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .divLine{
  background: #E0E3DA;
  width: 100%;

@@ -4,14 +4,14 @@
     <text class="bg_title">我的</text>
     <view class="user_info">
       <block wx:if="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="userLogin"> 立即登录 </button>
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 立即登录 </button>
       <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即登录 </button>
     </block>
     <block wx:else>
       <view class="user_display">
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{loginUser.avatarUrl}}" mode="cover"></image>
         <view class="user_text">
-          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+          <text class="userinfo-nickname">{{loginUser.nickName}}</text>
         </view>
       </view>
     </block>
@@ -21,16 +21,19 @@
     <view class="menu-item">
       <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/menuitem_order.png?sign=3783e6523ed00308d5d966923367d987&t=1652754515" />
       <text>订单管理</text>
+      <image class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303" />
     </view>
     <view class="divLine"></view>
-        <view class="menu-item">
-      <image src="" />
+        <view class="menu-item" bindtap="toRecords">
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_surveillance.png?sign=33a9c8f46bfa6faeb06b9ef7c4fdc823&t=1653190369" />
       <text>监测历史数据</text>
+      <image  class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303"/>
     </view>
     <view class="divLine"></view>
     <view class="menu-item">
-      <image src="" />
+      <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_qrcode.png?sign=b0e2ef97cb9ab224d3f943f80dfb66f0&t=1653190336" />
       <text>我的推广码</text>
+      <image class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303" />
     </view>
   </view>
 </view>

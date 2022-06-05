@@ -1,0 +1,68 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="基本信息">
+      <mp-cell prop="age" title="年龄">
+        <input bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+      </mp-cell>
+      <mp-cell prop="height" title="身高(cm)">
+        <input bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+      </mp-cell>
+      <mp-cell prop="weight" title="体重(kg)">
+        <input bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="性别">
+      <mp-checkbox-group prop="gender" multi="{{false}}" bindchange="genderChange">
+        <mp-checkbox label="男" value="0"></mp-checkbox>
+        <mp-checkbox label="女" value="1"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="生活习惯">
+      <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="smokeChange">
+        <mp-checkbox label="抽烟" value="smoke"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="身体指标">
+      <mp-cell prop="ldl-c">
+        <view>低密度脂蛋白（mmol/L）</view>
+        <input bindinput="formInputChange" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="hdl-c">
+        <view>高密度脂蛋白（mmol/L）</view>
+        <input bindinput="formInputChange" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="tc">
+        <view>总胆固醇（mmol/L）</view>
+        <input bindinput="formInputChange" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
+      </mp-cell>
+      <mp-cell prop="sbp">
+        <view>收缩压</view>
+        <input bindinput="formInputChange" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
+      </mp-cell>
+      <mp-cell prop="dbp">
+        <view>舒张压</view>
+        <input bindinput="formInputChange" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="基础疾病（多选）">
+      <mp-checkbox-group prop="basicDisease" multi="{{true}}" bindchange="onDiseaseChange">
+        <mp-checkbox label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
+        <mp-checkbox label="血运重建术后" value="afterRevascularization"></mp-checkbox>
+        <mp-checkbox label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
+        <mp-checkbox label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
+        <mp-checkbox label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
+        <mp-checkbox label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
+        <mp-checkbox label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
+        <mp-checkbox label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
+        <mp-checkbox label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+</mp-form-page>

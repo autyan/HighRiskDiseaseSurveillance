@@ -1,7 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/category/category",
+    "pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance",
+    "pages/records/records"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +33,8 @@
     "position": "bottom"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }
