@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    mode:'edit',
+    id:null,
     error: null,
+    score:null,
     formData: {
       age: null,
       gender: null,
@@ -112,7 +115,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    if(options != null  && options.mode != null) {
+      this.setData({
+      mode:options.mode,
+      id:options.id
+    });
+    if(this.data.id != null && this.data.id.length > 0){
+      let me = this;
+      hdService.request("/api/record/" + this.data.id, "GET").then((response) => {
+        console.log(response);
+        debugger;
+        me.setData({
+          formData: JSON.parse(response.surveillanceContent),
+          score:response.score
+        })
+      })
+    }
+  }
   },
 
   /**
@@ -140,7 +159,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
   },
 
   /**
@@ -181,7 +199,7 @@ Page({
           RecordTypeName: 'Hyperlipidemia',
           RecordContent: JSON.stringify(this.data.formData)
         }
-        hdService.request("/api/record", par, "POST").then((response) => {
+        hdService.request("/api/record", par, "POST").then(() => {
           wx.navigateTo({
             url: '/pages/records/records'
           })

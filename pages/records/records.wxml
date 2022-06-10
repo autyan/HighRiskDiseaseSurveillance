@@ -17,7 +17,7 @@
     </view>
     <view class="record-button">
       <view>
-        <text class="record-detail">详情查看</text>
+        <text class="record-detail" data-id="{{item.id}}" data-typeName="{{item.surveillanceTypeName}}" bindtap="toDetail">详情查看</text>
         <image class="record-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/green_arraw.png?sign=ac5cb065ff3e1f47f1e09e2f6ca75f09&t=1653190412"></image>
       </view>
       <view wx:if="{{item.status == 0}}" class="record-pay">

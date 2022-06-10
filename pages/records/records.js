@@ -66,14 +66,23 @@ Page({
   onShareAppMessage() {
 
   },
-  loadRecords(){
+  toDetail(e) {
+    switch(e.currentTarget.dataset.typename){
+      case 'Hyperlipidemia':
+        wx.navigateTo({
+          url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance?mode=readonly&id='+e.currentTarget.dataset.id
+        })
+        break;
+    }
+  },
+  loadRecords() {
     let me = this;
     let par = {
       pageNumber: 0,
       pageSize: 10,
       status: me.data.queryStatus,
     }
-    hdService.request("/api/record", par, "GET").then((response) => {
+    hdService.request("/api/record/history", par, "GET").then((response) => {
       me.setData({
         records: response
       })
@@ -87,7 +96,7 @@ Page({
       me.setData({
         currentTab: e.currentTarget.dataset.current,
         queryStatus: e.currentTarget.dataset.current
-      },function(){
+      }, function () {
         me.loadRecords();
       })
     }

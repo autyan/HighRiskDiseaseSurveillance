@@ -47,3 +47,10 @@ page {
   .submit {
     margin: 25rpx 0;
   }
+
+  .score{
+    display:flex;
+    margin-top: 20rpx;
+    align-items: center;
+    justify-content: center;
+  }

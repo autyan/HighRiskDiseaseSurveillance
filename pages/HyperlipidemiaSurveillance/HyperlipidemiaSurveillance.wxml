@@ -3,24 +3,40 @@
   <mp-form id="form" rules="{{rules}}" models="{{formData}}">
     <mp-cells title="基本信息">
       <mp-cell prop="age" title="年龄">
-        <input bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
       </mp-cell>
       <mp-cell prop="height" title="身高(cm)">
-        <input bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+        <input wx:else bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
       </mp-cell>
       <mp-cell prop="weight" title="体重(kg)">
-        <input bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+        <input wx:if="{{mode == 'readonly'}}"  disabled="true"  bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+        <input wx:else bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
       </mp-cell>
     </mp-cells>
     <mp-cells title="性别">
-      <mp-checkbox-group prop="gender" multi="{{false}}" bindchange="genderChange">
-        <mp-checkbox label="男" value="0"></mp-checkbox>
-        <mp-checkbox label="女" value="1"></mp-checkbox>
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="gender" multi="{{false}}" bindchange="genderChange">
+        <mp-checkbox wx:if="{{formData.gender == '0'}}" label="男" value="0" checked="true" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:else label="男" value="0" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.gender == '1'}}" label="女" value="1" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:else label="女" value="1" disabled="true"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="gender" multi="{{false}}" bindchange="genderChange">
+        <mp-checkbox wx:if="{{formData.gender == '0'}}" label="男" value="0" checked="true"></mp-checkbox>
+        <mp-checkbox wx:else label="男" value="0"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.gender == '1'}}" label="女" value="1"></mp-checkbox>
+        <mp-checkbox wx:else label="女" value="1"></mp-checkbox>
       </mp-checkbox-group>
     </mp-cells>
     <mp-cells title="生活习惯">
-      <mp-checkbox-group prop="checkbox" multi="{{true}}" bindchange="smokeChange">
-        <mp-checkbox label="抽烟" value="smoke"></mp-checkbox>
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
+        <mp-checkbox wx:if="{{formData.smoke}}" label="抽烟" value="smoke" checked="true" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:else label="抽烟" value="smoke" disabled="true"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="gender" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
+        <mp-checkbox wx:if="{{formData.smoke}}" label="抽烟" value="smoke" checked="true"></mp-checkbox>
+        <mp-checkbox wx:else label="抽烟" value="smoke"></mp-checkbox>
       </mp-checkbox-group>
     </mp-cells>
     <mp-cells title="身体指标">
@@ -46,23 +62,62 @@
       </mp-cell>
     </mp-cells>
     <mp-cells title="基础疾病（多选）">
-      <mp-checkbox-group prop="basicDisease" multi="{{true}}" bindchange="onDiseaseChange">
-        <mp-checkbox label="高血压" value="hypertension"></mp-checkbox>
-        <mp-checkbox label="糖尿病" value="diabetes"></mp-checkbox>
-        <mp-checkbox label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
-        <mp-checkbox label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
-        <mp-checkbox label="血运重建术后" value="afterRevascularization"></mp-checkbox>
-        <mp-checkbox label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
-        <mp-checkbox label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
-        <mp-checkbox label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
-        <mp-checkbox label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
-        <mp-checkbox label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
-        <mp-checkbox label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
-        <mp-checkbox label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="basicDisease" multi="{{true}}" bindchange="onDiseaseChange">
+        <mp-checkbox wx:if="{{formData.basicDisease.hypertension}}" checked="true" disabled="true" label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.diabetes}}" checked="true" disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.acuteCoronarySyndrome}}" checked="true" disabled="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" checked="true" disabled="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" checked="true" disabled="true" label="血运重建术后" value="afterRevascularization"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="血运重建术后" value="afterRevascularization"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.ischemicCardiomyopathy}}" checked="true" disabled="true" label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.ischemicStroke}}" checked="true" disabled="true" label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.transientIschemicAttack}}" checked="true" disabled="true" label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.carotidArteryStenosis}}" checked="true" disabled="true" label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.renalArteryStenosis}}" checked="true" disabled="true" label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.arterialStenosisInExtremities}}" checked="true" disabled="true" label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.abdominalAorticAneurysm}}" checked="true" disabled="true" label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="basicDisease" multi="{{true}}" bindchange="onDiseaseChange">
+        <mp-checkbox wx:if="{{formData.basicDisease.hypertension}}" checked="true" label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.diabetes}}" checked="true" label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:else label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.acuteCoronarySyndrome}}" checked="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:else label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" checked="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
+        <mp-checkbox wx:else label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" checked="true" label="血运重建术后" value="afterRevascularization"></mp-checkbox>
+        <mp-checkbox wx:else label="血运重建术后" value="afterRevascularization"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.ischemicCardiomyopathy}}" checked="true" label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
+        <mp-checkbox wx:else label="缺血性心肌病" value="ischemicCardiomyopathy"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.ischemicStroke}}" checked="true" label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
+        <mp-checkbox wx:else label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.transientIschemicAttack}}" checked="true" label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
+        <mp-checkbox wx:else label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.carotidArteryStenosis}}" checked="true" label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:else label="颈动脉狭窄" value="carotidArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.renalArteryStenosis}}" checked="true" label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:else label="肾动脉狭窄" value="renalArteryStenosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.arterialStenosisInExtremities}}" checked="true" label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
+        <mp-checkbox wx:else label="四肢动脉狭窄" value="arterialStenosisInExtremities"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.abdominalAorticAneurysm}}" checked="true" label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
+        <mp-checkbox wx:else label="腹主动脉瘤" value="abdominalAorticAneurysm"></mp-checkbox>
       </mp-checkbox-group>
     </mp-cells>
   </mp-form>
   <view slot="button">
-    <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    <button wx:if="{{mode != 'readonly'}}"  class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>
+  <View class="score">您的当前评分：{{score}}</View>
 </mp-form-page>
