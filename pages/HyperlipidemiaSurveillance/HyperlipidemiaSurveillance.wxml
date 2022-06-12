@@ -31,15 +31,37 @@
     </mp-cells>
     <mp-cells title="生活习惯">
       <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
-        <mp-checkbox wx:if="{{formData.smoke}}" label="抽烟" value="smoke" checked="true" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:else label="抽烟" value="smoke" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.smoke}}" label="有吸烟史" value="smoke" checked="true" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:else label="有吸烟史" value="smoke" disabled="true"></mp-checkbox>
       </mp-checkbox-group>
       <mp-checkbox-group wx:else prop="gender" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
-        <mp-checkbox wx:if="{{formData.smoke}}" label="抽烟" value="smoke" checked="true"></mp-checkbox>
-        <mp-checkbox wx:else label="抽烟" value="smoke"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.smoke}}" label="有吸烟史" value="smoke" checked="true"></mp-checkbox>
+        <mp-checkbox wx:else label="有吸烟史" value="smoke"></mp-checkbox>
       </mp-checkbox-group>
     </mp-cells>
-    <mp-cells title="身体指标">
+    <mp-cells title="身体指标" wx:if="{{mode == 'readonly'}}">
+      <mp-cell prop="ldl-c">
+        <view>低密度脂蛋白（mmol/L）</view>
+        <input bindinput="formInputChange" disabled="true" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="hdl-c">
+        <view>高密度脂蛋白（mmol/L）</view>
+        <input bindinput="formInputChange" disabled="true" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="tc">
+        <view>总胆固醇（mmol/L）</view>
+        <input bindinput="formInputChange" disabled="true" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
+      </mp-cell>
+      <mp-cell prop="sbp">
+        <view>收缩压</view>
+        <input bindinput="formInputChange" disabled="true" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
+      </mp-cell>
+      <mp-cell prop="dbp">
+        <view>舒张压</view>
+        <input bindinput="formInputChange" disabled="true" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="身体指标" wx:else>
       <mp-cell prop="ldl-c">
         <view>低密度脂蛋白（mmol/L）</view>
         <input bindinput="formInputChange" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
@@ -67,8 +89,10 @@
         <mp-checkbox wx:else disabled="true" label="高血压" value="hypertension"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.diabetes}}" checked="true" disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
         <mp-checkbox wx:else disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.basicDisease.acuteCoronarySyndrome}}" checked="true" disabled="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
-        <mp-checkbox wx:else disabled="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.acuteMyocardialInfarction}}" checked="true" disabled="true" label="急性心肌梗死" value="acuteMyocardialInfarction"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="急性心肌梗死" value="acuteMyocardialInfarction"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.unstableAngina}}" checked="true" disabled="true" label="不稳定性心绞痛" value="unstableAngina"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="不稳定性心绞痛" value="unstableAngina"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" checked="true" disabled="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
         <mp-checkbox wx:else disabled="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" checked="true" disabled="true" label="血运重建术后" value="afterRevascularization"></mp-checkbox>
@@ -93,8 +117,10 @@
         <mp-checkbox wx:else label="高血压" value="hypertension"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.diabetes}}" checked="true" label="糖尿病" value="diabetes"></mp-checkbox>
         <mp-checkbox wx:else label="糖尿病" value="diabetes"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.basicDisease.acuteCoronarySyndrome}}" checked="true" label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
-        <mp-checkbox wx:else label="急性冠状动脉综合征" value="acuteCoronarySyndrome"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.acuteMyocardialInfarction}}" checked="true" label="急性心肌梗死" value="acuteMyocardialInfarction"></mp-checkbox>
+        <mp-checkbox wx:else label="急性心肌梗死" value="acuteMyocardialInfarction"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicDisease.unstableAngina}}" checked="true" label="不稳定性心绞痛" value="unstableAngina"></mp-checkbox>
+        <mp-checkbox wx:else label="不稳定性心绞痛" value="unstableAngina"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" checked="true" label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
         <mp-checkbox wx:else label="稳定性冠心病" value="stableCoronaryHeartDisease"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" checked="true" label="血运重建术后" value="afterRevascularization"></mp-checkbox>
@@ -119,5 +145,6 @@
   <view slot="button">
     <button wx:if="{{mode != 'readonly'}}"  class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>
-  <View class="score">您的当前评分：{{score}}</View>
+  <View wx:if="{{mode == 'readonly'}}" class="score">您的当前评分：{{score}}</View>
+  <View wx:else class="score"></View>
 </mp-form-page>

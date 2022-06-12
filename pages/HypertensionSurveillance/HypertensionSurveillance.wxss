@@ -1,0 +1,56 @@
+/* pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance.wxss */
+page {
+  background-color: #F6F6F6;
+  }
+
+  .container {
+    display:flex;
+    flex-direction: column;
+  }
+
+  .item-card {
+    margin: 25rpx 40rpx 0 25rpx;
+    background-color: #fff;
+    border-radius: 15rpx;
+    padding: 15rpx 25rpx;
+    text-align: center;
+  }
+
+  .item-card .card-title{
+    border-bottom: 1rpx solid #7e7e7e;
+    padding-bottom: 5rpx;
+    margin-bottom: 5rpx;
+  }
+
+  .section {
+    display: flex;
+    margin: 10rpx 10rpx;
+  }
+
+  .section label {
+    width: 240rpx;
+    text-align:start;
+  }
+
+  .section input {
+    text-align:start;
+  }
+
+  checkbox{
+    margin-left: 20rpx;
+  }
+
+  radio {
+    margin: 0 30rpx;
+  }
+
+  .submit {
+    margin: 25rpx 0;
+  }
+
+  .score{
+    display:flex;
+    margin-top: 20rpx;
+    align-items: center;
+    justify-content: center;
+  }

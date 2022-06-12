@@ -67,5 +67,10 @@ Page({
     wx.navigateTo({
       url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance'
     })
+  },
+  toHypertensionSurveillance(){
+    wx.navigateTo({
+      url:'/pages/HypertensionSurveillance/HypertensionSurveillance'
+    })
   }
 })

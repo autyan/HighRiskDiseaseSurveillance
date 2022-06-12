@@ -1,4 +1,4 @@
-// pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance.js
+// pages/HypertensionSurveillance/HypertensionSurveillance.js
 var hdService = require('../../utils/service.js');
 Page({
 
@@ -15,26 +15,39 @@ Page({
       gender: null,
       height: null,
       weight: null,
+      waistline: null,
       smoke: false,
       ldlc: null,
       hdlc: null,
       tc: null,
       sbp: null,
       dbp: null,
-      basicDisease: {
-        hypertension: false,
-        diabetes: false,
-        acuteMyocardialInfarction: false,
-        unstableAngina: false,
-        stableCoronaryHeartDisease: false,
-        afterRevascularization: false,
-        ischemicCardiomyopathy: false,
+      riskFactors: {
+        impairedSugarAdhesion: false,
+        abnormalFastingBloodGlucose: false,
+        familyHistoryOfEarlyonsetCardiovascularDisease: false,
+        hyperhomocysteine: false
+      },
+      concomitantClinicalDisorders: {
+        cerebralHaemorrhage: false,
         ischemicStroke: false,
         transientIschemicAttack: false,
-        carotidArteryStenosis: false,
-        renalArteryStenosis: false,
-        arterialStenosisInExtremities: false,
-        abdominalAorticAneurysm: false
+        historyOfMyocardialInfarction: false,
+        angina: false,
+        historyOfCoronaryBloodCirculationReconstruction: false,
+        congestiveHeartFailure: false,
+        diabeticNephropathy: false,
+        impairedRenalFunction: false,
+        elevatedSerumCreatinine: false,
+        aorticDissection: false,
+        peripheralVascularDisease: false,
+        severeHypertensiveRetinopathy: false,
+        diabetes: false
+      },
+      targetOrganDamage: {
+        leftVentricularHypertrophy: false,
+        atheroscleroticPlaques: false,
+        retinalArteryFocalPointOrExtensiveStenosis: false
       }
     },
     rules: [{
@@ -65,6 +78,16 @@ Page({
         }, {
           range: [0, 200],
           message: '请填写有效的体重'
+        }]
+      },
+      {
+        name: 'waistline',
+        rules: [{
+          required: true,
+          message: '必须填写腰围'
+        }, {
+          range: [0, 150],
+          message: '请填写有效的腰围'
         }]
       },
       {
@@ -158,7 +181,9 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {},
+  onUnload() {
+
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -195,7 +220,7 @@ Page({
       } else {
         console.log("start upload record")
         var par = {
-          RecordTypeName: 'Hyperlipidemia',
+          RecordTypeName: 'Hypertension',
           RecordContent: JSON.stringify(this.data.formData)
         }
         hdService.request("/api/record", par, "POST").then(() => {
@@ -231,9 +256,37 @@ Page({
       })
     }
   },
-  onDiseaseChange(e) {
-    for (var prop in this.data.formData.basicDisease) {
-      let keyName = 'formData.basicDisease.' + prop;
+  onRiskFactorsChange(e) {
+    for (var prop in this.data.formData.riskFactors) {
+      let keyName = 'formData.riskFactors.' + prop;
+      if (e.detail.value.indexOf(prop) > -1) {
+        this.setData({
+          [keyName]: true
+        })
+      } else {
+        this.setData({
+          [keyName]: false
+        })
+      }
+    }
+  },
+  onConcomitantClinicalDisordersChange(e) {
+    for (var prop in this.data.formData.concomitantClinicalDisorders) {
+      let keyName = 'formData.concomitantClinicalDisorders.' + prop;
+      if (e.detail.value.indexOf(prop) > -1) {
+        this.setData({
+          [keyName]: true
+        })
+      } else {
+        this.setData({
+          [keyName]: false
+        })
+      }
+    }
+  },
+  onTargetOrganDamageChange(e) {
+    for (var prop in this.data.formData.targetOrganDamage) {
+      let keyName = 'formData.targetOrganDamage.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
         this.setData({
           [keyName]: true

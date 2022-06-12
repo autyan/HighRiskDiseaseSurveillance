@@ -4,7 +4,8 @@
     "pages/my/my",
     "pages/category/category",
     "pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance",
-    "pages/records/records"
+    "pages/records/records",
+    "pages/HypertensionSurveillance/HypertensionSurveillance"
   ],
   "window": {
     "backgroundTextStyle": "light",

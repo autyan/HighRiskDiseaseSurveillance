@@ -73,6 +73,11 @@ Page({
           url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance?mode=readonly&id='+e.currentTarget.dataset.id
         })
         break;
+        case 'Hypertension':
+          wx.navigateTo({
+            url: '/pages/HypertensionSurveillance/HypertensionSurveillance?mode=readonly&id='+e.currentTarget.dataset.id
+          })
+          break;
     }
   },
   loadRecords() {
