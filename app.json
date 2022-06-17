@@ -5,7 +5,9 @@
     "pages/category/category",
     "pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance",
     "pages/records/records",
-    "pages/HypertensionSurveillance/HypertensionSurveillance"
+    "pages/HypertensionSurveillance/HypertensionSurveillance",
+    "pages/anginaPectoris/anginaPectoris",
+    "pages/cardiacInsufficiency/cardiacInsufficiency"
   ],
   "window": {
     "backgroundTextStyle": "light",

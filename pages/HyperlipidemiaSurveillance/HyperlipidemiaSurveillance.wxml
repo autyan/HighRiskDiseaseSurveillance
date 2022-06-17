@@ -3,15 +3,15 @@
   <mp-form id="form" rules="{{rules}}" models="{{formData}}">
     <mp-cells title="基本信息">
       <mp-cell prop="age" title="年龄">
-        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
-        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
+        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
       </mp-cell>
       <mp-cell prop="height" title="身高(cm)">
         <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
         <input wx:else bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
       </mp-cell>
       <mp-cell prop="weight" title="体重(kg)">
-        <input wx:if="{{mode == 'readonly'}}"  disabled="true"  bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
         <input wx:else bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
       </mp-cell>
     </mp-cells>
@@ -143,8 +143,14 @@
     </mp-cells>
   </mp-form>
   <view slot="button">
-    <button wx:if="{{mode != 'readonly'}}"  class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>
-  <View wx:if="{{mode == 'readonly'}}" class="score">您的当前评分：{{score}}</View>
-  <View wx:else class="score"></View>
+  <view wx:if="{{mode == 'readonly'}}">
+    <View class="score">您的当前评分：{{score}}</View>
+    <view class="score">危险评级</view>
+    <view wx:if="{{ score <= 25 }}" class="lowRisk">低危（10 年动脉粥样硬化性心血管疾病发病危险小于5%）</view>
+    <view wx:if="{{ 50 >= score > 25  }}" class="mediumRisk">中危（10 年动脉粥样硬化性心血管疾病发病危险5-9%）</view>
+    <view wx:if="{{ 75 >= score > 50  }}" class="highRisk">高危（10 年动脉粥样硬化性心血管疾病发病危险大于10%）</view>
+    <view wx:if="{{ score > 75 }}" class="extremeHighRisk">极高危（心血管疾病终生风险大于32.8%）</view>
+  </view>
 </mp-form-page>

@@ -67,17 +67,27 @@ Page({
 
   },
   toDetail(e) {
-    switch(e.currentTarget.dataset.typename){
+    switch (e.currentTarget.dataset.typename) {
       case 'Hyperlipidemia':
         wx.navigateTo({
-          url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance?mode=readonly&id='+e.currentTarget.dataset.id
+          url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance?mode=readonly&id=' + e.currentTarget.dataset.id
         })
         break;
-        case 'Hypertension':
-          wx.navigateTo({
-            url: '/pages/HypertensionSurveillance/HypertensionSurveillance?mode=readonly&id='+e.currentTarget.dataset.id
-          })
-          break;
+      case 'Hypertension':
+        wx.navigateTo({
+          url: '/pages/HypertensionSurveillance/HypertensionSurveillance?mode=readonly&id=' + e.currentTarget.dataset.id
+        })
+        break;
+      case 'AnginaPectoris':
+        wx.navigateTo({
+          url: '/pages/anginaPectoris/anginaPectoris?mode=readonly&id=' + e.currentTarget.dataset.id
+        })
+        break;
+        case 'CardiacInsufficiency':
+        wx.navigateTo({
+          url: '/pages/cardiacInsufficiency/cardiacInsufficiency?mode=readonly&id=' + e.currentTarget.dataset.id
+        })
+        break;
     }
   },
   loadRecords() {

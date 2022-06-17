@@ -14,6 +14,28 @@ if (typeof __wxConfig =="object"){
   console.log("当前环境:" + version)
   if (version =="develop"){
     //工具或者真机 开发环境
+    // var cloud = new wx.cloud.Cloud({resourceEnv:'prod-0g7y3h923f261408'});
+    // cloud.init();
+    // serviceCall = function(url, data, method, tokenType, token, resolve, reject){
+    //   cloud.callContainer({
+    //     "config": {
+    //       "env": "prod-0g7y3h923f261408"
+    //     },
+    //     "path": url,
+    //     "header": {
+    //       "X-WX-SERVICE": "dotnet-0ngd",
+    //       'Content-type': 'application/json',
+    //       'Authorization': tokenType + token
+    //     },
+    //     "method": method,
+    //     "data": data,
+    //     "success":function(res){
+    //       wx.hideLoading();
+    //       resolve(res.data);
+    //     },
+    //     "fail":reject
+    //   });
+    // }
     serviceCall = function(url, data, method, tokenType, token, resolve, reject){
     let fullUrl = `${env.baseUrl}${url}`;
       wx.request({

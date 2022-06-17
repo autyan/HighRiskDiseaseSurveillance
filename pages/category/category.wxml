@@ -37,7 +37,7 @@
           <view class="item-title">心绞痛严重分级</view>
           <view class="item-main">
             <view class="item-lastDate">暂时无自测数据</view>
-            <view class="item-button">
+            <view class="item-button" bindtap="toanginaPectoris">
         <text class="item-button-text">开始评测</text>
         <image class="item-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/green_arraw.png?sign=ac5cb065ff3e1f47f1e09e2f6ca75f09&t=1653190412"></image>
         </view>
@@ -52,7 +52,7 @@
           <view class="item-title">心功能严重分级</view>
           <view class="item-main">
             <view class="item-lastDate">暂时无自测数据</view>
-            <view class="item-button">
+            <view class="item-button" bindtap="tocardiacInsufficiency">
         <text class="item-button-text">开始评测</text>
         <image class="item-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/green_arraw.png?sign=ac5cb065ff3e1f47f1e09e2f6ca75f09&t=1653190412"></image>
         </view>

@@ -1,0 +1,133 @@
+<!--pages/anginaPectoris/anginaPectoris.wxml-->
+<view>
+  <view wx:if="{{ mode == 'readonly' }}">
+    <mp-cells title="一般体力活动受限">
+      <mp-checkbox-group prop="basicActivity" multi="{{true}}">
+        <mp-checkbox wx:if="{{formData.basicActivity.walk}}" checked="true" disabled="true" label="正常行走（一般速度）" value="walk"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="正常行走（一般速度）" value="walk"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicActivity.climbStairs}}" checked="true" disabled="true" label="正常上楼" value="climbStairs"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="正常上楼" value="climbStairs"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="日常体力活动受限">
+      <mp-checkbox-group prop="commonActivity" multi="{{true}}">
+        <mp-checkbox wx:if="{{formData.commonActivity.briskWalk}}" checked="true" label="快步行走或上楼、登高" value="briskWalk"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="快步行走或上楼、登高" value="briskWalk"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.commonActivity.walkAfterMeal}}" checked="true" label="饭后行走或上楼" value="walkAfterMeal"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="饭后行走或上楼" value="walkAfterMeal"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.commonActivity.walkInWind}}" checked="true" label="寒冷或风中行走" value="walkInWind"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="寒冷或风中行走" value="walkInWind"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.commonActivity.walkOverRange}}" checked="true" label="一般速度平地步行200m以上" value="walkOverRange"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="一般速度平地步行200m以上" value="walkOverRange"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.commonActivity.goUpOneStairs}}" checked="true" label="登一层以上的楼梯" value="goUpOneStairs"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="登一层以上的楼梯" value="goUpOneStairs"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="日常体力活动明显受限">
+      <mp-checkbox-group prop="normalActivity" multi="{{true}}">
+        <mp-checkbox wx:if="{{formData.normalActivity.walkOverRange}}" checked="true" disabled="true" label="一般速度平地步行100~200m" value="walkOverRange"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="一般速度平地步行100~200m" value="walkOverRange"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.normalActivity.goUpOneStairs}}" checked="true" disabled="true" label="登一层楼梯" value="goUpOneStairs"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="登一层楼梯" value="goUpOneStairs"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.normalActivity.walkOnGround}}" checked="true" disabled="true" label="水平面上走动" value="walkOnGround"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="水平面上走动" value="walkOnGround"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.normalActivity.houseClean}}" checked="true" disabled="true" label="打扫卫生" value="houseClean"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="打扫卫生" value="houseClean"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.normalActivity.babySet}}" checked="true" disabled="true" label="看护小孩" value="babySet"></mp-checkbox>
+        <mp-checkbox wx:else disabled="true" label="看护小孩" value="babySet"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="轻微活动或休息时受限">
+      <mp-checkbox-group prop="casualActivity" multi="{{true}}">
+          <mp-checkbox wx:if="{{formData.casualActivity.metting}}" checked="true" disabled="true" label="开会" value="metting"></mp-checkbox>
+          <mp-checkbox wx:else disabled="true" label="开会" value="metting"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.driving}}" checked="true" disabled="true" label="开车" value="driving"></mp-checkbox>
+          <mp-checkbox wx:else disabled="true" label="开车" value="driving"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.typing}}" checked="true" disabled="true" label="打字" value="typing"></mp-checkbox>
+          <mp-checkbox wx:else disabled="true" label="打字" value="typing"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.listenMusic}}" checked="true" disabled="true" label="听音乐" value="listenMusic"></mp-checkbox>
+          <mp-checkbox wx:else disabled="true" label="听音乐" value="listenMusic"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.painting}}" checked="true" disabled="true" label="绘画" value="painting"></mp-checkbox>
+          <mp-checkbox wx:else disabled="true" label="绘画" value="painting"></mp-checkbox>
+        </mp-checkbox-group>
+    </mp-cells>
+    <View class="score">您的当前评分：{{score}}</View>
+    <view class="score">危险评级</view>
+    <view wx:if="{{ score <= 25 }}" class="lowRisk">低危（10 年动脉粥样硬化性心血管疾病发病危险小于5%）</view>
+    <view wx:if="{{ 50 >= score > 25  }}" class="mediumRisk">中危（10 年动脉粥样硬化性心血管疾病发病危险5-9%）</view>
+    <view wx:if="{{ 75 >= score > 50  }}" class="highRisk">高危（10 年动脉粥样硬化性心血管疾病发病危险大于10%）</view>
+    <view wx:if="{{ score > 75 }}" class="extremeHighRisk">极高危（心血管疾病终生风险大于32.8%）</view>
+  </view>
+  <view wx:else>
+    <view wx:if="{{step == 0}}">
+      <h2 class="title">请您根据您的实际情况进行选择</h2>
+      <button type="primary" bindtap="start">立即开始</button>
+    </view>
+    <view wx:if="{{step == 1}}">
+      <h2 class="title"> 1/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+      <mp-cells>
+        <mp-checkbox-group prop="basicActivity" multi="{{true}}" bindchange="onBasicActivityChange">
+          <mp-checkbox wx:if="{{formData.basicActivity.walk}}" checked="true" label="正常行走（一般速度）" value="walk"></mp-checkbox>
+          <mp-checkbox wx:else label="正常行走（一般速度）" value="walk"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.basicActivity.climbStairs}}" checked="true" label="正常上楼" value="climbStairs"></mp-checkbox>
+          <mp-checkbox wx:else label="正常上楼" value="climbStairs"></mp-checkbox>
+        </mp-checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep">下一步</button>
+    </view>
+    <view wx:if="{{step == 2}}">
+      <h2 class="title"> 2/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+      <mp-cells>
+        <mp-checkbox-group prop="commonActivity" multi="{{true}}" bindchange="onCommonActivityChange">
+          <mp-checkbox wx:if="{{formData.commonActivity.briskWalk}}" checked="true" label="快步行走或上楼、登高" value="briskWalk"></mp-checkbox>
+          <mp-checkbox wx:else label="快步行走或上楼、登高" value="briskWalk"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.commonActivity.walkAfterMeal}}" checked="true" label="饭后行走或上楼" value="walkAfterMeal"></mp-checkbox>
+          <mp-checkbox wx:else label="饭后行走或上楼" value="walkAfterMeal"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.commonActivity.walkInWind}}" checked="true" label="寒冷或风中行走" value="walkInWind"></mp-checkbox>
+          <mp-checkbox wx:else label="寒冷或风中行走" value="walkInWind"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.commonActivity.walkOverRange}}" checked="true" label="一般速度平地步行200m以上" value="walkOverRange"></mp-checkbox>
+          <mp-checkbox wx:else label="一般速度平地步行200m以上" value="walkOverRange"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.commonActivity.goUpOneStairs}}" checked="true" label="登一层以上的楼梯" value="goUpOneStairs"></mp-checkbox>
+          <mp-checkbox wx:else label="登一层以上的楼梯" value="goUpOneStairs"></mp-checkbox>
+        </mp-checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep">下一步</button>
+    </view>
+    <view wx:if="{{step == 3}}">
+      <h2 class="title"> 3/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+      <mp-cells>
+        <mp-checkbox-group prop="normalActivity" multi="{{true}}" bindchange="onNormalActivityChange">
+          <mp-checkbox wx:if="{{formData.normalActivity.walkOverRange}}" checked="true" label="一般速度平地步行100~200m" value="walkOverRange"></mp-checkbox>
+          <mp-checkbox wx:else label="一般速度平地步行100~200m" value="walkOverRange"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.normalActivity.goUpOneStairs}}" checked="true" label="登一层楼梯" value="goUpOneStairs"></mp-checkbox>
+          <mp-checkbox wx:else label="登一层楼梯" value="goUpOneStairs"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.normalActivity.walkOnGround}}" checked="true" label="水平面上走动" value="walkOnGround"></mp-checkbox>
+          <mp-checkbox wx:else label="水平面上走动" value="walkOnGround"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.normalActivity.houseClean}}" checked="true" label="打扫卫生" value="houseClean"></mp-checkbox>
+          <mp-checkbox wx:else label="打扫卫生" value="houseClean"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.normalActivity.babySet}}" checked="true" label="看护小孩" value="babySet"></mp-checkbox>
+          <mp-checkbox wx:else label="看护小孩" value="babySet"></mp-checkbox>
+        </mp-checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep">下一步</button>
+    </view>
+    <view wx:if="{{step == 4}}">
+      <h2 class="title"> 4/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+      <mp-cells>
+        <mp-checkbox-group prop="casualActivity" multi="{{true}}" bindchange="onCasualActivityChange">
+          <mp-checkbox wx:if="{{formData.casualActivity.metting}}" checked="true" label="开会" value="metting"></mp-checkbox>
+          <mp-checkbox wx:else label="开会" value="metting"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.driving}}" checked="true" label="开车" value="driving"></mp-checkbox>
+          <mp-checkbox wx:else label="开车" value="driving"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.typing}}" checked="true" label="打字" value="typing"></mp-checkbox>
+          <mp-checkbox wx:else label="打字" value="typing"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.listenMusic}}" checked="true" label="听音乐" value="listenMusic"></mp-checkbox>
+          <mp-checkbox wx:else label="听音乐" value="listenMusic"></mp-checkbox>
+          <mp-checkbox wx:if="{{formData.casualActivity.painting}}" checked="true" label="绘画" value="painting"></mp-checkbox>
+          <mp-checkbox wx:else label="绘画" value="painting"></mp-checkbox>
+        </mp-checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="submit" class="btnNextStep">提交</button>
+    </view>
+  </view>
+</view>

@@ -72,5 +72,15 @@ Page({
     wx.navigateTo({
       url:'/pages/HypertensionSurveillance/HypertensionSurveillance'
     })
+  },
+  toanginaPectoris(){
+    wx.navigateTo({
+      url:'/pages/anginaPectoris/anginaPectoris'
+    })
+  },
+  tocardiacInsufficiency(){
+    wx.navigateTo({
+      url:'/pages/cardiacInsufficiency/cardiacInsufficiency'
+    })
   }
 })

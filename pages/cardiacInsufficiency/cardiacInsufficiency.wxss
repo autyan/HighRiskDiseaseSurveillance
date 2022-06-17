@@ -1,0 +1,50 @@
+/* pages/anginaPectoris/anginaPectoris.wxss */
+.title{
+  display:flex;
+  margin: 20rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnNextStep {
+  margin-top : 40rpx;
+}
+
+.score{
+  display:flex;
+  margin-top: 20rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.lowRisk{
+  color: green;
+  padding: 0 40rpx;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mediumRisk{
+  color:yellow;
+  padding: 0 40rpx;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highRisk{
+  color:orange;
+  padding: 0 40rpx;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.extremeHighRisk {
+  color: red;
+  padding: 0 40rpx;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
