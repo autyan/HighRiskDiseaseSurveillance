@@ -1,0 +1,53 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form">
+    <mp-cells title="基本信息（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" multi="{{true}}">
+        <mp-checkbox wx:if="{{formData.congestiveHeartFailure}}" disabled="true" checked="true" label="充血性心力衰竭、左心功能障碍" value="congestiveHeartFailure"></mp-checkbox>
+        <mp-checkbox wx:else label="充血性心力衰竭、左心功能障碍" disabled="true" value="congestiveHeartFailure"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.hypertension}}" disabled="true" checked="true" label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else label="高血压" disabled="true" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.overAge}}" disabled="true" checked="true" label="年龄>75岁" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄>75岁" disabled="true" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.diabetes}}" disabled="true" checked="true" label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:else label="糖尿病" disabled="true" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.historyOfPreviousStrokeOrThrombosis}}" disabled="true" checked="true" label="既往卒中或血栓病史" value="historyOfPreviousStrokeOrThrombosis"></mp-checkbox>
+        <mp-checkbox wx:else label="既往卒中或血栓病史" disabled="true" value="historyOfPreviousStrokeOrThrombosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.vascularDisease}}" disabled="true" checked="true" label="血管疾病" value="vascularDisease"></mp-checkbox>
+        <mp-checkbox wx:else label="血管疾病" disabled="true" value="vascularDisease"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.ageAmount}}" disabled="true" checked="true" label="年龄65-74" value="ageAmount"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄65-74" disabled="true" value="ageAmount"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.female}}" disabled="true" checked="true" label="女性" value="female"></mp-checkbox>
+        <mp-checkbox wx:else label="女性" disabled="true" value="female"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="formData" multi="{{true}}" bindchange="onformDataChange">
+        <mp-checkbox wx:if="{{formData.congestiveHeartFailure}}" checked="true" label="充血性心力衰竭、左心功能障碍" value="congestiveHeartFailure"></mp-checkbox>
+        <mp-checkbox wx:else label="充血性心力衰竭、左心功能障碍" value="congestiveHeartFailure"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.hypertension}}" checked="true" label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else label="高血压" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.overAge}}" checked="true" label="年龄>75岁" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄>75岁" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.diabetes}}" checked="true" label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:else label="糖尿病" value="diabetes"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.historyOfPreviousStrokeOrThrombosis}}" checked="true" label="既往卒中或血栓病史" value="historyOfPreviousStrokeOrThrombosis"></mp-checkbox>
+        <mp-checkbox wx:else label="既往卒中或血栓病史" value="historyOfPreviousStrokeOrThrombosis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.vascularDisease}}" checked="true" label="血管疾病" value="vascularDisease"></mp-checkbox>
+        <mp-checkbox wx:else label="血管疾病" value="vascularDisease"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.ageAmount}}" checked="true" label="年龄65-74" value="ageAmount"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄65-74" value="ageAmount"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.female}}" checked="true" label="女性" value="female"></mp-checkbox>
+        <mp-checkbox wx:else label="女性" value="female"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+  <view wx:if="{{mode == 'readonly'}}">
+    <View class="score">您的当前评分：{{score}}</View>
+    <view class="score">危险评级</view>
+    <view wx:if="{{ score == 0 }}" class="lowRisk">低危（可选择阿司匹林或不用抗栓治疗，推荐不抗栓治疗（I / A））</view>
+    <view wx:if="{{ score == 1 }}" class="mediumRisk">中危（可选择华法林或阿司匹林抗凝，但是推荐口服抗凝药治疗（I / A））</view>
+    <view wx:if="{{ score >= 2 }}" class="mediumRisk">高危（推荐口服抗凝药治疗）</view>
+  </view>
+</mp-form-page>

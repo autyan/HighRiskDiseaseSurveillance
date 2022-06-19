@@ -88,6 +88,16 @@ Page({
           url: '/pages/cardiacInsufficiency/cardiacInsufficiency?mode=readonly&id=' + e.currentTarget.dataset.id
         })
         break;
+        case 'AtrialFibrillationBleeding':
+        wx.navigateTo({
+          url: '/pages/atrialFibrillationBleeding/atrialFibrillationBleeding?mode=readonly&id=' + e.currentTarget.dataset.id
+        })
+        break;
+        case 'AtrialFibrillationIschemia':
+        wx.navigateTo({
+          url: '/pages/atrialFibrillationIschemia/atrialFibrillationIschemia?mode=readonly&id=' + e.currentTarget.dataset.id
+        })
+        break;
     }
   },
   loadRecords() {

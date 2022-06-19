@@ -149,5 +149,10 @@ Page({
     wx.navigateTo({
       url: '/pages/records/records'
     })
+  },
+  toqrCode(){
+    wx.navigateTo({
+      url: '/pages/distributorQrCode/distributorQrCode'
+    })
   }
 });

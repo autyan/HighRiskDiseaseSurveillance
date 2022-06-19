@@ -82,5 +82,15 @@ Page({
     wx.navigateTo({
       url:'/pages/cardiacInsufficiency/cardiacInsufficiency'
     })
+  },
+  toatrialFibrillationBleeding(){
+    wx.navigateTo({
+      url:'/pages/atrialFibrillationBleeding/atrialFibrillationBleeding'
+    })
+  },
+  toatrialFibrillationIschemia(){
+    wx.navigateTo({
+      url:'/pages/atrialFibrillationIschemia/atrialFibrillationIschemia'
+    })
   }
 })

@@ -1,0 +1,18 @@
+/* pages/distributorQrCode/distributorQrCode.wxss */
+page {
+  background-color: #1BCE93;
+}
+
+.imageContainer {
+  background-color: white;
+  margin: 192rpx 52rpx;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+}
+
+image {
+  width: 430rpx;
+  height: 430rpx;
+  margin: 122rpx 81rpx;
+}

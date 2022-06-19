@@ -1,0 +1,118 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form">
+    <mp-cells title="基本信息（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="basicHealthy" multi="{{true}}" bindchange="onbasicHealthyChange">
+        <mp-checkbox wx:if="{{formData.basicHealthy.hypertension}}" disabled="true" checked="true" label="高血压 >= 160mmHg" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else label="高血压 >= 160mmHg" disabled="true" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicHealthy.stroke}}" disabled="true" checked="true" label="卒中史" value="stroke"></mp-checkbox>
+        <mp-checkbox wx:else label="卒中史" disabled="true" value="stroke"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicHealthy.overAge}}" disabled="true" checked="true" label="年龄>65岁" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄>65岁" disabled="true" value="overAge"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="basicHealthy" multi="{{true}}" bindchange="onbasicHealthyChange">
+        <mp-checkbox wx:if="{{formData.basicHealthy.hypertension}}" checked="true" label="高血压 >= 160mmHg" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:else label="高血压 >= 160mmHg" value="hypertension"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicHealthy.stroke}}" checked="true" label="卒中史" value="stroke"></mp-checkbox>
+        <mp-checkbox wx:else label="卒中史" value="stroke"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.basicHealthy.overAge}}" checked="true" label="年龄>65岁" value="overAge"></mp-checkbox>
+        <mp-checkbox wx:else label="年龄>65岁" value="overAge"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="肾功能异常（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="abnormalkidneyFunction" multi="{{true}}" bindchange="onabnormalkidneyFunctionChange">
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.chronicDialysis}}" disabled="true" checked="true" label="慢性透析" value="chronicDialysis"></mp-checkbox>
+        <mp-checkbox wx:else label="慢性透析" disabled="true" value="chronicDialysis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.kidneyTransplant}}" disabled="true" checked="true" label="肾移植" value="kidneyTransplant"></mp-checkbox>
+        <mp-checkbox wx:else label="肾移植" disabled="true" value="kidneyTransplant"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.serumCreatinine}}" disabled="true" checked="true" label="血清肌酐大>200umol/L" value="serumCreatinine"></mp-checkbox>
+        <mp-checkbox wx:else label="血清肌酐大>200umol/L" disabled="true" value="serumCreatinine"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="abnormalkidneyFunction" multi="{{true}}" bindchange="onabnormalkidneyFunctionChange">
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.chronicDialysis}}" checked="true" label="慢性透析" value="chronicDialysis"></mp-checkbox>
+        <mp-checkbox wx:else label="慢性透析" value="chronicDialysis"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.kidneyTransplant}}" checked="true" label="肾移植" value="kidneyTransplant"></mp-checkbox>
+        <mp-checkbox wx:else label="肾移植" value="kidneyTransplant"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalkidneyFunction.serumCreatinine}}" checked="true" label="血清肌酐大>200umol/L" value="serumCreatinine"></mp-checkbox>
+        <mp-checkbox wx:else label="血清肌酐大>200umol/L" value="serumCreatinine"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="肝功能异常（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="abnormalLiverFunction" multi="{{true}}" bindchange="onabnormalLiverFunctionChange">
+        <mp-checkbox wx:if="{{formData.abnormalLiverFunction.chronicLiverDisease}}" disabled="true" checked="true" label="慢性肝病" value="chronicLiverDisease"></mp-checkbox>
+        <mp-checkbox wx:else label="慢性肝病" value="chronicLiverDisease" disabled="true"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalLiverFunction.bilirubin}}" disabled="true" checked="true" label="胆红素>2倍且谷草转氨酶/谷丙转氨酶/碱性磷酸酶>3倍" value="bilirubin"></mp-checkbox>
+        <mp-checkbox wx:else label="胆红素>2倍且谷草转氨酶/谷丙转氨酶/碱性磷酸酶>3倍" disabled="true" value="bilirubin"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="abnormalLiverFunction" multi="{{true}}" bindchange="onabnormalLiverFunctionChange">
+        <mp-checkbox wx:if="{{formData.abnormalLiverFunction.chronicLiverDisease}}" checked="true" label="慢性肝病" value="chronicLiverDisease"></mp-checkbox>
+        <mp-checkbox wx:else label="慢性肝病" value="chronicLiverDisease"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.abnormalLiverFunction.bilirubin}}" checked="true" label="胆红素>2倍且谷草转氨酶/谷丙转氨酶/碱性磷酸酶>3倍" value="bilirubin"></mp-checkbox>
+        <mp-checkbox wx:else label="胆红素>2倍且谷草转氨酶/谷丙转氨酶/碱性磷酸酶>3倍" value="bilirubin"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="出血（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="bleeding" multi="{{true}}" bindchange="onbleedingChange">
+        <mp-checkbox wx:if="{{formData.bleeding.historyOfBleeding}}" disabled="true" checked="true" label="出血病史" value="historyOfBleeding"></mp-checkbox>
+        <mp-checkbox wx:else label="出血病史" disabled="true" value="historyOfBleeding"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.bleeding.bleedingConstitution}}" disabled="true" checked="true" label="出血体质" value="bleedingConstitution"></mp-checkbox>
+        <mp-checkbox wx:else label="出血体质" disabled="true" value="bleedingConstitution"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.bleeding.anemia}}" disabled="true" checked="true" label="贫血" value="anemia"></mp-checkbox>
+        <mp-checkbox wx:else label="贫血" disabled="true" value="anemia"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="bleeding" multi="{{true}}" bindchange="onbleedingChange">
+        <mp-checkbox wx:if="{{formData.bleeding.historyOfBleeding}}" checked="true" label="出血病史" value="historyOfBleeding"></mp-checkbox>
+        <mp-checkbox wx:else label="出血病史" value="historyOfBleeding"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.bleeding.bleedingConstitution}}" checked="true" label="出血体质" value="bleedingConstitution"></mp-checkbox>
+        <mp-checkbox wx:else label="出血体质" value="bleedingConstitution"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.bleeding.anemia}}" checked="true" label="贫血" value="anemia"></mp-checkbox>
+        <mp-checkbox wx:else label="贫血" value="anemia"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="INR值不稳定（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="inrUnstable" multi="{{true}}" bindchange="oninrUnstableChange">
+        <mp-checkbox wx:if="{{formData.inrUnstable.volatile}}" disabled="true" checked="true" label="易变" value="volatile"></mp-checkbox>
+        <mp-checkbox wx:else label="易变" disabled="true" value="volatile"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.inrUnstable.high}}" disabled="true" checked="true" label="偏高" value="high"></mp-checkbox>
+        <mp-checkbox wx:else label="偏高" disabled="true" value="high"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.inrUnstable.outOfRange}}" disabled="true" checked="true" label="达不到治疗范围（<60%）" value="outOfRange"></mp-checkbox>
+        <mp-checkbox wx:else label="达不到治疗范围（<60%）" disabled="true" value="outOfRange"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="bleeding" multi="{{true}}" bindchange="oninrUnstableChange">
+        <mp-checkbox wx:if="{{formData.inrUnstable.volatile}}" checked="true" label="易变" value="volatile"></mp-checkbox>
+        <mp-checkbox wx:else label="易变" value="volatile"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.inrUnstable.high}}" checked="true" label="偏高" value="high"></mp-checkbox>
+        <mp-checkbox wx:else label="偏高" value="high"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.inrUnstable.outOfRange}}" checked="true" label="达不到治疗范围（<60%）" value="outOfRange"></mp-checkbox>
+        <mp-checkbox wx:else label="达不到治疗范围（<60%）" value="outOfRange"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+    <mp-cells title="药物（多选）">
+      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="drugs" multi="{{true}}" bindchange="ondrugsChange">
+        <mp-checkbox wx:if="{{formData.drugs.antiplateletDrugs}}" disabled="true" checked="true" label="抗血小板药物" value="antiplateletDrugs"></mp-checkbox>
+        <mp-checkbox wx:else label="抗血小板药物" disabled="true" value="antiplateletDrugs"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.drugs.nonsteroidalDrugs}}" disabled="true" checked="true" label="非甾体类药物" value="nonsteroidalDrugs"></mp-checkbox>
+        <mp-checkbox wx:else label="非甾体类药物" disabled="true" value="nonsteroidalDrugs"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.drugs.alcoholism}}" disabled="true" checked="true" label="嗜酒" value="alcoholism"></mp-checkbox>
+        <mp-checkbox wx:else label="嗜酒" disabled="true" value="alcoholism"></mp-checkbox>
+      </mp-checkbox-group>
+      <mp-checkbox-group wx:else prop="drags" multi="{{true}}" bindchange="ondragsChange">
+        <mp-checkbox wx:if="{{formData.drugs.antiplateletDrugs}}" checked="true" label="抗血小板药物" value="antiplateletDrugs"></mp-checkbox>
+        <mp-checkbox wx:else label="抗血小板药物" value="antiplateletDrugs"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.drugs.nonsteroidalDrugs}}" checked="true" label="非甾体类药物" value="nonsteroidalDrugs"></mp-checkbox>
+        <mp-checkbox wx:else label="非甾体类药物" value="nonsteroidalDrugs"></mp-checkbox>
+        <mp-checkbox wx:if="{{formData.drugs.alcoholism}}" checked="true" label="嗜酒" value="alcoholism"></mp-checkbox>
+        <mp-checkbox wx:else label="嗜酒" value="alcoholism"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+  <view wx:if="{{mode == 'readonly'}}">
+    <View class="score">您的当前评分：{{score}}</View>
+    <view class="score">危险评级</view>
+    <view wx:if="{{ score < 3 }}" class="lowRisk">低危</view>
+    <view wx:if="{{ score >= 3 }}" class="extremeHighRisk">极高危（易发生出血，抗凝抗血小板药物使用需谨慎）</view>
+  </view>
+</mp-form-page>

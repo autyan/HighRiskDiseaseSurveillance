@@ -7,7 +7,10 @@
     "pages/records/records",
     "pages/HypertensionSurveillance/HypertensionSurveillance",
     "pages/anginaPectoris/anginaPectoris",
-    "pages/cardiacInsufficiency/cardiacInsufficiency"
+    "pages/cardiacInsufficiency/cardiacInsufficiency",
+    "pages/atrialFibrillationBleeding/atrialFibrillationBleeding",
+    "pages/atrialFibrillationIschemia/atrialFibrillationIschemia",
+    "pages/distributorQrCode/distributorQrCode"
   ],
   "window": {
     "backgroundTextStyle": "light",

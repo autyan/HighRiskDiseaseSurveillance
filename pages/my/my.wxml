@@ -30,7 +30,7 @@
       <image  class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303"/>
     </view>
     <view class="divLine"></view>
-    <view class="menu-item">
+    <view wx:if="{{loginUser.isDistributor == true}}" class="menu-item" bindtap="toqrCode">
       <image src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/my_qrcode.png?sign=b0e2ef97cb9ab224d3f943f80dfb66f0&t=1653190336" />
       <text>我的推广码</text>
       <image class="menu-arrow" src="https://7072-prod-0g7y3h923f261408-1311435230.tcb.qcloud.la/arrow.png?sign=9e836176e5cba2b373890023a4d3db16&t=1653184303" />
