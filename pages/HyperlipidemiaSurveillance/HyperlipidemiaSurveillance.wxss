@@ -58,31 +58,23 @@ page {
   .lowRisk{
     color: green;
     padding: 0 40rpx;
-    display:flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .mediumRisk{
-    color:yellow;
+    color:blue;
     padding: 0 40rpx;
-    display:flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .highRisk{
     color:orange;
     padding: 0 40rpx;
-    display:flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .extremeHighRisk {
     color: red;
     padding: 0 40rpx;
-    display:flex;
-    align-items: center;
-    justify-content: center;
+  }
+
+  .tips {
+    padding: 0 40rpx;
   }

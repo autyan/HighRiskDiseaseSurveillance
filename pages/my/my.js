@@ -18,6 +18,7 @@ Page({
     loginUser: {},
     hasUserInfo: false,
     canIUseGetUserProfile: false,
+    distributor: null
   },
 
   /**
@@ -31,6 +32,12 @@ Page({
         canIUseGetUserProfile: true
       });
     };
+    var distributorId = wx.getStorageSync('distributor');
+    if(distributorId){
+      this.setData({
+        distributor: distributorId
+      })
+    }
     wx.checkSession({
       success: function () {
         wx.getStorage({
@@ -107,7 +114,8 @@ Page({
           let par = {
             Code: res.code,
             NickName: userInfo.nickName,
-            AvatarUrl: userInfo.avatarUrl
+            AvatarUrl: userInfo.avatarUrl,
+            DistributorId: me.data.distributor
           };
           hdService.request("/api/auth", par, "POST").then((response) => {
             // 开启加密存储

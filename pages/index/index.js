@@ -6,7 +6,11 @@ Page({
   data: {
 
   },
-  onLoad() {
+  onLoad(query) {
+    if(query && query.scene){
+      const scene = decodeURIComponent(query.scene)
+      wx.setStorage({key:'distributor', data:scene})
+    }
   },
   toCategory(){
     wx.navigateTo({

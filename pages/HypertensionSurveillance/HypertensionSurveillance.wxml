@@ -3,19 +3,19 @@
   <mp-form id="form" rules="{{rules}}" models="{{formData}}">
     <mp-cells title="基本信息">
       <mp-cell prop="age" title="年龄">
-        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
-        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄"/>
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
+        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
       </mp-cell>
       <mp-cell prop="height" title="身高(cm)">
         <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
         <input wx:else bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
       </mp-cell>
       <mp-cell prop="weight" title="体重(kg)">
-        <input wx:if="{{mode == 'readonly'}}"  disabled="true"  bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
         <input wx:else bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
       </mp-cell>
       <mp-cell prop="waistline" title="腰围(cm)">
-        <input wx:if="{{mode == 'readonly'}}"  disabled="true"  bindinput="formInputChange" value="{{formData.waistline}}" data-field="waistline" class="weui-input" placeholder="请输入腰围" />
+        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.waistline}}" data-field="waistline" class="weui-input" placeholder="请输入腰围" />
         <input wx:else bindinput="formInputChange" value="{{formData.waistline}}" data-field="waistline" class="weui-input" placeholder="请输入腰围" />
       </mp-cell>
     </mp-cells>
@@ -130,7 +130,7 @@
         <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" disabled="true" checked="true" label="肾功能受损" value="impairedRenalFunction"></mp-checkbox>
         <mp-checkbox wx:else label="肾功能受损" disabled="true" value="impairedRenalFunction"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" disabled="true" checked="true" label="血肌酐升高 > 177ummol/L" value="elevatedSerumCreatinine"></mp-checkbox>
-        <mp-checkbox wx:else label="血肌酐升高 > 177ummol/L"  disabled="true"value="elevatedSerumCreatinine"></mp-checkbox>
+        <mp-checkbox wx:else label="血肌酐升高 > 177ummol/L" disabled="true" value="elevatedSerumCreatinine"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.aorticDissection}}" disabled="true" checked="true" label="主动脉夹层" value="aorticDissection"></mp-checkbox>
         <mp-checkbox wx:else label="主动脉夹层" disabled="true" value="aorticDissection"></mp-checkbox>
         <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.peripheralVascularDisease}}" disabled="true" checked="true" label="外周血管疾病" value="peripheralVascularDisease"></mp-checkbox>
@@ -191,14 +191,56 @@
     </mp-cells>
   </mp-form>
   <view slot="button">
-    <button wx:if="{{mode != 'readonly'}}"  class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>
   <view wx:if="{{mode == 'readonly'}}">
-    <View class="score">您的当前评分：{{score}}</View>
-    <view class="score">危险评级</view>
-    <view wx:if="{{ score <= 25 }}" class="lowRisk">低危（10 年动脉粥样硬化性心血管疾病发病危险小于5%）</view>
-    <view wx:if="{{ 50 >= score > 25  }}" class="mediumRisk">中危（10 年动脉粥样硬化性心血管疾病发病危险5-9%）</view>
-    <view wx:if="{{ 75 >= score > 50  }}" class="highRisk">高危（10 年动脉粥样硬化性心血管疾病发病危险大于10%）</view>
-    <view wx:if="{{ score > 75 }}" class="extremeHighRisk">极高危（心血管疾病终生风险大于32.8%）</view>
+    <view wx:if="{{ score <= 25 }}">
+      <View class="score lowRisk">您的当前评分：{{score}}</View>
+      <view class="score">危险评级</view>
+      <view class="lowRisk">低危（10 年动脉粥样硬化性心血管疾病发病危险小于5%）</view>
+    </view>
+    <view wx:if="{{ 50 >= score > 25  }}">
+      <View class="score mediumRisk">您的当前评分：{{score}}</View>
+      <view class="score">危险评级</view>
+      <view class="mediumRisk">中危（10 年动脉粥样硬化性心血管疾病发病危险5-9%）</view>
+    </view>
+    <view wx:if="{{ 75 >= score > 50  }}">
+      <view class="highRisk">
+        <View class="score">您的当前评分：{{score}}</View>
+        <view class="score">危险评级 :高危（10 年动脉粥样硬化性心血管疾病发病危险大于10%）</view>
+      </view>
+    </view>
+    <view wx:if="{{ score > 75 }}">
+      <view class="extremeHighRisk">
+        <View class="score">您的当前评分：{{score}}</View>
+        <view class="score">危险评级：极高危（心血管疾病终生风险大于32.8%）</view>
+      </view>
+    </view>
+    <view class="score">健康小提示</view>
+    <view class="tips">
+      <text decode="true">
+        1. 改善生活方式：
+        a.坚持健康饮食:
+        低盐低脂饮食
+        b.规律运动:
+        每周 5 -7 次，每次 30 min 以上中等量级有氧运动
+        c.戒烟限酒:
+        尽早戒烟，每日饮酒量：啤酒少于355ml，红酒少于2两，白酒少于1两
+        d.维持健康体重：BMI= 体重（ kg ） / 身高（ m 2 ）维持在 &lt;24 </text>
+    </view>
+    <view class="tips">
+      <text>
+        2.血压控制目标：
+        a.一般主张把血压控制在140 /9mmHg以下.
+        b.糖尿病、慢性肾病、心力衰竭或病情稳定的冠心病合并高血压病人，血压控制目标&lt;130/ 80mmHg。
+        c.老年人收缩性高血压病，血压控制应&lt;150mmHg以下，如果能够耐受可降至140mmHg以下。
+        d.根据患者的病情，血压在数周数月内逐渐达到目标水平，不宜降压过急过快。
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        3.具体降压方案应遵医生指导用药
+      </text>
+    </view>
   </view>
 </mp-form-page>

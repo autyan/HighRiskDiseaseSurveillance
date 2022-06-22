@@ -8,11 +8,15 @@ page {
   margin: 192rpx 52rpx;
   border-radius: 16rpx;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 image {
-  width: 430rpx;
-  height: 430rpx;
+  width: auto;
   margin: 122rpx 81rpx;
+}
+
+.shareButton {
+  margin: 30rpx 0;
 }

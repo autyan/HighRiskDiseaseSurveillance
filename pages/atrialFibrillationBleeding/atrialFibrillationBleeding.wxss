@@ -64,7 +64,7 @@ page {
   }
 
   .mediumRisk{
-    color:yellow;
+    color:blue;
     padding: 0 40rpx;
     display:flex;
     align-items: center;
