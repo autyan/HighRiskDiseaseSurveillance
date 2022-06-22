@@ -25,7 +25,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.setStorage({key:'me', data:null});
     let me = this;
     if (wx.getUserProfile) {
       this.setData({
