@@ -20,174 +20,424 @@
       </mp-cell>
     </mp-cells>
     <mp-cells title="性别">
-      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="gender" multi="{{false}}" bindchange="genderChange">
-        <mp-checkbox wx:if="{{formData.gender == '0'}}" label="男" value="0" checked="true" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:else label="男" value="0" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.gender == '1'}}" label="女" value="1" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:else label="女" value="1" disabled="true"></mp-checkbox>
-      </mp-checkbox-group>
-      <mp-checkbox-group wx:else prop="gender" multi="{{false}}" bindchange="genderChange">
-        <mp-checkbox wx:if="{{formData.gender == '0'}}" label="男" value="0" checked="true"></mp-checkbox>
-        <mp-checkbox wx:else label="男" value="0"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.gender == '1'}}" label="女" value="1"></mp-checkbox>
-        <mp-checkbox wx:else label="女" value="1"></mp-checkbox>
-      </mp-checkbox-group>
+      <radio-group wx:if="{{mode == 'readonly'}}" bindchange="genderChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio wx:if="{{formData.gender == '0'}}" disabled="true" value="0" checked="true" />
+            <radio wx:else disabled="true" value="0" />
+          </view>
+          <view class="weui-cell__bd">男</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio wx:if="{{formData.gender == '1'}}" disabled="true" value="1" checked="true" />
+            <radio wx:else disabled="true" value="1" />
+          </view>
+          <view class="weui-cell__bd">女</view>
+        </label>
+      </radio-group>
+      <radio-group wx:else bindchange="genderChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="0" />
+          </view>
+          <view class="weui-cell__bd">男</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="1" />
+          </view>
+          <view class="weui-cell__bd">女</view>
+        </label>
+      </radio-group>
     </mp-cells>
     <mp-cells title="生活习惯">
-      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
-        <mp-checkbox wx:if="{{formData.smoke}}" label="吸烟史" value="smoke" checked="true" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:else label="吸烟史" value="smoke" disabled="true"></mp-checkbox>
-      </mp-checkbox-group>
-      <mp-checkbox-group wx:else prop="gender" prop="checkbox" multi="{{true}}" bindchange="smokeChange">
-        <mp-checkbox wx:if="{{formData.smoke}}" label="吸烟史" value="smoke" checked="true"></mp-checkbox>
-        <mp-checkbox wx:else label="吸烟史" value="smoke"></mp-checkbox>
-      </mp-checkbox-group>
+      <radio-group wx:if="{{mode == 'readonly'}}" bindchange="smokeChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio wx:if="{{formData.smoke == true }}" disabled="true" value="true" checked="true" />
+            <radio wx:else disabled="true" value="true" />
+          </view>
+          <view class="weui-cell__bd">有吸烟史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio wx:if="{{formData.smoke == false }}" disabled="true" value="false" checked="true" />
+            <radio wx:else disabled="true" value="false" />
+          </view>
+          <view class="weui-cell__bd">无吸烟史</view>
+        </label>
+      </radio-group>
+      <radio-group wx:else bindchange="smokeChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="0" />
+          </view>
+          <view class="weui-cell__bd">有吸烟史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="1"/>
+          </view>
+          <view class="weui-cell__bd">无吸烟史</view>
+        </label>
+      </radio-group>
     </mp-cells>
     <mp-cells title="身体指标" wx:if="{{mode == 'readonly'}}">
       <mp-cell prop="ldl-c">
-        <view>低密度脂蛋白（mmol/L）</view>
+        <view>低密度脂蛋白（LDL,mmol/L）</view>
         <input bindinput="formInputChange" disabled="true" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="hdl-c">
-        <view>高密度脂蛋白（mmol/L）</view>
+        <view>高密度脂蛋白（HDL,mmol/L）</view>
         <input bindinput="formInputChange" disabled="true" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="tc">
-        <view>总胆固醇（mmol/L）</view>
+        <view>总胆固醇（TC,mmol/L）</view>
         <input bindinput="formInputChange" disabled="true" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
       </mp-cell>
       <mp-cell prop="sbp">
-        <view>收缩压</view>
+        <view>未治疗时最高收缩压（SBP,mmHg）</view>
         <input bindinput="formInputChange" disabled="true" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
       </mp-cell>
       <mp-cell prop="dbp">
-        <view>舒张压</view>
+        <view>未治疗时最高舒张压（DBP,mmHg）</view>
         <input bindinput="formInputChange" disabled="true" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
       </mp-cell>
     </mp-cells>
     <mp-cells title="身体指标" wx:else>
       <mp-cell prop="ldl-c">
-        <view>低密度脂蛋白（mmol/L）</view>
+        <view>低密度脂蛋白（LDL,mmol/L）</view>
         <input bindinput="formInputChange" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="hdl-c">
-        <view>高密度脂蛋白（mmol/L）</view>
+        <view>高密度脂蛋白（HDL,mmol/L）</view>
         <input bindinput="formInputChange" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="tc">
-        <view>总胆固醇（mmol/L）</view>
+        <view>总胆固醇（TC,mmol/L）</view>
         <input bindinput="formInputChange" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
       </mp-cell>
       <mp-cell prop="sbp">
-        <view>收缩压</view>
+        <view>未治疗时最高收缩压（SBP,mmHg）</view>
         <input bindinput="formInputChange" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
       </mp-cell>
       <mp-cell prop="dbp">
-        <view>舒张压</view>
+        <view>未治疗时最高舒张压（DBP,mmHg）</view>
         <input bindinput="formInputChange" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
       </mp-cell>
     </mp-cells>
     <mp-cells title="危险因素（多选）">
-      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="basicDisease" multi="{{true}}" bindchange="onRiskFactorsChange">
-        <mp-checkbox wx:if="{{formData.riskFactors.impairedSugarAdhesion}}" disabled="true" checked="true" label="糖附量受损（2小时血糖7.8-11.0 mmol/L）" value="impairedSugarAdhesion"></mp-checkbox>
-        <mp-checkbox wx:else label="糖附量受损（2小时血糖7.8-11.0 mmol/L）" disabled="true" value="impairedSugarAdhesion"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.abnormalFastingBloodGlucose}}" disabled="true" checked="true" label="空腹血糖异常（6.1-6.9 mmol/L）" value="abnormalFastingBloodGlucose"></mp-checkbox>
-        <mp-checkbox wx:else label="空腹血糖异常（6.1-6.9 mmol/L）" disabled="true" value="abnormalFastingBloodGlucose"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.familyHistoryOfEarlyonsetCardiovascularDisease}}" disabled="true" checked="true" label="早发心血管病家族史（一级亲属发病年龄<50岁）" value="familyHistoryOfEarlyonsetCardiovascularDisease"></mp-checkbox>
-        <mp-checkbox wx:else label="早发心血管病家族史（一级亲属发病年龄<50岁）" disabled="true" value="familyHistoryOfEarlyonsetCardiovascularDisease"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.hyperhomocysteine}}" disabled="true" checked="true" label="高同型半胱氨酸 > 10mmol/L" value="hyperhomocysteine"></mp-checkbox>
-        <mp-checkbox wx:else label="高同型半胱氨酸 > 10mmol/L" disabled="true" value="hyperhomocysteine"></mp-checkbox>
-      </mp-checkbox-group>
-      <mp-checkbox-group wx:else prop="riskFactors" multi="{{true}}" bindchange="onRiskFactorsChange">
-        <mp-checkbox wx:if="{{formData.riskFactors.impairedSugarAdhesion}}" checked="true" label="糖附量受损（2小时血糖7.8-11.0mmol/L）" value="impairedSugarAdhesion"></mp-checkbox>
-        <mp-checkbox wx:else label="糖附量受损（2小时血糖7.8-11.0mmol/L）" value="impairedSugarAdhesion"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.abnormalFastingBloodGlucose}}" checked="true" label="空腹血糖异常（6.1-6.9mmol/L）" value="abnormalFastingBloodGlucose"></mp-checkbox>
-        <mp-checkbox wx:else label="空腹血糖异常（6.1-6.9mmol/L）" value="abnormalFastingBloodGlucose"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.familyHistoryOfEarlyonsetCardiovascularDisease}}" checked="true" label="早发心血管病家族史（以及亲属发病年龄<50岁）" value="familyHistoryOfEarlyonsetCardiovascularDisease"></mp-checkbox>
-        <mp-checkbox wx:else label="早发心血管病家族史（以及亲属发病年龄<50岁）" value="familyHistoryOfEarlyonsetCardiovascularDisease"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.riskFactors.hyperhomocysteine}}" checked="true" label="高同型半胱氨酸 > 10mmol/L" value="hyperhomocysteine"></mp-checkbox>
-        <mp-checkbox wx:else label="高同型半胱氨酸 > 10mmol/L" value="hyperhomocysteine"></mp-checkbox>
-      </mp-checkbox-group>
+    <checkbox-group wx:if="{{mode == 'readonly'}}">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.impairedSugarAdhesion}}" disabled="true" value="impairedSugarAdhesion" checked="true" />
+            <checkbox wx:else disabled="true" value="impairedSugarAdhesion" />
+          </view>
+          <view class="weui-cell__bd">糖附量受损（2小时血糖7.8-11.0 mmol/L）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.abnormalFastingBloodGlucose}}" disabled="true" value="abnormalFastingBloodGlucose" checked="true" />
+            <checkbox wx:else disabled="true" value="abnormalFastingBloodGlucose" />
+          </view>
+          <view class="weui-cell__bd">空腹血糖异常（6.1-6.9 mmol/L）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.familyHistoryOfEarlyonsetCardiovascularDisease}}" disabled="true" value="familyHistoryOfEarlyonsetCardiovascularDisease" checked="true" />
+            <checkbox wx:else disabled="true" value="familyHistoryOfEarlyonsetCardiovascularDisease" />
+          </view>
+          <view class="weui-cell__bd">早发心血管病家族史（一级亲属发病年龄&lt;50岁）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.hyperhomocysteine}}" disabled="true" value="hyperhomocysteine" checked="true" />
+            <checkbox wx:else disabled="true" value="hyperhomocysteine" />
+          </view>
+          <view class="weui-cell__bd">高同型半胱氨酸 > 10mmol/L</view>
+        </label>
+    </checkbox-group>
+    <checkbox-group wx:else bindchange="onRiskFactorsChange">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.impairedSugarAdhesion}}" value="impairedSugarAdhesion" checked="true" />
+            <checkbox wx:else value="impairedSugarAdhesion" />
+          </view>
+          <view class="weui-cell__bd">糖附量受损（2小时血糖7.8-11.0 mmol/L）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.abnormalFastingBloodGlucose}}" value="abnormalFastingBloodGlucose" checked="true" />
+            <checkbox wx:else value="abnormalFastingBloodGlucose" />
+          </view>
+          <view class="weui-cell__bd">空腹血糖异常（6.1-6.9 mmol/L）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.familyHistoryOfEarlyonsetCardiovascularDisease}}" value="familyHistoryOfEarlyonsetCardiovascularDisease" checked="true" />
+            <checkbox wx:else value="familyHistoryOfEarlyonsetCardiovascularDisease" />
+          </view>
+          <view class="weui-cell__bd">早发心血管病家族史（一级亲属发病年龄&lt;50岁）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.riskFactors.hyperhomocysteine}}" value="hyperhomocysteine" checked="true" />
+            <checkbox wx:else value="hyperhomocysteine" />
+          </view>
+          <view class="weui-cell__bd">高同型半胱氨酸 > 10mmol/L</view>
+        </label>
+    </checkbox-group>
     </mp-cells>
     <mp-cells title="伴随临床疾患（多选）">
-      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="concomitantClinicalDisorders" multi="{{true}}" bindchange="onConcomitantClinicalDisordersChange">
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.cerebralHaemorrhage}}" disabled="true" checked="true" label="脑出血" value="cerebralHaemorrhage"></mp-checkbox>
-        <mp-checkbox wx:else label="脑出血" value="cerebralHaemorrhage" disabled="true"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.ischemicStroke}}" disabled="true" checked="true" label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
-        <mp-checkbox wx:else label="缺血性卒中" disabled="true" value="ischemicStroke"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.transientIschemicAttack}}" disabled="true" checked="true" label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
-        <mp-checkbox wx:else label="短暂性脑缺血发作" disabled="true" value="transientIschemicAttack"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfMyocardialInfarction}}" disabled="true" checked="true" label="心肌梗死史" value="historyOfMyocardialInfarction"></mp-checkbox>
-        <mp-checkbox wx:else label="心肌梗死史" disabled="true" value="historyOfMyocardialInfarction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.angina}}" disabled="true" checked="true" label="心绞痛" value="angina"></mp-checkbox>
-        <mp-checkbox wx:else label="心绞痛" disabled="true" value="angina"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfCoronaryBloodCirculationReconstruction}}" disabled="true" checked="true" label="冠脉血运重建史" value="historyOfCoronaryBloodCirculationReconstruction"></mp-checkbox>
-        <mp-checkbox wx:else label="冠脉血运重建史" disabled="true" value="historyOfCoronaryBloodCirculationReconstruction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.congestiveHeartFailure}}" disabled="true" checked="true" label="充血性心力衰竭" value="congestiveHeartFailure"></mp-checkbox>
-        <mp-checkbox wx:else label="充血性心力衰竭" disabled="true" value="congestiveHeartFailure"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.diabeticNephropathy}}" disabled="true" checked="true" label="糖尿病肾病" value="diabeticNephropathy"></mp-checkbox>
-        <mp-checkbox wx:else label="糖尿病肾病" disabled="true" value="diabeticNephropathy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" disabled="true" checked="true" label="肾功能受损" value="impairedRenalFunction"></mp-checkbox>
-        <mp-checkbox wx:else label="肾功能受损" disabled="true" value="impairedRenalFunction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" disabled="true" checked="true" label="血肌酐升高 > 177ummol/L" value="elevatedSerumCreatinine"></mp-checkbox>
-        <mp-checkbox wx:else label="血肌酐升高 > 177ummol/L" disabled="true" value="elevatedSerumCreatinine"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.aorticDissection}}" disabled="true" checked="true" label="主动脉夹层" value="aorticDissection"></mp-checkbox>
-        <mp-checkbox wx:else label="主动脉夹层" disabled="true" value="aorticDissection"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.peripheralVascularDisease}}" disabled="true" checked="true" label="外周血管疾病" value="peripheralVascularDisease"></mp-checkbox>
-        <mp-checkbox wx:else label="外周血管疾病" disabled="true" value="peripheralVascularDisease"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.severeHypertensiveRetinopathy}}" disabled="true" checked="true" label="重度高血压性视网膜病变" value="severeHypertensiveRetinopathy"></mp-checkbox>
-        <mp-checkbox wx:else label="重度高血压性视网膜病变" disabled="true" value="severeHypertensiveRetinopathy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.diabetes}}" checked="true" disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
-        <mp-checkbox wx:else disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
-      </mp-checkbox-group>
-      <mp-checkbox-group wx:else prop="concomitantClinicalDisorders" multi="{{true}}" bindchange="onConcomitantClinicalDisordersChange">
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.cerebralHaemorrhage}}" checked="true" label="脑出血" value="cerebralHaemorrhage"></mp-checkbox>
-        <mp-checkbox wx:else label="脑出血" value="cerebralHaemorrhage"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.ischemicStroke}}" checked="true" label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
-        <mp-checkbox wx:else label="缺血性卒中" value="ischemicStroke"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.transientIschemicAttack}}" checked="true" label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
-        <mp-checkbox wx:else label="短暂性脑缺血发作" value="transientIschemicAttack"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfMyocardialInfarction}}" checked="true" label="心肌梗死史" value="historyOfMyocardialInfarction"></mp-checkbox>
-        <mp-checkbox wx:else label="心肌梗死史" value="historyOfMyocardialInfarction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.angina}}" checked="true" label="心绞痛" value="angina"></mp-checkbox>
-        <mp-checkbox wx:else label="心绞痛" value="angina"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfCoronaryBloodCirculationReconstruction}}" checked="true" label="冠脉血运重建史" value="historyOfCoronaryBloodCirculationReconstruction"></mp-checkbox>
-        <mp-checkbox wx:else label="冠脉血运重建史" value="historyOfCoronaryBloodCirculationReconstruction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.congestiveHeartFailure}}" checked="true" label="充血性心力衰竭" value="congestiveHeartFailure"></mp-checkbox>
-        <mp-checkbox wx:else label="充血性心力衰竭" value="congestiveHeartFailure"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.diabeticNephropathy}}" checked="true" label="糖尿病肾病" value="diabeticNephropathy"></mp-checkbox>
-        <mp-checkbox wx:else label="糖尿病肾病" value="diabeticNephropathy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" checked="true" label="肾功能受损" value="impairedRenalFunction"></mp-checkbox>
-        <mp-checkbox wx:else label="肾功能受损" value="impairedRenalFunction"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" checked="true" label="血肌酐升高 > 177ummol/L" value="elevatedSerumCreatinine"></mp-checkbox>
-        <mp-checkbox wx:else label="血肌酐升高 > 177ummol/L" value="elevatedSerumCreatinine"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.aorticDissection}}" checked="true" label="主动脉夹层" value="aorticDissection"></mp-checkbox>
-        <mp-checkbox wx:else label="主动脉夹层" value="aorticDissection"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.peripheralVascularDisease}}" checked="true" label="外周血管疾病" value="peripheralVascularDisease"></mp-checkbox>
-        <mp-checkbox wx:else label="外周血管疾病" value="peripheralVascularDisease"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.severeHypertensiveRetinopathy}}" checked="true" label="重度高血压性视网膜病变" value="severeHypertensiveRetinopathy"></mp-checkbox>
-        <mp-checkbox wx:else label="重度高血压性视网膜病变" value="severeHypertensiveRetinopathy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.concomitantClinicalDisorders.diabetes}}" checked="true" disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
-        <mp-checkbox wx:else disabled="true" label="糖尿病" value="diabetes"></mp-checkbox>
-      </mp-checkbox-group>
+    <checkbox-group wx:if="{{mode == 'readonly'}}">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.cerebralHaemorrhage}}" disabled="true" value="cerebralHaemorrhage" checked="true" />
+            <checkbox wx:else disabled="true" value="cerebralHaemorrhage" />
+          </view>
+          <view class="weui-cell__bd">脑出血</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.ischemicStroke}}" disabled="true" value="ischemicStroke" checked="true" />
+            <checkbox wx:else disabled="true" value="ischemicStroke" />
+          </view>
+          <view class="weui-cell__bd">缺血性卒中</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.transientIschemicAttack}}" disabled="true" value="transientIschemicAttack" checked="true" />
+            <checkbox wx:else disabled="true" value="transientIschemicAttack" />
+          </view>
+          <view class="weui-cell__bd">短暂性脑缺血发作</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfMyocardialInfarction}}" disabled="true" value="historyOfMyocardialInfarction" checked="true" />
+            <checkbox wx:else disabled="true" value="historyOfMyocardialInfarction" />
+          </view>
+          <view class="weui-cell__bd">心肌梗死史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.angina}}" disabled="true" value="angina" checked="true" />
+            <checkbox wx:else disabled="true" value="angina" />
+          </view>
+          <view class="weui-cell__bd">心绞痛</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfCoronaryBloodCirculationReconstruction}}" disabled="true" value="historyOfCoronaryBloodCirculationReconstruction" checked="true" />
+            <checkbox wx:else disabled="true" value="historyOfCoronaryBloodCirculationReconstruction" />
+          </view>
+          <view class="weui-cell__bd">冠脉血运重建史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.congestiveHeartFailure}}" disabled="true" value="congestiveHeartFailure" checked="true" />
+            <checkbox wx:else disabled="true" value="congestiveHeartFailure" />
+          </view>
+          <view class="weui-cell__bd">充血性心力衰竭</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.diabeticNephropathy}}" disabled="true" value="diabeticNephropathy" checked="true" />
+            <checkbox wx:else disabled="true" value="diabeticNephropathy" />
+          </view>
+          <view class="weui-cell__bd">糖尿病肾病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" disabled="true" value="impairedRenalFunction" checked="true" />
+            <checkbox wx:else disabled="true" value="impairedRenalFunction" />
+          </view>
+          <view class="weui-cell__bd">肾功能受损</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" disabled="true" value="elevatedSerumCreatinine" checked="true" />
+            <checkbox wx:else disabled="true" value="elevatedSerumCreatinine" />
+          </view>
+          <view class="weui-cell__bd">血肌酐升高 > 177ummol/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.aorticDissection}}" disabled="true" value="aorticDissection" checked="true" />
+            <checkbox wx:else disabled="true" value="aorticDissection" />
+          </view>
+          <view class="weui-cell__bd">主动脉夹层</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.peripheralVascularDisease}}" disabled="true" value="peripheralVascularDisease" checked="true" />
+            <checkbox wx:else disabled="true" value="peripheralVascularDisease" />
+          </view>
+          <view class="weui-cell__bd">外周血管疾病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.severeHypertensiveRetinopathy}}" disabled="true" value="severeHypertensiveRetinopathy" checked="true" />
+            <checkbox wx:else disabled="true" value="severeHypertensiveRetinopathy" />
+          </view>
+          <view class="weui-cell__bd">重度高血压性视网膜病变</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.diabetes}}" disabled="true" value="diabetes" checked="true" />
+            <checkbox wx:else disabled="true" value="diabetes" />
+          </view>
+          <view class="weui-cell__bd">糖尿病</view>
+        </label>
+    </checkbox-group>
+    <checkbox-group wx:else bindchange="onConcomitantClinicalDisordersChange">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.cerebralHaemorrhage}}" value="cerebralHaemorrhage" checked="true" />
+            <checkbox wx:else value="cerebralHaemorrhage" />
+          </view>
+          <view class="weui-cell__bd">脑出血</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.ischemicStroke}}" value="ischemicStroke" checked="true" />
+            <checkbox wx:else value="ischemicStroke" />
+          </view>
+          <view class="weui-cell__bd">缺血性卒中</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.transientIschemicAttack}}" value="transientIschemicAttack" checked="true" />
+            <checkbox wx:else value="transientIschemicAttack" />
+          </view>
+          <view class="weui-cell__bd">短暂性脑缺血发作</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfMyocardialInfarction}}" value="historyOfMyocardialInfarction" checked="true" />
+            <checkbox wx:else value="historyOfMyocardialInfarction" />
+          </view>
+          <view class="weui-cell__bd">心肌梗死史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.angina}}" value="angina" checked="true" />
+            <checkbox wx:else value="angina" />
+          </view>
+          <view class="weui-cell__bd">心绞痛</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.historyOfCoronaryBloodCirculationReconstruction}}" value="historyOfCoronaryBloodCirculationReconstruction" checked="true" />
+            <checkbox wx:else value="historyOfCoronaryBloodCirculationReconstruction" />
+          </view>
+          <view class="weui-cell__bd">冠脉血运重建史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.congestiveHeartFailure}}" value="congestiveHeartFailure" checked="true" />
+            <checkbox wx:else value="congestiveHeartFailure" />
+          </view>
+          <view class="weui-cell__bd">充血性心力衰竭</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.diabeticNephropathy}}" value="diabeticNephropathy" checked="true" />
+            <checkbox wx:else value="diabeticNephropathy" />
+          </view>
+          <view class="weui-cell__bd">糖尿病肾病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" value="impairedRenalFunction" checked="true" />
+            <checkbox wx:else value="impairedRenalFunction" />
+          </view>
+          <view class="weui-cell__bd">肾功能受损</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" value="elevatedSerumCreatinine" checked="true" />
+            <checkbox wx:else value="elevatedSerumCreatinine" />
+          </view>
+          <view class="weui-cell__bd">血肌酐升高 > 177ummol/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.aorticDissection}}" value="aorticDissection" checked="true" />
+            <checkbox wx:else value="aorticDissection" />
+          </view>
+          <view class="weui-cell__bd">主动脉夹层</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.peripheralVascularDisease}}" value="peripheralVascularDisease" checked="true" />
+            <checkbox wx:else value="peripheralVascularDisease" />
+          </view>
+          <view class="weui-cell__bd">外周血管疾病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.concomitantClinicalDisorders.severeHypertensiveRetinopathy}}" value="severeHypertensiveRetinopathy" checked="true" />
+            <checkbox wx:else value="severeHypertensiveRetinopathy" />
+          </view>
+          <view class="weui-cell__bd">重度高血压性视网膜病变</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.atheroscleroticPlaques}}" value="diabetes" checked="true" />
+            <checkbox wx:else value="diabetes" />
+          </view>
+          <view class="weui-cell__bd">糖尿病</view>
+        </label>
+    </checkbox-group>
     </mp-cells>
     <mp-cells title="靶器官损害（多选）">
-      <mp-checkbox-group wx:if="{{mode == 'readonly'}}" prop="targetOrganDamage" multi="{{true}}" bindchange="onTargetOrganDamageChange">
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.leftVentricularHypertrophy}}" disabled="true" checked="true" label="左心室肥厚（心电图或超声心电图）" value="leftVentricularHypertrophy"></mp-checkbox>
-        <mp-checkbox wx:else label="左心室肥厚（心电图或超声心电图）" disabled="true" value="leftVentricularHypertrophy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.atheroscleroticPlaques}}" disabled="true" checked="true" label="劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）" value="atheroscleroticPlaques"></mp-checkbox>
-        <mp-checkbox wx:else label="劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）" disabled="true" value="atheroscleroticPlaques"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.retinalArteryFocalPointOrExtensiveStenosis}}" disabled="true" checked="true" label="视网膜动脉局灶或广泛狭窄" value="retinalArteryFocalPointOrExtensiveStenosis"></mp-checkbox>
-        <mp-checkbox wx:else label="视网膜动脉局灶或广泛狭窄" disabled="true" value="retinalArteryFocalPointOrExtensiveStenosis"></mp-checkbox>
-      </mp-checkbox-group>
-      <mp-checkbox-group wx:else prop="targetOrganDamage" multi="{{true}}" bindchange="onTargetOrganDamageChange">
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.leftVentricularHypertrophy}}" checked="true" label="左心室肥厚（心电图或超声心电图）" value="leftVentricularHypertrophy"></mp-checkbox>
-        <mp-checkbox wx:else label="左心室肥厚（心电图或超声心电图）" value="leftVentricularHypertrophy"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.atheroscleroticPlaques}}" checked="true" label="劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）" value="atheroscleroticPlaques"></mp-checkbox>
-        <mp-checkbox wx:else label="劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）" value="atheroscleroticPlaques"></mp-checkbox>
-        <mp-checkbox wx:if="{{formData.targetOrganDamage.retinalArteryFocalPointOrExtensiveStenosis}}" checked="true" label="视网膜动脉局灶或广泛狭窄" value="retinalArteryFocalPointOrExtensiveStenosis"></mp-checkbox>
-        <mp-checkbox wx:else label="视网膜动脉局灶或广泛狭窄" value="retinalArteryFocalPointOrExtensiveStenosis"></mp-checkbox>
-      </mp-checkbox-group>
+    <checkbox-group wx:if="{{mode == 'readonly'}}">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.leftVentricularHypertrophy}}" disabled="true" value="leftVentricularHypertrophy" checked="true" />
+            <checkbox wx:else disabled="true" value="leftVentricularHypertrophy" />
+          </view>
+          <view class="weui-cell__bd">左心室肥厚（心电图或超声心电图）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.atheroscleroticPlaques}}" disabled="true" value="atheroscleroticPlaques" checked="true" />
+            <checkbox wx:else disabled="true" value="atheroscleroticPlaques" />
+          </view>
+          <view class="weui-cell__bd">劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.retinalArteryFocalPointOrExtensiveStenosis}}" disabled="true" value="retinalArteryFocalPointOrExtensiveStenosis" checked="true" />
+            <checkbox wx:else disabled="true" value="retinalArteryFocalPointOrExtensiveStenosis" />
+          </view>
+          <view class="weui-cell__bd">视网膜动脉局灶或广泛狭窄</view>
+        </label>
+    </checkbox-group>
+    <checkbox-group wx:else bindchange="onTargetOrganDamageChange">
+      <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.leftVentricularHypertrophy}}" value="leftVentricularHypertrophy" checked="true" />
+            <checkbox wx:else value="leftVentricularHypertrophy" />
+          </view>
+          <view class="weui-cell__bd">左心室肥厚（心电图或超声心电图）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.atheroscleroticPlaques}}" value="atheroscleroticPlaques" checked="true" />
+            <checkbox wx:else value="atheroscleroticPlaques" />
+          </view>
+          <view class="weui-cell__bd">劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox wx:if="{{formData.targetOrganDamage.retinalArteryFocalPointOrExtensiveStenosis}}" value="retinalArteryFocalPointOrExtensiveStenosis" checked="true" />
+            <checkbox wx:else value="retinalArteryFocalPointOrExtensiveStenosis" />
+          </view>
+          <view class="weui-cell__bd">视网膜动脉局灶或广泛狭窄</view>
+        </label>
+    </checkbox-group>
     </mp-cells>
   </mp-form>
   <view slot="button">

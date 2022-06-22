@@ -50,7 +50,7 @@ page {
 
   .score {
     display: flex;
-    margin-top: 20rpx;
+    margin: 20rpx;
     align-items: center;
     justify-content: center;
   }
@@ -61,16 +61,16 @@ page {
     height: 40rpx;
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
   }
   
   .mediumRisk {
-    background-color: blue;
+    background-color: yellow;
     width: 120rpx;
     height: 40rpx;
     display: flex;
     justify-content: center;
-    color: white;
+    color: blakc;
   }
   
   .highRisk {
@@ -79,7 +79,7 @@ page {
     height: 40rpx;
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
   }
   
   .extremeHighRisk {
@@ -88,7 +88,7 @@ page {
     height: 40rpx;
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
   }
   
   .riskBar {

@@ -16,7 +16,7 @@ Page({
       height: null,
       weight: null,
       waistline: null,
-      smoke: false,
+      smoke: null,
       ldlc: null,
       hdlc: null,
       tc: null,
@@ -95,6 +95,13 @@ Page({
         rules: {
           required: true,
           message: '请选择您的性别'
+        }
+      },
+      {
+        name: 'smoke',
+        rules: {
+          required: true,
+          message: '请选择您的吸烟史'
         }
       },
       {

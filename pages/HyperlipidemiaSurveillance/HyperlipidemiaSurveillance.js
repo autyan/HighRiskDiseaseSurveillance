@@ -15,7 +15,7 @@ Page({
       gender: null,
       height: null,
       weight: null,
-      smoke: false,
+      smoke: null,
       ldlc: null,
       hdlc: null,
       tc: null,
@@ -72,6 +72,13 @@ Page({
         rules: {
           required: true,
           message: '请选择您的性别'
+        }
+      },
+      {
+        name: 'smoke',
+        rules: {
+          required: true,
+          message: '请选择您的吸烟史'
         }
       },
       {
@@ -213,7 +220,6 @@ Page({
     this.setData({
       [`formData.${field}`]: e.detail.value
     })
-    console.log(this.data);
   },
   genderChange(e) {
     this.setData({
@@ -221,15 +227,10 @@ Page({
     })
   },
   smokeChange(e) {
-    if (e.detail.value.length > 0) {
-      this.setData({
-        'formData.smoke': true
-      })
-    } else {
-      this.setData({
-        'formData.smoke': false
-      })
-    }
+    this.setData({
+      'formData.smoke': e.detail.value == 'true'
+    })
+    console.log(this.data.formData);
   },
   onDiseaseChange(e) {
     for (var prop in this.data.formData.basicDisease) {
