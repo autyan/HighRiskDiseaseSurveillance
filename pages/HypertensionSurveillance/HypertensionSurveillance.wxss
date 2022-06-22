@@ -48,33 +48,70 @@ page {
     margin: 25rpx 0;
   }
 
-  .score{
-    display:flex;
+  .score {
+    display: flex;
     margin-top: 20rpx;
     align-items: center;
     justify-content: center;
   }
-
-  .lowRisk{
-    color: green;
-    padding: 0 40rpx;
+  
+  .lowRisk {
+    background-color: green;
+    width: 120rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: white;
   }
-
-  .mediumRisk{
-    color:blue;
-    padding: 0 40rpx;
+  
+  .mediumRisk {
+    background-color: blue;
+    width: 120rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: white;
   }
-
-  .highRisk{
-    color:orange;
-    padding: 0 40rpx;
+  
+  .highRisk {
+    background-color: orange;
+    width: 120rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: white;
   }
-
+  
   .extremeHighRisk {
-    color: red;
-    padding: 0 40rpx;
+    background-color: red;
+    width: 120rpx;
+    height: 40rpx;
+    display: flex;
+    justify-content: center;
+    color: white;
   }
-
+  
+  .riskBar {
+    width: 480rpx;
+    margin: auto;
+    display: flex;
+    margin-top: 30rpx;
+  }
+  
+  .riskMark {
+    width: 120rpx;
+    height: 40rpx;
+  }
+  
+  .active {
+    width: 0;
+    height: 0;
+    border-left: 30rpx solid transparent;
+    border-right: 30rpx solid transparent;
+    border-top: 40rpx solid black;
+    margin-left: 30rpx;
+  }
+  
   .tips {
     padding: 0 40rpx;
   }

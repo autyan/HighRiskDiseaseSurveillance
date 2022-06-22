@@ -195,25 +195,75 @@
   </view>
   <view wx:if="{{mode == 'readonly'}}">
     <view wx:if="{{ score <= 25 }}">
-      <View class="score lowRisk">您的当前评分：{{score}}</View>
-      <view class="score">危险评级</view>
-      <view class="lowRisk">低危（10 年动脉粥样硬化性心血管疾病发病危险小于5%）</view>
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级：低危</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
     </view>
     <view wx:if="{{ 50 >= score > 25  }}">
-      <View class="score mediumRisk">您的当前评分：{{score}}</View>
-      <view class="score">危险评级</view>
-      <view class="mediumRisk">中危（10 年动脉粥样硬化性心血管疾病发病危险5-9%）</view>
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级：中危</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
     </view>
     <view wx:if="{{ 75 >= score > 50  }}">
-      <view class="highRisk">
-        <View class="score">您的当前评分：{{score}}</View>
-        <view class="score">危险评级 :高危（10 年动脉粥样硬化性心血管疾病发病危险大于10%）</view>
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级 :高危</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
       </view>
     </view>
     <view wx:if="{{ score > 75 }}">
-      <view class="extremeHighRisk">
-        <View class="score">您的当前评分：{{score}}</View>
-        <view class="score">危险评级：极高危（心血管疾病终生风险大于32.8%）</view>
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级：极高危（心血管疾病终生风险大于32.8%）</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
       </view>
     </view>
     <view class="score">健康小提示</view>
