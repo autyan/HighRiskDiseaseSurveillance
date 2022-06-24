@@ -1,18 +1,25 @@
 // pages/category.js
+var util = require('../../utils/util');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      userHasLogin: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let me = this;
+    util.checkLogin(function(loginResult){
+      me.setData({
+        userHasLogin: loginResult
+      });
+    });
   },
 
   /**
@@ -64,33 +71,62 @@ Page({
 
   },
   toHyperlipidemiaSurveillance(){
-    wx.navigateTo({
-      url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url: '/pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance'
+      })
     })
   },
   toHypertensionSurveillance(){
-    wx.navigateTo({
-      url:'/pages/HypertensionSurveillance/HypertensionSurveillance'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/HypertensionSurveillance/HypertensionSurveillance'
+      })
     })
   },
   toanginaPectoris(){
-    wx.navigateTo({
-      url:'/pages/anginaPectoris/anginaPectoris'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/anginaPectoris/anginaPectoris'
+      })
     })
   },
   tocardiacInsufficiency(){
-    wx.navigateTo({
-      url:'/pages/cardiacInsufficiency/cardiacInsufficiency'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/cardiacInsufficiency/cardiacInsufficiency'
+      })
     })
   },
   toatrialFibrillationBleeding(){
-    wx.navigateTo({
-      url:'/pages/atrialFibrillationBleeding/atrialFibrillationBleeding'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/atrialFibrillationBleeding/atrialFibrillationBleeding'
+      })
     })
   },
   toatrialFibrillationIschemia(){
-    wx.navigateTo({
-      url:'/pages/atrialFibrillationIschemia/atrialFibrillationIschemia'
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/atrialFibrillationIschemia/atrialFibrillationIschemia'
+      })
     })
+  },
+  checklogin(call){
+    if(!this.data.userHasLogin){
+      wx.showModal({
+        title:'提示',
+        content:'健康自测需要您登录后才能使用，是否为您跳转到登录页面？',
+        success(res){
+          if(res.confirm){
+            wx.switchTab({
+              url:'../my/my'
+            })
+          }
+        }
+      })
+    }else{
+      call();
+    }
   }
 })

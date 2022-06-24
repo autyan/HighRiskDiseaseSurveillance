@@ -16,7 +16,6 @@ Page({
    */
   data: {
     loginUser: {},
-    hasUserInfo: false,
     canIUseGetUserProfile: false,
     distributor: null
   },
@@ -25,36 +24,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let me = this;
+    this.loadUser();
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       });
     };
-    var distributorId = wx.getStorageSync('distributor');
-    if(distributorId){
-      this.setData({
-        distributor: distributorId
-      })
-    }
-    wx.checkSession({
-      success: function () {
-        wx.getStorage({
-          key: "me", // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
-          success(res) {
-            if (res.data != null && new Date(res.data.expiresAt) > new Date()) {
-              me.setData({
-                loginUser: res.data.userInfo,
-                hasUserInfo: true
-              });
-            }
-          }
-        });
-      },
-      fail: function () {
-
-      },
-    });
   },
 
   /**
@@ -105,40 +80,23 @@ Page({
   onShareAppMessage() {
 
   },
+  loadUser() {
+    let me = this;
+    hdService.loadUserInfo(function () {
+      me.setData({
+        loginUser: hdService.loginUser
+      });
+    });
+  },
   userLogin(userInfo) {
     let me = this;
-    wx.login({
-      success(res) {
-        if (res.code) {
-          let par = {
-            Code: res.code,
-            NickName: userInfo.nickName,
-            AvatarUrl: userInfo.avatarUrl,
-            DistributorId: me.data.distributor
-          };
-          hdService.request("/api/auth", par, "POST").then((response) => {
-            // 开启加密存储
-            wx.setStorage({
-              key: "me",
-              data: response, // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
-              success() {
-                wx.getStorage({
-                  key: "me", // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
-                  success(res) {
-                    hdService.token = res.data.accessToken;
-                    me.setData({
-                      loginUser: res.data.userInfo,
-                      hasUserInfo: true
-                    });
-                  }
-                });
-              }
-            });
-          });
-        } else {
-          console.log('登录失败！' + res.errMsg);
-        }
-      }
+    var par = {
+      nickName: userInfo.nickName,
+      avatar: userInfo.avatarUrl
+    }
+    hdService.request("/api/user/syncwechatprofile", par, "POST").then((response) => {
+      wx.removeStorageSync('me');
+      me.loadUser();
     });
   },
   getUserProfile(e) {
@@ -157,7 +115,7 @@ Page({
       url: '/pages/records/records'
     })
   },
-  toqrCode(){
+  toqrCode() {
     wx.navigateTo({
       url: '/pages/distributorQrCode/distributorQrCode'
     })

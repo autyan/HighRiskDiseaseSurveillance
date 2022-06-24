@@ -43,6 +43,7 @@ background-color: #F6F6F6;
   color:#fff;
   font-size:32rpx;
   display: flex;
+  flex-direction: column;
 }
 
 .userinfo-nickname{
