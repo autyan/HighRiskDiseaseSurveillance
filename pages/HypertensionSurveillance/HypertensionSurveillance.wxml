@@ -462,7 +462,7 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{ 50 >= score > 25  }}">
+    <view wx:if="{{ score <= 50 && score > 25  }}">
       <View class="score">您的当前评分：{{score}}/100</View>
       <view class="score">危险评级：中危</view>
       <view>
@@ -480,7 +480,7 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{ 75 >= score > 50  }}">
+    <view wx:if="{{ score <= 75 && score > 50  }}">
       <View class="score">您的当前评分：{{score}}/100</View>
       <view class="score">危险评级 :高危</view>
       <view>

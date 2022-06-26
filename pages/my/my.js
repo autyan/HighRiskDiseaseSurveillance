@@ -95,8 +95,10 @@ Page({
       avatar: userInfo.avatarUrl
     }
     hdService.request("/api/user/syncwechatprofile", par, "POST").then((response) => {
-      wx.removeStorageSync('me');
-      me.loadUser();
+      hdService.updateUserInfo(response);
+      this.setData({
+        loginUser: response
+      });
     });
   },
   getUserProfile(e) {

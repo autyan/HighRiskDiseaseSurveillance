@@ -77,16 +77,25 @@ if (typeof __wxConfig == "object") {
     });
     cloud.init();
     serviceCall = function (url, data, method, tokenType, token, resolve, reject) {
+      var header = null;
+      if (token.length > 0) {
+        header = {
+          "X-WX-SERVICE": "dotnet-0ngd",
+          'Content-type': 'application/json',
+          'Authorization': tokenType + token
+        };
+      } else {
+        header = {
+          "X-WX-SERVICE": "dotnet-0ngd",
+          'Content-type': 'application/json'
+        };
+      }
       cloud.callContainer({
         "config": {
           "env": "prod-0g7y3h923f261408"
         },
         "path": url,
-        "header": {
-          "X-WX-SERVICE": "dotnet-0ngd",
-          'Content-type': 'application/json',
-          'Authorization': tokenType + token
-        },
+        "header": header,
         "method": method,
         "data": data,
         "success": function (res) {
@@ -126,6 +135,17 @@ module.exports = {
       }
       this.serviceCall(url, data, method, me.tokenType, token, resolve, reject);
     })
+  },
+  logout(){
+    wx.removeStorageSync('me');
+    this.loginUser = null;
+    this.token = null;
+  },
+  updateUserInfo(userInfo){
+    var loginUser = wx.getStorageSync("me");
+    loginUser.userInfo = userInfo;
+    wx.setStorageSync("me", loginUser);
+    this.loginUser = userInfo;
   },
   loadUserInfo(call) {
     let service = this;

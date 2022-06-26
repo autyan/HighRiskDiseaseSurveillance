@@ -131,7 +131,6 @@ Page({
       if (this.data.id != null && this.data.id.length > 0) {
         let me = this;
         hdService.request("/api/record/" + this.data.id, "GET").then((response) => {
-          console.log(response);
           me.setData({
             formData: JSON.parse(response.surveillanceContent),
             score: response.score
