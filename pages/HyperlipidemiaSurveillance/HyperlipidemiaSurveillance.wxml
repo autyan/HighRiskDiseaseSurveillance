@@ -3,77 +3,42 @@
   <mp-form id="form" rules="{{rules}}" models="{{formData}}">
     <mp-cells title="基本信息">
       <mp-cell prop="age" title="年龄">
-        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
-        <input wx:else bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
       </mp-cell>
       <mp-cell prop="height" title="身高(cm)">
-        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
-        <input wx:else bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
       </mp-cell>
       <mp-cell prop="weight" title="体重(kg)">
-        <input wx:if="{{mode == 'readonly'}}" disabled="true" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
-        <input wx:else bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
       </mp-cell>
     </mp-cells>
     <mp-cells title="性别">
-      <radio-group wx:if="{{mode == 'readonly'}}" bindchange="genderChange">
+      <radio-group bindchange="genderChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio wx:if="{{formData.gender == '0'}}" disabled="true" value="0" checked="true" />
-            <radio wx:else disabled="true" value="0" />
+            <radio value="0" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '0'}}"/>
           </view>
           <view class="weui-cell__bd">男</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio wx:if="{{formData.gender == '1'}}" disabled="true" value="1" checked="true" />
-            <radio wx:else disabled="true" value="1" />
-          </view>
-          <view class="weui-cell__bd">女</view>
-        </label>
-      </radio-group>
-      <radio-group wx:else bindchange="genderChange">
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <radio value="0" />
-          </view>
-          <view class="weui-cell__bd">男</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <radio value="1" />
+            <radio value="1" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '1'}}"/>
           </view>
           <view class="weui-cell__bd">女</view>
         </label>
       </radio-group>
     </mp-cells>
     <mp-cells title="生活习惯">
-      <radio-group wx:if="{{mode == 'readonly'}}" bindchange="smokeChange">
+      <radio-group bindchange="smokeChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio wx:if="{{formData.smoke == true }}" disabled="true" value="true" checked="true" />
-            <radio wx:else disabled="true" value="true" />
+            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke}}"/>
           </view>
           <view class="weui-cell__bd">有吸烟史</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio wx:if="{{formData.smoke == false }}" disabled="true" value="false" checked="true" />
-            <radio wx:else disabled="true" value="false" />
-          </view>
-          <view class="weui-cell__bd">无吸烟史</view>
-        </label>
-      </radio-group>
-      <radio-group wx:else bindchange="smokeChange">
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <radio value="0" />
-          </view>
-          <view class="weui-cell__bd">有吸烟史</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <radio value="1" />
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{!formData.smoke}}"/>
           </view>
           <view class="weui-cell__bd">无吸烟史</view>
         </label>
@@ -124,190 +89,90 @@
       </mp-cell>
     </mp-cells>
     <mp-cells title="基础疾病（多选）">
-      <checkbox-group wx:if="{{mode == 'readonly'}}">
+      <checkbox-group bindchange="onDiseaseChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.hypertension}}" disabled="true" value="hypertension" checked="true" />
-            <checkbox wx:else disabled="true" value="hypertension" />
+            <checkbox value="hypertension" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.hypertension}}" />
           </view>
           <view class="weui-cell__bd">高血压</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.diabetes}}" disabled="true" value="diabetes" checked="true" />
-            <checkbox wx:else disabled="true" value="diabetes" />
+            <checkbox value="diabetes" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.diabetes}}" />
           </view>
           <view class="weui-cell__bd">糖尿病</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.acuteMyocardialInfarction}}" disabled="true" value="acuteMyocardialInfarction" checked="true" />
-            <checkbox wx:else disabled="true" value="acuteMyocardialInfarction" />
+            <checkbox value="acuteMyocardialInfarction" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.acuteMyocardialInfarction}}" />
           </view>
           <view class="weui-cell__bd">急性心肌梗死</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.unstableAngina}}" disabled="true" value="unstableAngina" checked="true" />
-            <checkbox wx:else disabled="true" value="unstableAngina" />
+            <checkbox value="unstableAngina" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.unstableAngina}}" />
           </view>
           <view class="weui-cell__bd">不稳定性心绞痛</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" disabled="true" value="stableCoronaryHeartDisease" checked="true" />
-            <checkbox wx:else disabled="true" value="stableCoronaryHeartDisease" />
+            <checkbox value="stableCoronaryHeartDisease" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.stableCoronaryHeartDisease}}" />
           </view>
           <view class="weui-cell__bd">稳定性冠心病</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" disabled="true" value="afterRevascularization" checked="true" />
-            <checkbox wx:else disabled="true" value="afterRevascularization" />
+            <checkbox value="afterRevascularization" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.afterRevascularization}}" />
           </view>
           <view class="weui-cell__bd">血运重建术后</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.ischemicCardiomyopathy}}" disabled="true" value="ischemicCardiomyopathy" checked="true" />
-            <checkbox wx:else disabled="true" value="ischemicCardiomyopathy" />
+            <checkbox value="ischemicCardiomyopathy" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.ischemicCardiomyopathy}}" />
           </view>
           <view class="weui-cell__bd">缺血性心肌病</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.ischemicStroke}}" disabled="true" value="ischemicStroke" checked="true" />
-            <checkbox wx:else disabled="true" value="ischemicStroke" />
+            <checkbox value="ischemicStroke" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.ischemicStroke}}" />
           </view>
           <view class="weui-cell__bd">缺血性卒中</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.transientIschemicAttack}}" disabled="true" value="transientIschemicAttack" checked="true" />
-            <checkbox wx:else disabled="true" value="transientIschemicAttack" />
+            <checkbox value="transientIschemicAttack" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.transientIschemicAttack}}" />
           </view>
           <view class="weui-cell__bd">短暂性脑缺血发作</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.carotidArteryStenosis}}" disabled="true" value="carotidArteryStenosis" checked="true" />
-            <checkbox wx:else disabled="true" value="carotidArteryStenosis" />
+            <checkbox value="carotidArteryStenosis" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.carotidArteryStenosis}}" />
           </view>
           <view class="weui-cell__bd">颈动脉狭窄</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.renalArteryStenosis}}" disabled="true" value="renalArteryStenosis" checked="true" />
-            <checkbox wx:else disabled="true" value="renalArteryStenosis" />
+            <checkbox value="renalArteryStenosis" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.renalArteryStenosis}}" />
           </view>
           <view class="weui-cell__bd">肾动脉狭窄</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.arterialStenosisInExtremities}}" disabled="true" value="arterialStenosisInExtremities" checked="true" />
-            <checkbox wx:else disabled="true" value="arterialStenosisInExtremities" />
+            <checkbox value="arterialStenosisInExtremities" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.arterialStenosisInExtremities}}" />
           </view>
           <view class="weui-cell__bd">四肢动脉狭窄</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.abdominalAorticAneurysm}}" disabled="true" value="abdominalAorticAneurysm" checked="true" />
-            <checkbox wx:else disabled="true" value="abdominalAorticAneurysm" />
+            <checkbox value="abdominalAorticAneurysm" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.abdominalAorticAneurysm}}" />
           </view>
           <view class="weui-cell__bd">腹主动脉瘤</view>
         </label>
-      </checkbox-group>
-      <checkbox-group wx:else bindchange="onDiseaseChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.hypertension}}" value="hypertension" checked="true" />
-            <checkbox wx:else value="hypertension" />
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.none}}" />
           </view>
-          <view class="weui-cell__bd">高血压</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.diabetes}}" value="diabetes" checked="true" />
-            <checkbox wx:else value="diabetes" />
-          </view>
-          <view class="weui-cell__bd">糖尿病</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.acuteMyocardialInfarction}}" value="acuteMyocardialInfarction" checked="true" />
-            <checkbox wx:else value="acuteMyocardialInfarction" />
-          </view>
-          <view class="weui-cell__bd">急性心肌梗死</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.unstableAngina}}" value="unstableAngina" checked="true" />
-            <checkbox wx:else value="unstableAngina" />
-          </view>
-          <view class="weui-cell__bd">不稳定性心绞痛</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.stableCoronaryHeartDisease}}" value="stableCoronaryHeartDisease" checked="true" />
-            <checkbox wx:else value="stableCoronaryHeartDisease" />
-          </view>
-          <view class="weui-cell__bd">稳定性冠心病</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.afterRevascularization}}" value="afterRevascularization" checked="true" />
-            <checkbox wx:else value="afterRevascularization" />
-          </view>
-          <view class="weui-cell__bd">血运重建术后</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.ischemicCardiomyopathy}}" value="ischemicCardiomyopathy" checked="true" />
-            <checkbox wx:else value="ischemicCardiomyopathy" />
-          </view>
-          <view class="weui-cell__bd">缺血性心肌病</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.ischemicStroke}}" value="ischemicStroke" checked="true" />
-            <checkbox wx:else value="ischemicStroke" />
-          </view>
-          <view class="weui-cell__bd">缺血性卒中</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.transientIschemicAttack}}" value="transientIschemicAttack" checked="true" />
-            <checkbox wx:else value="transientIschemicAttack" />
-          </view>
-          <view class="weui-cell__bd">短暂性脑缺血发作</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.carotidArteryStenosis}}" value="carotidArteryStenosis" checked="true" />
-            <checkbox wx:else value="carotidArteryStenosis" />
-          </view>
-          <view class="weui-cell__bd">颈动脉狭窄</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.renalArteryStenosis}}" value="renalArteryStenosis" checked="true" />
-            <checkbox wx:else value="renalArteryStenosis" />
-          </view>
-          <view class="weui-cell__bd">肾动脉狭窄</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.arterialStenosisInExtremities}}" value="arterialStenosisInExtremities" checked="true" />
-            <checkbox wx:else value="arterialStenosisInExtremities" />
-          </view>
-          <view class="weui-cell__bd">四肢动脉狭窄</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox wx:if="{{formData.basicDisease.abdominalAorticAneurysm}}" value="abdominalAorticAneurysm" checked="true" />
-            <checkbox wx:else value="abdominalAorticAneurysm" />
-          </view>
-          <view class="weui-cell__bd">腹主动脉瘤</view>
+          <view class="weui-cell__bd">以上皆无</view>
         </label>
       </checkbox-group>
     </mp-cells>

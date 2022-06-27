@@ -11,28 +11,32 @@ Page({
     formData: {
       basicActivity: {
         walk:false,
-        climbStairs: false
+        climbStairs: false,
+        none: false
       },
       commonActivity:{
         briskWalk:false,
         walkAfterMeal:false,
         walkInWind:false,
         walkOverRange:false,
-        goUpOneStairs:false
+        goUpOneStairs:false,
+        none: false
       },
       normalActivity:{
         walkOverRange:false,
         goUpOneStairs:false,
         walkOnGround:false,
         houseClean:false,
-        babySet:false
+        babySet:false,
+        none: false
       },
       casualActivity:{
         metting:false,
         driving:false,
         typing:false,
         listenMusic:false,
-        painting:false
+        painting:false,
+        none: false
       }
     }
   },
@@ -119,6 +123,7 @@ Page({
     })
   },
   onBasicActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.basicActivity) {
       let keyName = 'formData.basicActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -133,6 +138,7 @@ Page({
     }
   },
   onCommonActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.commonActivity) {
       let keyName = 'formData.commonActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -147,6 +153,7 @@ Page({
     }
   },
   onNormalActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.normalActivity) {
       let keyName = 'formData.normalActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -184,5 +191,16 @@ Page({
         url: '/pages/records/records'
       })
     });
+  },
+  filterNoneValues(values) {
+    let lastChoice = values[values.length - 1];
+    if (lastChoice == 'none') {
+      values = ['none'];
+    } else {
+      values = values.filter(function (item) {
+        return item != 'none';
+      });
+    }
+    return values;
   }
 })

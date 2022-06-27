@@ -34,7 +34,8 @@ Page({
         carotidArteryStenosis: false,
         renalArteryStenosis: false,
         arterialStenosisInExtremities: false,
-        abdominalAorticAneurysm: false
+        abdominalAorticAneurysm: false,
+        none: false
       }
     },
     rules: [{
@@ -229,9 +230,17 @@ Page({
     this.setData({
       'formData.smoke': e.detail.value == 'true'
     })
-    console.log(this.data.formData);
   },
   onDiseaseChange(e) {
+    let lastChoice = e.detail.value[e.detail.value.length -1];
+    if(lastChoice == 'none'){
+      e.detail.value = ['none'];
+    }
+    else{
+      e.detail.value = e.detail.value.filter(function(item){
+        return item != 'none';
+      });
+    }
     for (var prop in this.data.formData.basicDisease) {
       let keyName = 'formData.basicDisease.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {

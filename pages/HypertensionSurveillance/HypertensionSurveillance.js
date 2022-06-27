@@ -26,7 +26,8 @@ Page({
         impairedSugarAdhesion: false,
         abnormalFastingBloodGlucose: false,
         familyHistoryOfEarlyonsetCardiovascularDisease: false,
-        hyperhomocysteine: false
+        hyperhomocysteine: false,
+        none: false
       },
       concomitantClinicalDisorders: {
         cerebralHaemorrhage: false,
@@ -42,12 +43,14 @@ Page({
         aorticDissection: false,
         peripheralVascularDisease: false,
         severeHypertensiveRetinopathy: false,
-        diabetes: false
+        diabetes: false,
+        none: false
       },
       targetOrganDamage: {
         leftVentricularHypertrophy: false,
         atheroscleroticPlaques: false,
-        retinalArteryFocalPointOrExtensiveStenosis: false
+        retinalArteryFocalPointOrExtensiveStenosis: false,
+        none: false
       }
     },
     rules: [{
@@ -264,6 +267,8 @@ Page({
     }
   },
   onRiskFactorsChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
+    console.log(e.detail.value);
     for (var prop in this.data.formData.riskFactors) {
       let keyName = 'formData.riskFactors.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -278,6 +283,7 @@ Page({
     }
   },
   onConcomitantClinicalDisordersChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.concomitantClinicalDisorders) {
       let keyName = 'formData.concomitantClinicalDisorders.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -292,6 +298,7 @@ Page({
     }
   },
   onTargetOrganDamageChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.targetOrganDamage) {
       let keyName = 'formData.targetOrganDamage.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -304,5 +311,16 @@ Page({
         })
       }
     }
+  },
+  filterNoneValues(values) {
+    let lastChoice = values[values.length - 1];
+    if (lastChoice == 'none') {
+      values = ['none'];
+    } else {
+      values = values.filter(function (item) {
+        return item != 'none';
+      });
+    }
+    return values;
   }
 })

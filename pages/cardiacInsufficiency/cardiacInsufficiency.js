@@ -13,24 +13,28 @@ Page({
         mountainClimbingWithHeavy:false,
         basketBall: false,
         mountainClimbing:false,
-        footBall:false
+        footBall:false,
+        none: false
       },
       hardActivity:{
         walkWithLoad:false,
         weeding:false,
-        riding:false
+        riding:false,
+        none: false
       },
       normalActivity:{
         walkOnWater:false,
         houseClean:false,
-        babySet:false
+        babySet:false,
+        none: false
       },
       casualActivity:{
         layOff:false,
         resting:false,
         bloodPressurePoor:false,
         bloodPressureLow:false,
-        intravenousInjection:false
+        intravenousInjection:false,
+        none: false
       }
     }
   },
@@ -117,8 +121,9 @@ Page({
     })
   },
   onHeavyActivityChange(e) {
-    for (var prop in this.data.formData.basicActivity) {
-      let keyName = 'formData.basicActivity.' + prop;
+    e.detail.value = this.filterNoneValues(e.detail.value);
+    for (var prop in this.data.formData.heavyActivity) {
+      let keyName = 'formData.heavyActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
         this.setData({
           [keyName]: true
@@ -131,6 +136,7 @@ Page({
     }
   },
   onHardActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.hardActivity) {
       let keyName = 'formData.hardActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -145,6 +151,7 @@ Page({
     }
   },
   onNormalActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.normalActivity) {
       let keyName = 'formData.normalActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -159,6 +166,7 @@ Page({
     }
   },
   onCasualActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.casualActivity) {
       let keyName = 'formData.casualActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -182,5 +190,16 @@ Page({
         url: '/pages/records/records'
       })
     });
+  },
+  filterNoneValues(values) {
+    let lastChoice = values[values.length - 1];
+    if (lastChoice == 'none') {
+      values = ['none'];
+    } else {
+      values = values.filter(function (item) {
+        return item != 'none';
+      });
+    }
+    return values;
   }
 })
