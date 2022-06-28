@@ -38,7 +38,7 @@
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{!formData.smoke}}"/>
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}"/>
           </view>
           <view class="weui-cell__bd">无吸烟史</view>
         </label>
@@ -106,13 +106,7 @@
           <view class="weui-cell__hd">
             <checkbox value="acuteMyocardialInfarction" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.acuteMyocardialInfarction}}" />
           </view>
-          <view class="weui-cell__bd">急性心肌梗死</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox value="unstableAngina" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.unstableAngina}}" />
-          </view>
-          <view class="weui-cell__bd">不稳定性心绞痛</view>
+          <view class="weui-cell__bd">急性冠状动脉综合征</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">

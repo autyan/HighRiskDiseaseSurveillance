@@ -8,6 +8,41 @@ Page({
   data: {
     mode: 'edit',
     formData:{
+      basicHealthy:{
+        hypertension:false,
+        stroke:false,
+        overAge:false,
+        none:false
+      },
+      abnormalkidneyFunction:{
+        chronicDialysis:false,
+        kidneyTransplant:false,
+        serumCreatinine:false,
+        none:false
+      },
+      abnormalLiverFunction:{
+        chronicLiverDisease:false,
+        bilirubin:false,
+        none:false
+      },
+      bleeding:{
+        historyOfBleeding:false,
+        bleedingConstitution:false,
+        anemia:false,
+        none:false
+      },
+      inrUnstable:{
+        volatile:false,
+        high:false,
+        outOfRange:false,
+        none:false
+      },
+      drugs:{
+        antiplateletDrugs:false,
+        nonsteroidalDrugs:false,
+        alcoholism:false,
+        none:false
+      }
     }
   },
 
@@ -82,6 +117,7 @@ Page({
 
   },
   onbasicHealthyChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.basicHealthy) {
       let keyName = 'formData.basicHealthy.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -96,6 +132,7 @@ Page({
     }
   },
   onabnormalkidneyFunctionChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.abnormalkidneyFunction) {
       let keyName = 'formData.abnormalkidneyFunction.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -110,6 +147,7 @@ Page({
     }
   },
   onbleedingChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.bleeding) {
       let keyName = 'formData.bleeding.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -124,6 +162,7 @@ Page({
     }
   },
   oninrUnstableChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.inrUnstable) {
       let keyName = 'formData.inrUnstable.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -138,6 +177,7 @@ Page({
     }
   },
   ondrugsChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.drugs) {
       let keyName = 'formData.drugs.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -152,6 +192,7 @@ Page({
     }
   },
   onabnormalLiverFunctionChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.abnormalLiverFunction) {
       let keyName = 'formData.abnormalLiverFunction.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -175,5 +216,16 @@ Page({
         url: '/pages/records/records'
       })
     });
+  },
+  filterNoneValues(values) {
+    let lastChoice = values[values.length - 1];
+    if (lastChoice == 'none') {
+      values = ['none'];
+    } else {
+      values = values.filter(function (item) {
+        return item != 'none';
+      });
+    }
+    return values;
   }
 })

@@ -15,7 +15,8 @@ Page({
       historyOfPreviousStrokeOrThrombosis:false,
       vascularDisease:false,
       ageAmount:false,
-      female:false
+      female:false,
+      none:false
     }
   },
 
@@ -90,6 +91,8 @@ Page({
 
   },
   onformDataChange(e){
+    e.detail.value = this.filterNoneValues(e.detail.value);
+    console.log(e.detail.value);
     for (var prop in this.data.formData) {
       let keyName = 'formData.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -113,5 +116,16 @@ Page({
         url: '/pages/records/records'
       })
     });
+  },
+  filterNoneValues(values) {
+    let lastChoice = values[values.length - 1];
+    if (lastChoice == 'none') {
+      values = ['none'];
+    } else {
+      values = values.filter(function (item) {
+        return item != 'none';
+      });
+    }
+    return values;
   }
 })

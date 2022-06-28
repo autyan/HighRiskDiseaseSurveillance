@@ -163,7 +163,7 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="elevatedSerumCreatinine" checked="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" />
           </view>
-          <view class="weui-cell__bd">血肌酐升高 > 177ummol/L</view>
+          <view class="weui-cell__bd">血清肌酐轻度升高：男性（115-133 umol/L）, 女性（107-124 umol/L）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -203,13 +203,13 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}"  value="leftVentricularHypertrophy" checked="{{formData.targetOrganDamage.leftVentricularHypertrophy}}" />
           </view>
-          <view class="weui-cell__bd">左心室肥厚（心电图或超声心电图）</view>
+          <view class="weui-cell__bd">左心室肥厚（左室高电压或心脏超声左室前间壁>11mm）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="atheroscleroticPlaques" checked="{{formData.targetOrganDamage.atheroscleroticPlaques}}" />
           </view>
-          <view class="weui-cell__bd">劲动脉超声或X线证实有动脉粥样斑块（颈、髂、股或主动脉）</view>
+          <view class="weui-cell__bd">颈动脉超声内膜中层厚度>0.9mm 或动脉粥样斑块</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">

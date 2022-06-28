@@ -48,41 +48,66 @@ page {
     margin: 25rpx 0;
   }
 
-  .score{
-    display:flex;
-    margin-top: 20rpx;
+  .score {
+    display: flex;
+    margin: 20rpx;
     align-items: center;
     justify-content: center;
   }
-
-  .lowRisk{
-    color: green;
-    padding: 0 40rpx;
-    display:flex;
-    align-items: center;
+  
+  .lowRisk {
+    background-color: green;
+    width: 240rpx;
+    height: 40rpx;
+    display: flex;
     justify-content: center;
+    color: black;
   }
-
-  .mediumRisk{
-    color:blue;
-    padding: 0 40rpx;
-    display:flex;
-    align-items: center;
+  
+  .mediumRisk {
+    background-color: yellow;
+    width: 240rpx;
+    height: 40rpx;
+    display: flex;
     justify-content: center;
+    color: blakc;
   }
-
-  .highRisk{
-    color:orange;
-    padding: 0 40rpx;
-    display:flex;
-    align-items: center;
+  
+  .highRisk {
+    background-color: orange;
+    width: 240rpx;
+    height: 40rpx;
+    display: flex;
     justify-content: center;
+    color: black;
   }
-
+  
   .extremeHighRisk {
-    color: red;
-    padding: 0 40rpx;
-    display:flex;
-    align-items: center;
+    background-color: red;
+    width: 240rpx;
+    height: 40rpx;
+    display: flex;
     justify-content: center;
+    color: black;
+  }
+    
+  .riskBar {
+    width: 480rpx;
+    margin: auto;
+    display: flex;
+    margin-top: 30rpx;
+  }
+  
+  .riskMark {
+    width: 240rpx;
+    height: 40rpx;
+  }
+  
+  .active {
+    width: 0;
+    height: 0;
+    border-left: 60rpx solid transparent;
+    border-right: 60rpx solid transparent;
+    border-top: 40rpx solid black;
+    margin-left: 60rpx;
   }
