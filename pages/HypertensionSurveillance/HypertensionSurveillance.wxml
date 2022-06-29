@@ -149,21 +149,21 @@
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="atrialFibrillation" checked="{{formData.concomitantClinicalDisorders.atrialFibrillation}}" />
+          </view>
+          <view class="weui-cell__bd">新房颤动</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="diabeticNephropathy" checked="{{formData.concomitantClinicalDisorders.diabeticNephropathy}}" />
           </view>
           <view class="weui-cell__bd">糖尿病肾病</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox disabled="{{mode == 'readonly'}}" value="impairedRenalFunction" checked="{{formData.concomitantClinicalDisorders.impairedRenalFunction}}" />
-          </view>
-          <view class="weui-cell__bd">肾功能受损</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="elevatedSerumCreatinine" checked="{{formData.concomitantClinicalDisorders.elevatedSerumCreatinine}}" />
           </view>
-          <view class="weui-cell__bd">血清肌酐轻度升高：男性（115-133 umol/L）, 女性（107-124 umol/L）</view>
+          <view class="weui-cell__bd">血肌酐（Cr）升高（男性>133umol/L ,女性>124umol/L）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -181,7 +181,25 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="severeHypertensiveRetinopathy" checked="{{formData.concomitantClinicalDisorders.severeHypertensiveRetinopathy}}" />
           </view>
-          <view class="weui-cell__bd">重度高血压性视网膜病变</view>
+          <view class="weui-cell__bd">视网膜出血、渗出或水肿</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="fastingBloodGlucose" checked="{{formData.concomitantClinicalDisorders.fastingBloodGlucose}}" />
+          </view>
+          <view class="weui-cell__bd">空腹血糖≥7.0mmol/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bloodGlucose2HoursAfterAMeal" checked="{{formData.concomitantClinicalDisorders.bloodGlucose2HoursAfterAMeal}}" />
+          </view>
+          <view class="weui-cell__bd">餐后2小时血糖≥11.1mmol/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="glycosylatedHemoglobin" checked="{{formData.concomitantClinicalDisorders.glycosylatedHemoglobin}}" />
+          </view>
+          <view class="weui-cell__bd">糖化血红蛋白≥6.5%</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">

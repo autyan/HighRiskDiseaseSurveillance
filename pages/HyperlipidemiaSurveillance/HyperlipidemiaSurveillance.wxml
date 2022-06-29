@@ -106,7 +106,7 @@
           <view class="weui-cell__hd">
             <checkbox value="acuteMyocardialInfarction" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.acuteMyocardialInfarction}}" />
           </view>
-          <view class="weui-cell__bd">急性冠状动脉综合征</view>
+          <view class="weui-cell__bd">急性心肌梗死</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
