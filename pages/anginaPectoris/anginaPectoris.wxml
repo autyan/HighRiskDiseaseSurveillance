@@ -57,7 +57,7 @@
             <view class="weui-cell__hd">
               <checkbox disabled="{{mode == 'readonly'}}" value="walkOverRange" checked="{{formData.normalActivity.walkOverRange}}" />
             </view>
-            <view class="weui-cell__bd">一般速度平地步行100~200m</view>
+            <view class="weui-cell__bd">一般速度(1.2-1.5 m/s)平地步行100~200米</view>
           </label>
           <label class="weui-cell weui-check__label">
             <view class="weui-cell__hd">
@@ -101,7 +101,7 @@
             <view class="weui-cell__hd">
               <checkbox disabled="{{mode == 'readonly'}}" value="briskWalk" checked="{{formData.commonActivity.briskWalk}}" />
             </view>
-            <view class="weui-cell__bd">快步行走或上楼、登高</view>
+            <view class="weui-cell__bd">快步行走(>1.5 米/秒)或上楼、登高</view>
           </label>
           <label class="weui-cell weui-check__label">
             <view class="weui-cell__hd">
@@ -119,7 +119,7 @@
             <view class="weui-cell__hd">
               <checkbox disabled="{{mode == 'readonly'}}" value="walkOverRange" checked="{{formData.commonActivity.walkOverRange}}" />
             </view>
-            <view class="weui-cell__bd">一般速度平地步行200m以上</view>
+            <view class="weui-cell__bd">一般速度（1.2-1.5 米/秒）平地步行200米以上</view>
           </label>
           <label class="weui-cell weui-check__label">
             <view class="weui-cell__hd">
@@ -145,7 +145,7 @@
             <view class="weui-cell__hd">
               <checkbox disabled="{{mode == 'readonly'}}" value="walk" checked="{{formData.basicActivity.walk}}" />
             </view>
-            <view class="weui-cell__bd">正常行走（一般速度）</view>
+            <view class="weui-cell__bd">正常行走（1.2-1.5 米/秒）</view>
           </label>
           <label class="weui-cell weui-check__label">
             <view class="weui-cell__hd">

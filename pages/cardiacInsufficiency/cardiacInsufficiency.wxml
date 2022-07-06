@@ -23,7 +23,25 @@
           </label>
           <label class="weui-cell weui-check__label">
             <view class="weui-cell__hd">
-              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithBp" checked="{{formData.casualActivity.restingWithBp}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且血压（BP）小于 90/60 mmHg）</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithDbpOrSbp" checked="{{formData.casualActivity.restingWithDbpOrSbp}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且收缩压(90-120)/舒张压（60-70） mmHg）</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithDrug" checked="{{formData.casualActivity.restingWithDrug}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且需要静脉用</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.casualActivity.none}}" />
             </view>
             <view class="weui-cell__bd">以上皆无</view>
           </label>

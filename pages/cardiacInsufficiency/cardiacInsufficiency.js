@@ -33,9 +33,9 @@ Page({
       casualActivity:{
         layOff:false,
         resting:false,
-        bloodPressurePoor:false,
-        bloodPressureLow:false,
-        intravenousInjection:false,
+        restingWithBp:false,
+        restingWithDbpOrSbp:false,
+        restingWithDrug:false,
         none: false
       }
     }

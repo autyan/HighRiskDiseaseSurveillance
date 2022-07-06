@@ -75,7 +75,7 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="impairedSugarAdhesion" checked="{{formData.riskFactors.impairedSugarAdhesion}}" />
           </view>
-          <view class="weui-cell__bd">糖附量受损（2小时血糖7.8-11.0 mmol/L）</view>
+          <view class="weui-cell__bd">糖耐量受损（2小时血糖7.8-11.0 mmol/L）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
