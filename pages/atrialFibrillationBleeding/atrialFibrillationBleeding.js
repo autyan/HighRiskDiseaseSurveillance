@@ -7,6 +7,7 @@ Page({
    */
   data: {
     mode: 'edit',
+    score:null,
     formData:{
       basicHealthy:{
         hypertension:false,
@@ -22,7 +23,9 @@ Page({
       },
       abnormalLiverFunction:{
         chronicLiverDisease:false,
-        bilirubin:false,
+        bilirubinOne:false,
+        bilirubinTwo:false,
+        bilirubinThree:false,
         none:false
       },
       bleeding:{
@@ -39,7 +42,6 @@ Page({
       },
       drugs:{
         antiplateletDrugs:false,
-        nonsteroidalDrugs:false,
         alcoholism:false,
         none:false
       }

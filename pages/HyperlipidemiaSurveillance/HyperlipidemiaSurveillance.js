@@ -25,6 +25,7 @@ Page({
         hypertension: false,
         diabetes: false,
         acuteMyocardialInfarction: false,
+        unstableAngina: false,
         stableCoronaryHeartDisease: false,
         afterRevascularization: false,
         ischemicCardiomyopathy: false,

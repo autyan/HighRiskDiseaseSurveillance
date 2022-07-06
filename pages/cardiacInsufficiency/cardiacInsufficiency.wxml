@@ -7,6 +7,96 @@
     </view>
     <h2 class="title" wx:if="{{step == 1 && mode != 'readonly'}}"> 1/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
     <view wx:if="{{step == 1 || mode == 'readonly'}}">
+      <mp-cells title="没有任何体力活动，休息时也会出现胸闷，气喘等心衰症状">
+        <checkbox-group bindchange="onCasualActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="layOff" checked="{{formData.casualActivity.layOff}}" />
+            </view>
+            <view class="weui-cell__bd">不能平躺</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="resting" checked="{{formData.casualActivity.resting}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">提交</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 2 && mode != 'readonly'}}"> 2/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 2 || mode == 'readonly'}}">
+      <mp-cells title="体力活动明显受限，休息时无症状，轻微活动极氪出现胸闷，气喘等症状">
+        <checkbox-group bindchange="onNormalActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkOnWater" checked="{{formData.normalActivity.walkOnWater}}" />
+            </view>
+            <view class="weui-cell__bd">在水面上行走</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="houseClean" checked="{{formData.normalActivity.houseClean}}" />
+            </view>
+            <view class="weui-cell__bd">打扫卫生</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="babySet" checked="{{formData.normalActivity.babySet}}" />
+            </view>
+            <view class="weui-cell__bd">看护小孩</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 3 && mode != 'readonly'}}"> 3/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 3 || mode == 'readonly'}}">
+      <mp-cells title="体力活动轻度受限，休息时无症状">
+        <checkbox-group bindchange="onHardActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkWithLoad" checked="{{formData.hardActivity.walkWithLoad}}" />
+            </view>
+            <view class="weui-cell__bd">负重行走</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="weeding" checked="{{formData.hardActivity.weeding}}" />
+            </view>
+            <view class="weui-cell__bd">除草</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="riding" checked="{{formData.hardActivity.riding}}" />
+            </view>
+            <view class="weui-cell__bd">骑自行车</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.hardActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 4 && mode != 'readonly'}}"> 4/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 4 || mode == 'readonly'}}">
       <mp-cells title="体力活动不受限">
         <checkbox-group bindchange="onHeavyActivityChange">
           <label class="weui-cell weui-check__label">
@@ -42,96 +132,6 @@
         </checkbox-group>
       </mp-cells>
       <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
-    </view>
-    <h2 class="title" wx:if="{{step == 2 && mode != 'readonly'}}"> 2/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
-    <view wx:if="{{step == 2 || mode == 'readonly'}}">
-      <mp-cells title="体力活动轻度受限，休息时无症状">
-        <checkbox-group bindchange="onHardActivityChange">
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="walkWithLoad" checked="{{formData.hardActivity.walkWithLoad}}" />
-            </view>
-            <view class="weui-cell__bd">负重行走</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="weeding" checked="{{formData.hardActivity.weeding}}" />
-            </view>
-            <view class="weui-cell__bd">除草</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="riding" checked="{{formData.hardActivity.riding}}" />
-            </view>
-            <view class="weui-cell__bd">骑自行车</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.hardActivity.none}}" />
-            </view>
-            <view class="weui-cell__bd">以上皆无</view>
-          </label>
-        </checkbox-group>
-      </mp-cells>
-      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
-    </view>
-    <h2 class="title" wx:if="{{step == 3 && mode != 'readonly'}}"> 3/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
-    <view wx:if="{{step == 3 || mode == 'readonly'}}">
-      <mp-cells title="体力活动明显受限，休息时无症状，轻微活动极氪出现胸闷，气喘等症状">
-        <checkbox-group bindchange="onNormalActivityChange">
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="walkOnWater" checked="{{formData.normalActivity.walkOnWater}}" />
-            </view>
-            <view class="weui-cell__bd">在水面上行走</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="houseClean" checked="{{formData.normalActivity.houseClean}}" />
-            </view>
-            <view class="weui-cell__bd">打扫卫生</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="babySet" checked="{{formData.normalActivity.babySet}}" />
-            </view>
-            <view class="weui-cell__bd">看护小孩</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
-            </view>
-            <view class="weui-cell__bd">以上皆无</view>
-          </label>
-        </checkbox-group>
-      </mp-cells>
-      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
-    </view>
-    <h2 class="title" wx:if="{{step == 4 && mode != 'readonly'}}"> 4/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
-    <view wx:if="{{step == 4 || mode == 'readonly'}}">
-      <mp-cells title="没有任何体力活动，休息时也会出现胸闷，气喘等心衰症状">
-        <checkbox-group bindchange="onCasualActivityChange">
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="layOff" checked="{{formData.casualActivity.layOff}}" />
-            </view>
-            <view class="weui-cell__bd">不能平躺</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox disabled="{{mode == 'readonly'}}" value="resting" checked="{{formData.casualActivity.resting}}" />
-            </view>
-            <view class="weui-cell__bd">休息时有症状</view>
-          </label>
-          <label class="weui-cell weui-check__label">
-            <view class="weui-cell__hd">
-              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
-            </view>
-            <view class="weui-cell__bd">以上皆无</view>
-          </label>
-        </checkbox-group>
-      </mp-cells>
-      <button type="primary" bindtap="submit" class="btnNextStep" wx:if="{{mode != 'readonly'}}">提交</button>
     </view>
     <view wx:if="{{mode == 'readonly'}}">
       <view wx:if="{{ score <= 25 }}">

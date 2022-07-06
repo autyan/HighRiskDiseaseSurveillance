@@ -259,15 +259,9 @@ Page({
     })
   },
   smokeChange(e) {
-    if (e.detail.value.length > 0) {
-      this.setData({
-        'formData.smoke': true
-      })
-    } else {
-      this.setData({
-        'formData.smoke': false
-      })
-    }
+    this.setData({
+      'formData.smoke': e.detail.value == 'true'
+    })
   },
   onRiskFactorsChange(e) {
     e.detail.value = this.filterNoneValues(e.detail.value);

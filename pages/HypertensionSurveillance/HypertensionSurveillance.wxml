@@ -41,7 +41,7 @@
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{!formData.smoke}}"/>
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}"/>
           </view>
           <view class="weui-cell__bd">无吸烟史</view>
         </label>
@@ -61,11 +61,11 @@
         <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
       </mp-cell>
       <mp-cell prop="sbp">
-        <view>未治疗时最高收缩压（SBP,mmHg）</view>
+        <view>未治疗时最高收缩压（高压,mmHg）</view>
         <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
       </mp-cell>
       <mp-cell prop="dbp">
-        <view>未治疗时最高舒张压（DBP,mmHg）</view>
+        <view>未治疗时最高舒张压（低压,mmHg）</view>
         <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
       </mp-cell>
     </mp-cells>

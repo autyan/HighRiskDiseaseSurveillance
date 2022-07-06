@@ -16,13 +16,13 @@
       <radio-group bindchange="genderChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="0" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '0'}}"/>
+            <radio value="0" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '0'}}" />
           </view>
           <view class="weui-cell__bd">男</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="1" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '1'}}"/>
+            <radio value="1" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '1'}}" />
           </view>
           <view class="weui-cell__bd">女</view>
         </label>
@@ -32,60 +32,38 @@
       <radio-group bindchange="smokeChange">
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke}}"/>
+            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke}}" />
           </view>
           <view class="weui-cell__bd">有吸烟史</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}"/>
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}" />
           </view>
           <view class="weui-cell__bd">无吸烟史</view>
         </label>
       </radio-group>
     </mp-cells>
-    <mp-cells title="身体指标" wx:if="{{mode == 'readonly'}}">
+    <mp-cells title="身体指标">
       <mp-cell prop="ldl-c">
         <view>低密度脂蛋白（LDL,mmol/L）</view>
-        <input bindinput="formInputChange" disabled="true" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="hdl-c">
         <view>高密度脂蛋白（HDL,mmol/L）</view>
-        <input bindinput="formInputChange" disabled="true" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
       </mp-cell>
       <mp-cell prop="tc">
         <view>总胆固醇（TC,mmol/L）</view>
-        <input bindinput="formInputChange" disabled="true" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
       </mp-cell>
       <mp-cell prop="sbp">
-        <view>未治疗时最高收缩压（SBP,mmHg）</view>
-        <input bindinput="formInputChange" disabled="true" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
+        <view>未治疗时最高收缩压（高压,mmHg）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
       </mp-cell>
       <mp-cell prop="dbp">
-        <view>未治疗时最高舒张压（DBP,mmHg）</view>
-        <input bindinput="formInputChange" disabled="true" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
-      </mp-cell>
-    </mp-cells>
-    <mp-cells title="身体指标" wx:else>
-      <mp-cell prop="ldl-c">
-        <view>低密度脂蛋白（LDL,mmol/L）</view>
-        <input bindinput="formInputChange" value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
-      </mp-cell>
-      <mp-cell prop="hdl-c">
-        <view>高密度脂蛋白（HDL,mmol/L）</view>
-        <input bindinput="formInputChange" value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
-      </mp-cell>
-      <mp-cell prop="tc">
-        <view>总胆固醇（TC,mmol/L）</view>
-        <input bindinput="formInputChange" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
-      </mp-cell>
-      <mp-cell prop="sbp">
-        <view>未治疗时最高收缩压（SBP,mmHg）</view>
-        <input bindinput="formInputChange" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
-      </mp-cell>
-      <mp-cell prop="dbp">
-        <view>未治疗时最高舒张压（DBP,mmHg）</view>
-        <input bindinput="formInputChange" value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
+        <view>未治疗时最高舒张压（低压,mmHg）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
       </mp-cell>
     </mp-cells>
     <mp-cells title="基础疾病（多选）">
@@ -107,6 +85,12 @@
             <checkbox value="acuteMyocardialInfarction" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.acuteMyocardialInfarction}}" />
           </view>
           <view class="weui-cell__bd">急性心肌梗死</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="unstableAngina" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.unstableAngina}}" />
+          </view>
+          <view class="weui-cell__bd">不稳定性心绞痛</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -281,12 +265,30 @@
         BMI= 体重（ kg ） / 身高（ m 2 ）维持在 20 - 23.9 之间
       </text>
     </view>
-    <view class="tips" decode="true">
+    <view class="tips" decode="true" wx:if="{{score <= 50}}">
       <text decode="true">
         6.控制血脂水平：
         a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
         b.原则上LDL-C 控制的水平越低越好，
-        c.最低限度控制LDL-C&lt;1.8&nbsp;mmol/L（最好&lt;1.4mmol/L)，或非-HDL-C&lt;2.6mmol/L；
+        c.最低限度控制LDL-C&lt;3.4&nbsp;mmol/L，或非-HDL-C&lt;4.1mmol/L；
+        d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 50%；
+      </text>
+    </view>
+    <view class="tips" decode="true" wx:if="{{ score <= 75 && score > 50 }}">
+      <text decode="true">
+        6.控制血脂水平：
+        a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
+        b.原则上LDL-C 控制的水平越低越好，
+        c.最低限度控制LDL-C&lt;2.6&nbsp;mmol/L，或非-HDL-C&lt;3.4mmol/L；
+        d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 50%；
+      </text>
+    </view>
+    <view class="tips" decode="true" wx:if="{{ score > 75 }}">
+      <text decode="true">
+        6.控制血脂水平：
+        a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
+        b.原则上LDL-C 控制的水平越低越好，
+        c.最低限度控制LDL-C&lt;1.8&nbsp;mmol/L(最好&lt;1.4mmol/L)，或非-HDL-C&lt;2.6mmol/L；
         d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 30%；
       </text>
     </view>

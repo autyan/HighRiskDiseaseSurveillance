@@ -8,6 +8,8 @@ Page({
   data: {
     mode: 'edit',
     step:0,
+    hasChecked: false,
+    score:null,
     formData: {
       heavyActivity: {
         mountainClimbingWithHeavy:false,
@@ -115,6 +117,10 @@ Page({
     })
   },
   nextStep(){
+    if(this.data.hasChecked == true || this.data.step == 4){
+      this.submit();
+      return;
+    }
     let nextStep = this.data.step += 1;
     this.setData({
       step:nextStep
@@ -199,6 +205,12 @@ Page({
       values = values.filter(function (item) {
         return item != 'none';
       });
+    }
+    
+    if(values.length > 0 && values.indexOf('none') < 0){
+      this.setData({hasChecked: true})
+    }else{
+      this.setData({hasChecked: false})
     }
     return values;
   }

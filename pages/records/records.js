@@ -98,6 +98,11 @@ Page({
           url: '/pages/atrialFibrillationIschemia/atrialFibrillationIschemia?mode=readonly&id=' + e.currentTarget.dataset.id
         })
         break;
+        case 'Atherosclerosis':
+          wx.navigateTo({
+            url: '/pages/atherosclerosis/atherosclerosis?mode=readonly&id=' + e.currentTarget.dataset.id
+          })
+          break;
     }
   },
   loadRecords() {

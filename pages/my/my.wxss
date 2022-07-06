@@ -19,12 +19,11 @@ background-color: #F6F6F6;
   font-size: 32rpx;
   width: auto;
   text-align: center;
-  margin-top: 50rpx;
+  margin-top: 75rpx;
 }
 
 .user_info {
   display:flex;
-  margin-top: 20rpx;
 }
 
 .user_info .userinfo-avatar{

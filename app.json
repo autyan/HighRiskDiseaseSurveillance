@@ -10,7 +10,8 @@
     "pages/cardiacInsufficiency/cardiacInsufficiency",
     "pages/atrialFibrillationBleeding/atrialFibrillationBleeding",
     "pages/atrialFibrillationIschemia/atrialFibrillationIschemia",
-    "pages/distributorQrCode/distributorQrCode"
+    "pages/distributorQrCode/distributorQrCode",
+    "pages/atherosclerosis/atherosclerosis"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,81 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="基本信息">
+      <mp-cell prop="age" title="年龄">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
+      </mp-cell>
+      <mp-cell prop="height" title="身高(cm)">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+      </mp-cell>
+      <mp-cell prop="weight" title="体重(kg)">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="身体指标">
+      <mp-cell prop="tc">
+        <view>总胆固醇（TC,mmol/L）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}" value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
+      </mp-cell>
+      <mp-cell prop="sbp">
+        <view>未治疗时最高收缩压（高压,mmHg）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}" value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="性别">
+      <radio-group bindchange="genderChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="0" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '0'}}" />
+          </view>
+          <view class="weui-cell__bd">男</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="1" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '1'}}" />
+          </view>
+          <view class="weui-cell__bd">女</view>
+        </label>
+      </radio-group>
+    </mp-cells>
+    <mp-cells title="生活习惯">
+      <radio-group bindchange="smokeChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke}}" />
+          </view>
+          <view class="weui-cell__bd">有吸烟史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}" />
+          </view>
+          <view class="weui-cell__bd">无吸烟史</view>
+        </label>
+      </radio-group>
+    </mp-cells>
+    <mp-cells title="基础疾病">
+      <radio-group bindchange="diabetesChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.diabetes}}" />
+          </view>
+          <view class="weui-cell__bd">有糖尿病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.diabetes == false}}" />
+          </view>
+          <view class="weui-cell__bd">无糖尿病</view>
+        </label>
+      </radio-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+  <view wx:if="{{ mode == 'readonly' }}">
+    <View class="score">您的当前评分：{{score}}</View>
+    <view class="score">10年冠心病发病危险：{{risk}}%</view>
+  </view>
+</mp-form-page>

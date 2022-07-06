@@ -1,0 +1,7 @@
+/* pages/atherosclerosis/atherosclerosis.wxss */
+.score {
+  display: flex;
+  margin: 20rpx;
+  align-items: center;
+  justify-content: center;
+}

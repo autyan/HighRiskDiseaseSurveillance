@@ -8,6 +8,8 @@ Page({
   data: {
     mode: 'edit',
     step:0,
+    hasChecked: false,
+    score:null,
     formData: {
       basicActivity: {
         walk:false,
@@ -117,6 +119,10 @@ Page({
     })
   },
   nextStep(){
+    if(this.data.hasChecked == true || this.data.step == 4){
+      this.submit();
+      return;
+    }
     let nextStep = this.data.step += 1;
     this.setData({
       step:nextStep
@@ -168,6 +174,7 @@ Page({
     }
   },
   onCasualActivityChange(e) {
+    e.detail.value = this.filterNoneValues(e.detail.value);
     for (var prop in this.data.formData.casualActivity) {
       let keyName = 'formData.casualActivity.' + prop;
       if (e.detail.value.indexOf(prop) > -1) {
@@ -200,6 +207,12 @@ Page({
       values = values.filter(function (item) {
         return item != 'none';
       });
+    }
+
+    if(values.length > 0 && values.indexOf('none') < 0){
+      this.setData({hasChecked: true})
+    }else{
+      this.setData({hasChecked: false})
     }
     return values;
   }

@@ -7,6 +7,7 @@ Page({
    */
   data: {
     mode: 'edit',
+    score: null,
     formData:{
       congestiveHeartFailure:false,
       hypertension:false,

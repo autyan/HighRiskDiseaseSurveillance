@@ -47,7 +47,7 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="serumCreatinine" checked="{{formData.abnormalkidneyFunction.serumCreatinine}}" />
           </view>
-          <view class="weui-cell__bd">血清肌酐大（C r >200umol/L</view>
+          <view class="weui-cell__bd">血清肌酐大（Cr） >200umol/L</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -67,9 +67,21 @@
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
-            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubin" checked="{{formData.abnormalLiverFunction.bilirubin}}" />
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinOne" checked="{{formData.abnormalLiverFunction.bilirubinOne}}" />
           </view>
-          <view class="weui-cell__bd">胆红素（TB IL）>2倍且谷草转氨酶（AS T）/谷丙转氨酶（ALT）/碱性磷酸酶（ALP）>3倍</view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且谷草转氨酶（AS T）>120 U/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinTwo" checked="{{formData.abnormalLiverFunction.bilirubinTwo}}" />
+          </view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且谷丙转氨酶（ALT）>120 U/L(男），>105U/L(女）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinThree" checked="{{formData.abnormalLiverFunction.bilirubinThree}}" />
+          </view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且碱性磷酸酶（ALP）>360 U/L(男），>390 U/L(女）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -125,7 +137,7 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="outOfRange" checked="{{formData.inrUnstable.outOfRange}}" />
           </view>
-          <view class="weui-cell__bd">达不到治疗范围（INR值小于1.2）</view>
+          <view class="weui-cell__bd">达不到治疗范围的60%（INR值小于1.2）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
@@ -141,19 +153,13 @@
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="antiplateletDrugs" checked="{{formData.drugs.antiplateletDrugs}}" />
           </view>
-          <view class="weui-cell__bd">抗血小板药物</view>
-        </label>
-        <label class="weui-cell weui-check__label">
-          <view class="weui-cell__hd">
-            <checkbox disabled="{{mode == 'readonly'}}" value="nonsteroidalDrugs" checked="{{formData.drugs.nonsteroidalDrugs}}" />
-          </view>
-          <view class="weui-cell__bd">非甾体类药物</view>
+          <view class="weui-cell__bd">正在使用抗血小板药物或非甾体类药物</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">
             <checkbox disabled="{{mode == 'readonly'}}" value="alcoholism" checked="{{formData.drugs.alcoholism}}" />
           </view>
-          <view class="weui-cell__bd">嗜酒</view>
+          <view class="weui-cell__bd">嗜酒（每周饮酒至少2次，每次至少白酒200 ml）</view>
         </label>
         <label class="weui-cell weui-check__label">
           <view class="weui-cell__hd">

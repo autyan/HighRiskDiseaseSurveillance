@@ -112,6 +112,13 @@ Page({
       })
     })
   },
+  toAtherosclerosis(){
+    this.checklogin(function(){
+      wx.navigateTo({
+        url:'/pages/atherosclerosis/atherosclerosis'
+      })
+    })
+  },
   checklogin(call){
     if(!this.data.userHasLogin){
       wx.showModal({
