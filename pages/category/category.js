@@ -1,5 +1,5 @@
 // pages/category.js
-var util = require('../../utils/util');
+var hdService = require('../../utils/service.js');
 
 Page({
 
@@ -15,11 +15,11 @@ Page({
    */
   onLoad(options) {
     let me = this;
-    util.checkLogin(function(loginResult){
+    hdService.loadUserInfo(function(){
       me.setData({
         userHasLogin: loginResult
       });
-    });
+    })
   },
 
   /**
@@ -120,20 +120,14 @@ Page({
     })
   },
   checklogin(call){
+    let me = this;
     if(!this.data.userHasLogin){
-      wx.showModal({
-        title:'提示',
-        content:'健康自测需要您登录后才能使用，是否为您跳转到登录页面？',
-        success(res){
-          if(res.confirm){
-            wx.switchTab({
-              url:'../my/my'
-            })
-          }
-        }
+      hdService.loadUserInfo(function(){
+        me.setData({
+          userHasLogin: true
+        });
+        call();
       })
-    }else{
-      call();
     }
   }
 })
