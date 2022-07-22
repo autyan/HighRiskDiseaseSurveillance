@@ -17,11 +17,11 @@ if (typeof __wxConfig =="object"){
     showError = true;
   }else if (version =="trial"){
     //测试环境(体验版)
-    serviceUrl = "https://dotnet-0ngd-1852816-1311435230.ap-shanghai.run.tcloudbase.com";
+    serviceUrl = "https://presurveillance.autyan.com";
     showError = true;
   }else if (version =="release"){
     //正式环境
-    serviceUrl = "https://dotnet-0ngd-1852816-1311435230.ap-shanghai.run.tcloudbase.com";
+    serviceUrl = "https://surveillance.autyan.com";
   }
 }
 module.exports = {
