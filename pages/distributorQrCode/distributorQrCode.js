@@ -1,4 +1,6 @@
 // pages/distributorQrCode/distributorQrCode.js
+var hdService = require('../../utils/service.js');
+
 Page({
 
   /**
@@ -16,8 +18,10 @@ Page({
     wx.getStorage({
       key: "me", // 若开启加密存储，setStorage 和 getStorage 需要同时声明 encrypt 的值为 true
       success(res) {
-        me.setData({
-          imgData: res.data.userInfo.distributorQrCode,
+        hdService.request("/api/user/distributorqrcode", null, "GET").then((response) => {
+          me.setData({
+            imgData: response,
+          });
         });
       }
     });
