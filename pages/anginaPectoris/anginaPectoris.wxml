@@ -1,0 +1,266 @@
+<!--pages/anginaPectoris/anginaPectoris.wxml-->
+<view>
+  <view>
+    <view wx:if="{{step == 0 && mode != 'readonly'}}">
+      <h2 class="title">请您根据您的实际情况进行选择</h2>
+      <button type="primary" bindtap="start">立即开始</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 1 && mode != 'readonly'}}"> 1/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+    <view wx:if="{{step == 1 || mode == 'readonly'}}">
+      <mp-cells title="轻微活动或休息时受限">
+        <checkbox-group bindchange="onCasualActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="metting" checked="{{formData.casualActivity.metting}}" />
+            </view>
+            <view class="weui-cell__bd">开会</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="driving" checked="{{formData.casualActivity.driving}}" />
+            </view>
+            <view class="weui-cell__bd">开车</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="typing" checked="{{formData.casualActivity.typing}}" />
+            </view>
+            <view class="weui-cell__bd">打字</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="listenMusic" checked="{{formData.casualActivity.listenMusic}}" />
+            </view>
+            <view class="weui-cell__bd">听音乐</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="painting" checked="{{formData.casualActivity.painting}}" />
+            </view>
+            <view class="weui-cell__bd">绘画</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.casualActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 2 && mode != 'readonly'}}"> 2/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+    <view wx:if="{{step == 2 || mode == 'readonly'}}">
+      <mp-cells title="日常体力活动明显受限">
+        <checkbox-group bindchange="onNormalActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkOverRange" checked="{{formData.normalActivity.walkOverRange}}" />
+            </view>
+            <view class="weui-cell__bd">一般速度(1.2-1.5 m/s)平地步行100~200米</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="goUpOneStairs" checked="{{formData.normalActivity.goUpOneStairs}}" />
+            </view>
+            <view class="weui-cell__bd">登一层楼梯</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkOnGround" checked="{{formData.normalActivity.walkOnGround}}" />
+            </view>
+            <view class="weui-cell__bd">水平面上走动</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="houseClean" checked="{{formData.normalActivity.houseClean}}" />
+            </view>
+            <view class="weui-cell__bd">打扫卫生</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="babySet" checked="{{formData.normalActivity.babySet}}" />
+            </view>
+            <view class="weui-cell__bd">看护小孩</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 3 && mode != 'readonly'}}"> 3/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+    <view wx:if="{{step == 3 || mode == 'readonly'}}">
+      <mp-cells title="日常体力活动受限">
+        <checkbox-group bindchange="onCommonActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="briskWalk" checked="{{formData.commonActivity.briskWalk}}" />
+            </view>
+            <view class="weui-cell__bd">快步行走(>1.5 米/秒)或上楼、登高</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkAfterMeal" checked="{{formData.commonActivity.walkAfterMeal}}" />
+            </view>
+            <view class="weui-cell__bd">饭后行走或上楼</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkInWind" checked="{{formData.commonActivity.walkInWind}}" />
+            </view>
+            <view class="weui-cell__bd">寒冷或风中行走</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkOverRange" checked="{{formData.commonActivity.walkOverRange}}" />
+            </view>
+            <view class="weui-cell__bd">一般速度（1.2-1.5 米/秒）平地步行200米以上</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="goUpOneStairs" checked="{{formData.commonActivity.goUpOneStairs}}" />
+            </view>
+            <view class="weui-cell__bd">登一层以上的楼梯</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.commonActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 4 && mode != 'readonly'}}"> 4/4 您在进行以下活动时，是否有胸痛、胸闷、呼吸困难等症状（多选）</h2>
+    <view wx:if="{{step == 4 || mode == 'readonly'}}">
+      <mp-cells title="一般体力活动受限">
+        <checkbox-group bindchange="onBasicActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walk" checked="{{formData.basicActivity.walk}}" />
+            </view>
+            <view class="weui-cell__bd">正常行走（1.2-1.5 米/秒）</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="climbStairs" checked="{{formData.basicActivity.climbStairs}}" />
+            </view>
+            <view class="weui-cell__bd">正常上楼</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.basicActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <view wx:if="{{mode == 'readonly'}}">
+      <view wx:if="{{ score <= 25 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：冠心病心绞痛 I 级（轻度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score <= 50 && score > 25 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：冠心病心绞痛 II级（中度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score <= 75 && score > 50 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：冠心病心绞痛 III 级（重度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score > 75 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：冠心病心绞痛 I V级（极重）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view class="score">健康小提示</view>
+      <view class="tips">
+        <text decode="true">
+          1.控制饮食和糖尿病治疗</text>
+      </view>
+      <view class="tips">
+        <text>
+          2.控制血脂和戒烟</text>
+      </view>
+      <view class="tips">
+        <text>
+          3.健康教育和运动</text>
+      </view>
+      <view class="tips">
+        <text>
+          4.控制血压和β受体阻滞剂</text>
+      </view>
+      <view class="tips">
+        <text>
+          5.抗血小板、抗心绞痛和使用ACEI（ARB）类药物</text>
+      </view>
+      <view class="tips">
+        <text>
+          6.建议行冠脉造影或冠脉CTA确定冠脉狭窄程度，必要时支架植入</text>
+      </view>
+    </view>
+  </view>
+</view>

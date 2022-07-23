@@ -2,11 +2,11 @@
  * @Author: Alex
  * @Date: 2022-04-23 10:23:33
  * @LastEditors: Alex
- * @LastEditTime: 2022-05-17 11:25:29
+ * @LastEditTime: 2022-05-22 10:10:14
  * @Description: file content
  */
 
-var hdService = require ( '../../utils/service.js' ); 
+var hdService = require('../../utils/service.js');
 
 // pages/my.js
 Page({
@@ -15,20 +15,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    hasUserInfo: false,
+    loginUser: {},
     canIUseGetUserProfile: false,
+    distributor: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.loadUser();
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       });
-    }
+    };
   },
 
   /**
@@ -79,30 +80,46 @@ Page({
   onShareAppMessage() {
 
   },
-  userLogin(){
-    wx.login({
-      success (res) {
-        if (res.code) {
-          hdService.request("/api/auth", res, "POST").then((response) =>{
-            console.log(response);
-          });
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+  loadUser() {
+    let me = this;
+    hdService.loadUserInfo(function () {
+      me.setData({
+        loginUser: hdService.loginUser
+      });
+    });
+  },
+  userLogin(userInfo) {
+    let me = this;
+    var par = {
+      nickName: userInfo.nickName,
+      avatar: userInfo.avatarUrl
+    }
+    hdService.request("/api/user/syncwechatprofile", par, "POST").then((response) => {
+      hdService.updateUserInfo(response);
+      this.setData({
+        loginUser: response
+      });
+    });
   },
   getUserProfile(e) {
+    let me = this;
     // 推荐使用 wx.getUserProfile 获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        });
+        me.userLogin(res.userInfo);
       }
     });
+  },
+  toRecords() {
+    wx.navigateTo({
+      url: '/pages/records/records'
+    })
+  },
+  toqrCode() {
+    wx.navigateTo({
+      url: '/pages/distributorQrCode/distributorQrCode'
+    })
   }
 });

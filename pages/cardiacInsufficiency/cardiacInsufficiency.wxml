@@ -1,0 +1,247 @@
+<!--pages/anginaPectoris/anginaPectoris.wxml-->
+<view>
+  <view>
+    <view wx:if="{{step == 0 && mode != 'readonly'}}">
+      <h2 class="title">请您根据您的实际情况进行选择</h2>
+      <button type="primary" bindtap="start">立即开始</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 1 && mode != 'readonly'}}"> 1/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 1 || mode == 'readonly'}}">
+      <mp-cells title="没有任何体力活动，休息时也会出现胸闷，气喘等心衰症状">
+        <checkbox-group bindchange="onCasualActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="layOff" checked="{{formData.casualActivity.layOff}}" />
+            </view>
+            <view class="weui-cell__bd">不能平躺</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="resting" checked="{{formData.casualActivity.resting}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithBp" checked="{{formData.casualActivity.restingWithBp}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且血压（BP）小于 90/60 mmHg）</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithDbpOrSbp" checked="{{formData.casualActivity.restingWithDbpOrSbp}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且收缩压(90-120)/舒张压（60-70） mmHg）</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="restingWithDrug" checked="{{formData.casualActivity.restingWithDrug}}" />
+            </view>
+            <view class="weui-cell__bd">休息时有症状且需要静脉用</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.casualActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">提交</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 2 && mode != 'readonly'}}"> 2/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 2 || mode == 'readonly'}}">
+      <mp-cells title="体力活动明显受限，休息时无症状，轻微活动极氪出现胸闷，气喘等症状">
+        <checkbox-group bindchange="onNormalActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkOnWater" checked="{{formData.normalActivity.walkOnWater}}" />
+            </view>
+            <view class="weui-cell__bd">在水面上行走</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="houseClean" checked="{{formData.normalActivity.houseClean}}" />
+            </view>
+            <view class="weui-cell__bd">打扫卫生</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="babySet" checked="{{formData.normalActivity.babySet}}" />
+            </view>
+            <view class="weui-cell__bd">看护小孩</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.normalActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 3 && mode != 'readonly'}}"> 3/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 3 || mode == 'readonly'}}">
+      <mp-cells title="体力活动轻度受限，休息时无症状">
+        <checkbox-group bindchange="onHardActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="walkWithLoad" checked="{{formData.hardActivity.walkWithLoad}}" />
+            </view>
+            <view class="weui-cell__bd">负重行走</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="weeding" checked="{{formData.hardActivity.weeding}}" />
+            </view>
+            <view class="weui-cell__bd">除草</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="riding" checked="{{formData.hardActivity.riding}}" />
+            </view>
+            <view class="weui-cell__bd">骑自行车</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.hardActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <h2 class="title" wx:if="{{step == 4 && mode != 'readonly'}}"> 4/4 您在进行以下活动时，是否有胸闷、心悸、气短、气喘等症状（多选）</h2>
+    <view wx:if="{{step == 4 || mode == 'readonly'}}">
+      <mp-cells title="体力活动不受限">
+        <checkbox-group bindchange="onHeavyActivityChange">
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="mountainClimbingWithHeavy" checked="{{formData.heavyActivity.mountainClimbingWithHeavy}}" />
+            </view>
+            <view class="weui-cell__bd">负重爬山</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="basketBall" checked="{{formData.heavyActivity.basketBall}}" />
+            </view>
+            <view class="weui-cell__bd">打篮球</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="mountainClimbing" checked="{{formData.heavyActivity.mountainClimbing}}" />
+            </view>
+            <view class="weui-cell__bd">登山</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox disabled="{{mode == 'readonly'}}" value="footBall" checked="{{formData.heavyActivity.footBall}}" />
+            </view>
+            <view class="weui-cell__bd">踢足球</view>
+          </label>
+          <label class="weui-cell weui-check__label">
+            <view class="weui-cell__hd">
+              <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.heavyActivity.none}}" />
+            </view>
+            <view class="weui-cell__bd">以上皆无</view>
+          </label>
+        </checkbox-group>
+      </mp-cells>
+      <button type="primary" bindtap="nextStep" class="btnNextStep" wx:if="{{mode != 'readonly'}}">下一步</button>
+    </view>
+    <view wx:if="{{mode == 'readonly'}}">
+      <view wx:if="{{ score <= 25 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：心功能不全 I 级（轻度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score <= 50 && score > 25 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：心功能不全 II级（中度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score <= 75 && score > 50 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：心功能不全 III 级（重度）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+            <view class="riskMark"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{ score > 75 }}">
+        <View class="score">您的当前评分：{{score}}/100</View>
+        <view class="score">危险评级：心功能不全 I V级（极重）</view>
+        <view>
+          <view class="riskBar">
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark"></view>
+            <view class="riskMark active"></view>
+          </view>
+          <view class="riskBar">
+            <view class="lowRisk">轻度</view>
+            <view class="mediumRisk">中度</view>
+            <view class="highRisk">重度</view>
+            <view class="extremeHighRisk">极重</view>
+          </view>
+        </view>
+      </view>
+      <view class="score">健康小提示</view>
+      <view class="tips">
+        <text decode="true">
+          1.生活方式干预：
+          1）体重管理:
+          每日清晨排空后监测干体重，维持干体重稳定。
+          2）饮食管理：
+          严格限制钠盐摄入，每日食盐摄入量&lt;5g。 
+          3）体力活动管理： 急性期或病情不稳定者，要限制体力活动；病情稳定心衰患者应该鼓励主动运动。</text>
+      </view>
+      <view class="tips">
+        <text>
+          2.病因治疗：积极治疗高血压，冠心病，糖尿病等原发病，同时纠正感染、心律失常、甲亢、贫血等诱因。</text>
+      </view>
+      <view class="tips">
+        <text>
+          3.在医生指导之下用药</text>
+      </view>
+    </view>
+  </view>
+</view>

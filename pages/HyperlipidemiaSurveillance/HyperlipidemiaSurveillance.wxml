@@ -1,0 +1,301 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="基本信息">
+      <mp-cell prop="age" title="年龄">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.age}}" data-field="age" class="weui-input" placeholder="请输入年龄" />
+      </mp-cell>
+      <mp-cell prop="height" title="身高(cm)">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.height}}" data-field="height" class="weui-input" placeholder="请输入身高" />
+      </mp-cell>
+      <mp-cell prop="weight" title="体重(kg)">
+        <input disabled="{{mode == 'readonly'}}" bindinput="formInputChange" value="{{formData.weight}}" data-field="weight" class="weui-input" placeholder="请输入体重" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="性别">
+      <radio-group bindchange="genderChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="0" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '0'}}" />
+          </view>
+          <view class="weui-cell__bd">男</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="1" disabled="{{mode == 'readonly'}}" checked="{{formData.gender == '1'}}" />
+          </view>
+          <view class="weui-cell__bd">女</view>
+        </label>
+      </radio-group>
+    </mp-cells>
+    <mp-cells title="生活习惯">
+      <radio-group bindchange="smokeChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="true" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke}}" />
+          </view>
+          <view class="weui-cell__bd">有吸烟史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <radio value="false" disabled="{{mode == 'readonly'}}" checked="{{formData.smoke == false}}" />
+          </view>
+          <view class="weui-cell__bd">无吸烟史</view>
+        </label>
+      </radio-group>
+    </mp-cells>
+    <mp-cells title="身体指标">
+      <mp-cell prop="ldl-c">
+        <view>低密度脂蛋白（LDL,mmol/L）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.ldlc}}" data-field="ldlc" class="weui-input" placeholder="请输入低密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="hdl-c">
+        <view>高密度脂蛋白（HDL,mmol/L）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.hdlc}}" data-field="hdlc" class="weui-input" placeholder="请输入高密度脂蛋白指标" />
+      </mp-cell>
+      <mp-cell prop="tc">
+        <view>总胆固醇（TC,mmol/L）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.tc}}" data-field="tc" class="weui-input" placeholder="请输入总胆固醇指标" />
+      </mp-cell>
+      <mp-cell prop="sbp">
+        <view>未治疗时最高收缩压（高压,mmHg）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.sbp}}" data-field="sbp" class="weui-input" placeholder="请输入收缩压指标" />
+      </mp-cell>
+      <mp-cell prop="dbp">
+        <view>未治疗时最高舒张压（低压,mmHg）</view>
+        <input bindinput="formInputChange" disabled="{{mode == 'readonly'}}"  value="{{formData.dbp}}" data-field="dbp" class="weui-input" placeholder="请输入舒张压指标" />
+      </mp-cell>
+    </mp-cells>
+    <mp-cells title="基础疾病（多选）">
+      <checkbox-group bindchange="onDiseaseChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="hypertension" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.hypertension}}" />
+          </view>
+          <view class="weui-cell__bd">高血压</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="diabetes" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.diabetes}}" />
+          </view>
+          <view class="weui-cell__bd">糖尿病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="acuteMyocardialInfarction" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.acuteMyocardialInfarction}}" />
+          </view>
+          <view class="weui-cell__bd">急性心肌梗死</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="unstableAngina" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.unstableAngina}}" />
+          </view>
+          <view class="weui-cell__bd">不稳定性心绞痛</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="stableCoronaryHeartDisease" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.stableCoronaryHeartDisease}}" />
+          </view>
+          <view class="weui-cell__bd">稳定性冠心病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="afterRevascularization" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.afterRevascularization}}" />
+          </view>
+          <view class="weui-cell__bd">血运重建术后</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="ischemicCardiomyopathy" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.ischemicCardiomyopathy}}" />
+          </view>
+          <view class="weui-cell__bd">缺血性心肌病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="ischemicStroke" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.ischemicStroke}}" />
+          </view>
+          <view class="weui-cell__bd">缺血性卒中</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="transientIschemicAttack" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.transientIschemicAttack}}" />
+          </view>
+          <view class="weui-cell__bd">短暂性脑缺血发作</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="carotidArteryStenosis" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.carotidArteryStenosis}}" />
+          </view>
+          <view class="weui-cell__bd">颈动脉狭窄</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="renalArteryStenosis" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.renalArteryStenosis}}" />
+          </view>
+          <view class="weui-cell__bd">肾动脉狭窄</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="arterialStenosisInExtremities" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.arterialStenosisInExtremities}}" />
+          </view>
+          <view class="weui-cell__bd">四肢动脉狭窄</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="abdominalAorticAneurysm" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.abdominalAorticAneurysm}}" />
+          </view>
+          <view class="weui-cell__bd">腹主动脉瘤</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.basicDisease.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+  <view wx:if="{{mode == 'readonly'}}">
+    <view wx:if="{{ score <= 25 }}">
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score" style="font-size:40rpx;">危险评级:低危</view>
+      <view class="score">（10 年动脉粥样硬化性疾病发病危险小于5%）</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{ score <= 50 && score > 25  }}">
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级:中危（10 年动脉粥样硬化性疾病发病危险5-9%）</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{  score <= 75 && score > 50  }}">
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <text class="score">危险评级:
+        高危（10 年动脉粥样硬化性疾病发病危险大于10%）
+      </text>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{ score > 75 }}">
+      <View class="score">您的当前评分：{{score}}/100</View>
+      <view class="score">危险评级：极高危（心血管疾病终生风险大于32.8%）</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="mediumRisk">中危</view>
+          <view class="highRisk">高危</view>
+          <view class="extremeHighRisk">极高危</view>
+        </view>
+      </view>
+    </view>
+    <view class="score">健康小提示</view>
+    <view class="tips">
+      <text>
+        1.坚持心脏健康饮食：
+        每天食盐控制在5克以内，每日摄入胆固醇应低于 300 mg
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        2.规律运动：
+        每周 5 -7 次，每次 30 min 以上中等量级有氧运动
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        3.戒烟：
+        越早戒烟，获益越大
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        4.限酒：
+        每日饮酒量：啤酒少于355ml，红酒少于2两，白酒少于1两
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        5.保持健康体重：
+        BMI= 体重（ kg ） / 身高（ m 2 ）维持在 20 - 23.9 之间
+      </text>
+    </view>
+    <view class="tips" decode="true" wx:if="{{score <= 50}}">
+      <text decode="true">
+        6.控制血脂水平：
+        a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
+        b.原则上LDL-C 控制的水平越低越好，
+        c.最低限度控制LDL-C&lt;3.4&nbsp;mmol/L，或非-HDL-C&lt;4.1mmol/L；
+        d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 50%；
+      </text>
+    </view>
+    <view class="tips" decode="true" wx:if="{{ score <= 75 && score > 50 }}">
+      <text decode="true">
+        6.控制血脂水平：
+        a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
+        b.原则上LDL-C 控制的水平越低越好，
+        c.最低限度控制LDL-C&lt;2.6&nbsp;mmol/L，或非-HDL-C&lt;3.4mmol/L；
+        d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 50%；
+      </text>
+    </view>
+    <view class="tips" decode="true" wx:if="{{ score > 75 }}">
+      <text decode="true">
+        6.控制血脂水平：
+        a.降低 LDL-C 水平作为首要的干预靶点，非-HDL-C 可作为次要干预靶点；
+        b.原则上LDL-C 控制的水平越低越好，
+        c.最低限度控制LDL-C&lt;1.8&nbsp;mmol/L(最好&lt;1.4mmol/L)，或非-HDL-C&lt;2.6mmol/L；
+        d. LDL-C 基线值较高不能达目标值者，LDL-C 至少降低 30%；
+      </text>
+    </view>
+    <view class="tips">
+      <text>
+        7.具体降脂方案在医生指导下进行
+      </text>
+    </view>
+  </view>
+</mp-form-page>

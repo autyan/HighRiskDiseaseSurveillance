@@ -1,0 +1,207 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="1500"></mp-toptips>
+<mp-form-page title="以下信息请根据本人实际情况填写或选择">
+  <mp-form id="form">
+    <mp-cells title="基本信息（多选）">
+      <checkbox-group bindchange="onbasicHealthyChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="hypertension" checked="{{formData.basicHealthy.hypertension}}" />
+          </view>
+          <view class="weui-cell__bd">高血压 >= 160mmHg</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="stroke" checked="{{formData.basicHealthy.stroke}}" />
+          </view>
+          <view class="weui-cell__bd">卒中</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="overAge" checked="{{formData.basicHealthy.overAge}}" />
+          </view>
+          <view class="weui-cell__bd">年龄>65岁</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.basicHealthy.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+    <mp-cells title="肾功能异常（多选）">
+      <checkbox-group bindchange="onabnormalkidneyFunctionChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="chronicDialysis" checked="{{formData.abnormalkidneyFunction.chronicDialysis}}" />
+          </view>
+          <view class="weui-cell__bd">慢性透析</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="kidneyTransplant" checked="{{formData.abnormalkidneyFunction.kidneyTransplant}}" />
+          </view>
+          <view class="weui-cell__bd">肾移植</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="serumCreatinine" checked="{{formData.abnormalkidneyFunction.serumCreatinine}}" />
+          </view>
+          <view class="weui-cell__bd">血清肌酐大（Cr） >200umol/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.abnormalkidneyFunction.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+    <mp-cells title="肝功能异常（多选）">
+      <checkbox-group bindchange="onabnormalLiverFunctionChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="chronicLiverDisease" checked="{{formData.abnormalLiverFunction.chronicLiverDisease}}" />
+          </view>
+          <view class="weui-cell__bd">慢性肝病</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinOne" checked="{{formData.abnormalLiverFunction.bilirubinOne}}" />
+          </view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且谷草转氨酶（AS T）>120 U/L</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinTwo" checked="{{formData.abnormalLiverFunction.bilirubinTwo}}" />
+          </view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且谷丙转氨酶（ALT）>120 U/L(男），>105U/L(女）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bilirubinThree" checked="{{formData.abnormalLiverFunction.bilirubinThree}}" />
+          </view>
+          <view class="weui-cell__bd">胆红素（TB IL）>35μmol/L且碱性磷酸酶（ALP）>360 U/L(男），>390 U/L(女）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.abnormalkidneyFunction.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+    <mp-cells title="出血（多选）">
+      <checkbox-group bindchange="onbleedingChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="historyOfBleeding" checked="{{formData.bleeding.historyOfBleeding}}" />
+          </view>
+          <view class="weui-cell__bd">出血病史</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="bleedingConstitution" checked="{{formData.bleeding.bleedingConstitution}}" />
+          </view>
+          <view class="weui-cell__bd">出血体质</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="anemia" checked="{{formData.bleeding.anemia}}" />
+          </view>
+          <view class="weui-cell__bd">贫血</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.bleeding.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+    <mp-cells title="INR值不稳定（多选）">
+      <checkbox-group bindchange="oninrUnstableChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="volatile" checked="{{formData.inrUnstable.volatile}}" />
+          </view>
+          <view class="weui-cell__bd">易变</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="high" checked="{{formData.inrUnstable.high}}" />
+          </view>
+          <view class="weui-cell__bd">偏高（INR值>3）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="outOfRange" checked="{{formData.inrUnstable.outOfRange}}" />
+          </view>
+          <view class="weui-cell__bd">达不到治疗范围的60%（INR值小于1.2）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.inrUnstable.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+    <mp-cells title="药物（多选）">
+      <checkbox-group bindchange="ondrugsChange">
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="antiplateletDrugs" checked="{{formData.drugs.antiplateletDrugs}}" />
+          </view>
+          <view class="weui-cell__bd">正在使用抗血小板药物或非甾体类药物</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox disabled="{{mode == 'readonly'}}" value="alcoholism" checked="{{formData.drugs.alcoholism}}" />
+          </view>
+          <view class="weui-cell__bd">嗜酒（每周饮酒至少2次，每次至少白酒200 ml）</view>
+        </label>
+        <label class="weui-cell weui-check__label">
+          <view class="weui-cell__hd">
+            <checkbox value="none" disabled="{{mode == 'readonly'}}" checked="{{formData.drugs.none}}" />
+          </view>
+          <view class="weui-cell__bd">以上皆无</view>
+        </label>
+      </checkbox-group>
+    </mp-cells>
+  </mp-form>
+  <view slot="button">
+    <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+  </view>
+  <view wx:if="{{mode == 'readonly'}}">
+    <view class="score">危险评级：</view>
+    <view wx:if="{{ score <= 2 }}">
+      <View class="score">您的当前评分：{{score}}</View>
+      <view class="score">危险评级 :（低风险出血患者）结合房颤血栓评分优先进行抗凝，同时观察出血情况</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark active"></view>
+          <view class="riskMark"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="highRisk">高危</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{ score >= 3 }}">
+      <View class="score">您的当前评分：{{score}}</View>
+      <view class="score">危险评级 :（高风险出血患者）抗凝抗血小板药物使用需谨慎</view>
+      <view>
+        <view class="riskBar">
+          <view class="riskMark"></view>
+          <view class="riskMark active"></view>
+        </view>
+        <view class="riskBar">
+          <view class="lowRisk">低危</view>
+          <view class="highRisk">高危</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</mp-form-page>

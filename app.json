@@ -1,7 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/category/category",
+    "pages/HyperlipidemiaSurveillance/HyperlipidemiaSurveillance",
+    "pages/records/records",
+    "pages/HypertensionSurveillance/HypertensionSurveillance",
+    "pages/anginaPectoris/anginaPectoris",
+    "pages/cardiacInsufficiency/cardiacInsufficiency",
+    "pages/atrialFibrillationBleeding/atrialFibrillationBleeding",
+    "pages/atrialFibrillationIschemia/atrialFibrillationIschemia",
+    "pages/distributorQrCode/distributorQrCode",
+    "pages/atherosclerosis/atherosclerosis"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +40,8 @@
     "position": "bottom"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

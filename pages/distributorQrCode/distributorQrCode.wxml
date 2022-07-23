@@ -1,0 +1,5 @@
+<!--pages/distributorQrCode/distributorQrCode.wxml-->
+<view class="imageContainer">
+  <image src="data:image/png;base64,{{imgData}}"></image>
+  <button class="shareButton" type="primary">立即分享</button>
+</view>

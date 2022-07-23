@@ -1,0 +1,98 @@
+/* pages/records/records.wxss */
+page {
+  background-color: #F6F6F6;
+}
+
+.swiper-tab {
+  width: 100%;
+  text-align: center;
+  line-height: 32rpx;
+  background-color: #fff;
+}
+
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  color: #777;
+}
+
+.swiper-tab-list text {
+  display: block;
+  margin-top: 33rpx;
+  margin-bottom: 17rpx;
+}
+
+.on {
+  color: #0cd195;
+}
+
+.on .swiper-tab-list-indicator {
+  height: 10rpx;
+  width: 50%;
+  background-color: #0cd195;
+  margin: auto;
+}
+
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.record-view {
+  padding: 18rpx 20rpx 0 20rpx;
+}
+
+.record-item {
+  background-color: #fff;
+  padding: 25rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.record-head {
+  display: flex;
+  flex-direction: column;
+}
+
+.record-title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.record-time {
+  margin-top: 20rpx;
+  color: #acacac;
+  font-size: 26rpx;
+}
+
+.record-button {
+  margin-top: 29rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.record-detail {
+  font-size: 28rpx;
+  color: #0cca8a;
+  margin-right: 20rpx;
+}
+
+.record-arrow {
+  width: 10rpx;
+  height: 20rpx;
+}
+
+.record-pay{
+  margin-left:auto;
+  background-color: #0cd195;
+  color:#fff;
+  width: 202rpx;
+  height: 62rpx;
+  border-radius: 31rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

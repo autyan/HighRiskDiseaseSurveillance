@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "mp-form-page":"weui-miniprogram/form-page/form-page",
+    "mp-form":"weui-miniprogram/form/form",
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-checkbox-group": "weui-miniprogram/checkbox-group/checkbox-group",
+    "mp-checkbox": "weui-miniprogram/checkbox/checkbox",
+    "mp-toptips":"weui-miniprogram/toptips/toptips"
+  },
+  "navigationBarTitleText": "10年内发生动脉粥样硬化性心血管病（ASCVD）危险评估"
+}
