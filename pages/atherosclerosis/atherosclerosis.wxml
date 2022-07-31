@@ -77,5 +77,42 @@
   <view wx:if="{{ mode == 'readonly' }}">
     <View class="score">您的当前评分：{{score}}</View>
     <view class="score">10年冠心病发病危险：{{risk}}%</view>
+    <view class="table">
+      <view class="tablehead">
+      10年ICVF绝对危险（%）参考标准
+      </view>
+      <view>
+        <view class="tr">
+          <view class="td">年龄（岁）</view>
+          <view class="td">平均危险</view>
+          <view class="td">最低危险*</view>
+        </view>
+        <view class="tr">
+          <view class="td">35-39</view>
+          <view class="td">0.3</view>
+          <view class="td">0.1</view>
+        </view>
+        <view class="tr">
+          <view class="td">40-44</view>
+          <view class="td">0.4</view>
+          <view class="td">0.1</view>
+        </view>
+        <view class="tr">
+          <view class="td">45-49</view>
+          <view class="td">0.6</view>
+          <view class="td">0.2</view>
+        </view>
+        <view class="tr">
+          <view class="td">50-54</view>
+          <view class="td">0.9</view>
+          <view class="td">0.3</view>
+        </view>
+        <view class="tr">
+          <view class="td">55-59</view>
+          <view class="td">1.4</view>
+          <view class="td">0.5</view>
+        </view>
+      </view>
+    </view>
   </view>
 </mp-form-page>

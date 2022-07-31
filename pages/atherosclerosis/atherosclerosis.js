@@ -142,7 +142,6 @@ Page({
     })
   },
   calcRisk() {
-    debugger;
     let maleRisk = {
       0: 0.5,
       1: 0.6,
