@@ -75,7 +75,6 @@
     <button wx:if="{{mode != 'readonly'}}" class="weui-btn" type="primary" bindtap="submitForm">确定</button>
   </view>
   <view wx:if="{{ mode == 'readonly' }}">
-    <View class="score">您的当前评分：{{score}}</View>
     <view class="score">10年冠心病发病危险：{{risk}}%</view>
     <view class="table">
       <view class="tablehead">
